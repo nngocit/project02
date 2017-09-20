@@ -1,0 +1,56 @@
+﻿@model List<WebComment.API.Models.HomeProductVM>
+    
+@foreach (var item in Model)
+{
+    <div class="container  md-mb-30 sm-mb-20">
+        <div class="row">
+            @if (item.Banner != null)
+            {
+                <div class="col-sm-12">
+                    <a href="@item.Banner.BannerUrl"><img src="@item.Banner.ImageUrl" alt="@item.Banner.BannerName" class="max-width"/></a>
+                </div>
+            }
+            @*<div class="col-sm-6 sm-mb-10 md-mb-0">
+                <a href="#"><img src="/Content/images/vnpost/adv1.png" alt="" class="max-width"/></a>
+            </div>
+            <div class="col-sm-6">
+                <a href="#"><img src="/Content/images/vnpost/adv2.png" alt="" class="max-width"/></a>
+            </div>*@
+        </div>
+    </div>
+    <section class="products md-mb-30 sm-mb-10">
+        <div class="container">
+            <div class="section-title clearfix">
+                <h2 class="">
+                    @item.CategoryName
+                    <i class="vta-phone"></i>
+                </h2>
+                <div class="section-menu">
+                    @*<ol class="breadcrumb">
+                        <li><a href="#">Apple</a></li>
+                        <li><a href="#">Samsung</a></li>
+                        <li><a href="#">Nokia</a></li>
+                        <li><a href="#">Sony</a></li>
+                        <li><a href="#">HTC</a></li>
+                        <li><a href="#">LG</a></li>
+                        <li class="active">ASUS</li>
+                    </ol>*@
+                </div>
+            </div>
+            <div class="product-carousel shop clearfix owl-carousel">
+
+                @foreach (var itemProduct in item.ListProduct)
+                {
+                    @Html.Partial("Partial/PartialProductItem", itemProduct)
+                }
+            </div>
+        </div>
+    </section>
+    @*<div class="container  md-mb-30 sm-mb-20">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href="#"><img src="/Content/images/vnpost/adv3.png" alt="" class="max-width"/></a>
+                </div>
+            </div>
+        </div>*@
+}

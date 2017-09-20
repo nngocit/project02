@@ -1,0 +1,68 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutVnpost.cshtml";
+}
+@model WebComment.API.Models.CategoryPage
+
+    <div class="container mt-15">
+        <div class="adv-product-banner">
+            @if (@Model.ListBanner.Any())
+            {
+                if (Model.ListBanner.Count > 1)
+                {
+                    foreach (var item in Model.ListBanner)
+                 {
+                    <div class="adv-product-item">
+                        <a href="@item.BannerUrl"><img src="@item.ImageUrl" alt="@item.BannerName"></a>
+                    </div>
+                 }
+                }
+                else
+                {
+                    foreach (var item in Model.ListBanner)
+                     {
+                        <div class="">
+                            <a href="@item.BannerUrl"><img src="@item.ImageUrl" alt="@item.BannerName"></a>
+                        </div>
+                     }
+                }
+                
+            }
+            @*<div class="adv-product-item">
+                <a href=""><img src="/Content/images/banner-km.jpg" alt=""></a>
+            </div>
+            <div class="adv-product-item">
+                <a href=""><img src="/Content/images/banner-km.jpg" alt=""></a>
+            </div>*@
+        </div>
+    </div>
+
+    <div id="main-content">
+        <section class="products">
+            <div class="container">
+                <div class="shop clearfix shop-masonry shop-danhmuc" id="cateProductContent">
+                    <div class="masonry-sizer"></div>
+                    @foreach (var item in Model.ListProduct)
+                    {
+                        @Html.Partial("Partial/PartialCategoryItem", item)
+                    }
+                </div>
+
+            </div>
+        </section>
+
+        <div class="spinner" style="display: none;">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+        @if (Model.Total > 12)
+        {
+            <div class="load-more text-center animate" id="CategoryPager" cateid="@Model.CategoryId" page="2">
+                <button title="Xem thêm" class="btn-cart">
+                    <i class="vta-plus"></i>Xem thêm, còn <span id="lblNumCont">@(Model.Total - 12)</span> sản phẩm
+                </button>
+            </div>
+        }
+    </div>
+
+

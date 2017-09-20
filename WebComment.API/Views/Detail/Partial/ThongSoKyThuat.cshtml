@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+@model WebComment.API.Models.DetailModel
+<div id="thongsokythuat" class="onepageNav">
+   
+    <div class="thongso-kythuat">
+
+        @if (!String.IsNullOrEmpty(Model.Product.ProductFeaturesRl))
+        {
+            <h2 class="detail-title">Thông số kỹ thuật @Model.Product.ProductName</h2>
+        }
+            <div class="table-tskt">
+                <table class="table">
+                    @Html.Raw(Model.Product.ProductFeaturesRl)
+                </table>
+            </div>
+            @if (!String.IsNullOrEmpty(Model.Product.ProductFeaturesRl))
+            {
+                <div class="xem-chi-tiet text-center animate">
+
+                    <button title="Xem chi tiết cấu hình" class="btn-cart button-tskt" href="#">
+                        <i class="vta-plus"></i><i class="vta-minus"></i><span class="plus">Xem chi tiết cấu hình</span><span class="minus">Thu gọn tiết cấu hình</span>
+                    </button>
+
+                </div>
+            }
+
+     
+
+    </div>
+</div>

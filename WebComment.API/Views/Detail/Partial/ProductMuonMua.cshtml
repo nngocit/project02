@@ -1,0 +1,31 @@
+﻿@using WebComment.Commons
+@{
+    Layout = null;
+}
+@model WebComment.API.Models.DetailModel
+
+    @if (Model.SanPhamMuonMua.Any())
+            {
+        <div class="detail-muon-mua">
+            <h2 class="detail-title">Có thể bạn muốn mua</h2>
+            <div class="list-product-widget">
+                @foreach (var item in Model.SanPhamMuonMua)
+                        {
+                    <div class="verdes">
+                        <div class="verdes-element img">
+                            <div class="img-container">
+                                <img src="@Globals.GetGeneratedImage(item.ImageUrl, 80)" class="img-responsive" alt="">
+                            </div>
+                        </div>
+                        <div class="verdes-element">
+                            <a href="@item.Url">
+                                <div class="name">@item.ProductName</div>
+                                <div class="price">@Globals.FormatMoney(item.PriceHeadOffice)</div>
+                            </a>
+                        </div>
+                    </div>
+                        }
+
+            </div>
+        </div>
+            }

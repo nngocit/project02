@@ -1,0 +1,10 @@
+﻿@{
+    Layout = null;
+}
+@model string
+
+<div class="detail-topic  paragraph" id="chitietbaiviet">
+
+    @Html.Raw(HttpUtility.HtmlDecode(Model))
+    
+</div>

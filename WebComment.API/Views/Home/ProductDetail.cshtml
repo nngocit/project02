@@ -1,0 +1,73 @@
+﻿@using WebComment.Commons
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Api HomeProductMobis Page";
+}
+
+<div class="row">
+    <h2>***Api lấy chi tiết sản phẩm</h2>
+    <p>
+        <b>HTTP Request: </b> GET - @(Globals.UrlApi)product-api/ProductDetai
+    </p>
+    <p>
+        <b>Intput: </b> <br/>
+        <pre><code>
+Thuột tính         Giá trị                Mô tả   
+----------------------------------------------------------------------                              
+productId           int                 Tham số bắt buộc phải chuyền vào   
+</code></pre>
+    </p>
+    <p>
+        <b>Output: </b><br />
+        <pre>
+        <code>
+                {
+                    "Result": true
+                    "StatusCode": "Success"
+                    "Message": null
+                    "SysMessage": null
+                    "Data": {
+                        "ProductId": 173943
+                            "ColorList": [2]
+                                0:  {
+                                "ColorId": 227
+                                "ColorName": "Cyan"
+                                "ProductColorCode": "HH0007187"
+                                "ColorCode": "0671c2"
+                                "Thumbs": "~/Upload/2015/11/3/nokia-105-2.jpg"
+                                "Productid": 173943
+                                }-
+                                1:  {
+                                "ColorId": 2089
+                                "ColorName": "Black"
+                                "ProductColorCode": "HH0006454"
+                                "ColorCode": "000000"
+                                "Thumbs": "~/Upload/2015/11/3/nokia-105-1.jpg"
+                                "Productid": 173943
+                                }-
+                        -
+                            "HappyCare": {
+                                "ghbh": {
+                                "product_id": "182394"
+                                "price": 156000
+                                "HappyCareName": "Gia hạn bảo hành"
+                                "ProductColorCode": "LK0005060"
+                                "ParentId": 173943
+                                }-
+                                "bvtd": {
+                                "product_id": "182395"
+                                "price": 219000
+                                "HappyCareName": "Bảo vệ toàn diện"
+                                "ProductColorCode": "LK0009458"
+                                "ParentId": 173943
+                                }-
+                            }-
+                     }-
+            
+            ** Các tham số (Result, StatucCode, Message, SysMessage) thông báo kết nói api
+            ** Data là thông tin sản phẩn như (id sản phẩm, màu, giá,... )
+            </code>
+        </pre>
+    </p>
+
+</div>

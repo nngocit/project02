@@ -1,0 +1,30 @@
+﻿@using WebComment.Commons
+@model List<WebComment.API.Models.ProductHomeModel>
+@if (Model.Any())
+{
+    <ul class="searchContaint">
+        <li class="no-choose selected"></li>
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="@item.Url">
+                    <div class="quicks-image">
+                        <img src="@Globals.GetGeneratedImage(item.ImageUrl, 32)" class="img-responsive" alt="">
+                    </div>
+                    <div class="quicks-content">
+                        <span class="quicks-product-name">@item.ProductName</span>
+                        <span class="quicks-product-price">@Globals.FormatMoney(item.PriceHeadOffice)</span>
+                    </div>
+                </a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <ul class="searchContaint">
+        <li class="no-choose selected"></li>
+        <li><span class="no-result">Không tìm thấy kết quả</span></li>
+    </ul>
+}
+

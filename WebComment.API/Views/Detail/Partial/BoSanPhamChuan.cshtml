@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+@model WebComment.API.Models.DetailModel
+@if (!String.IsNullOrEmpty(Model.Product.ProductStandardDesc))
+{
+        <h2 class="detail-title">Bộ sản phẩm chuẩn</h2>
+        <p><b>@Model.Product.ProductName</b>: @Model.Product.ProductStandardDesc</p>
+        if (!String.IsNullOrEmpty(Model.Product.ProductStandardImage))
+        {
+            foreach (var item in Model.Product.ProductStandardImage.Split(','))
+            {
+                <div id="phukien-carousel" class="owl-carousel">
+                    <div>
+                        <img class="lazyOwl img-responsive center-block" src="@item" alt="@Model.Product.ProductName">
+                    </div>
+                </div>
+            }
+        }
+}

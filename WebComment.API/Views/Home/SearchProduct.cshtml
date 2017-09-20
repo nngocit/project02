@@ -1,0 +1,53 @@
+﻿@using WebComment.Commons
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Api HomeProductMobis Page";
+}
+
+<div class="row">
+    <h2>***Api tìm sản phẩm</h2>
+    <p>
+        <b>HTTP Request: </b> GET - @(Globals.UrlApi)product-api/SearchProduct
+    </p>
+    <p>
+        <b>Intput: </b> <br/>
+        <pre><code>
+Thuột tính         Giá trị                Mô tả   
+---------------------------------------------------------------------------------                              
+keySearch           string          Tham số chuyền vào theo tên và code sản phẩm
+
+</code></pre>
+    </p>
+    <p>
+        <b>Output: </b><br />
+        <pre>
+        <code>
+                {
+                    "Result": true
+                    "StatusCode": "Success"
+                    "Message": null
+                    "SysMessage": null
+                    "Data": {
+                                "ProductId": 179656
+                                "CategoryId": 171737
+                                "RootCategoryId": 171736
+                                "ProductCode": "LK0007445"
+                                "ProductName": "Happy care iPhone 1+1 DT 6501_7500"
+                                "ImageDetail": "~/Upload/2015/1/2/Sp_Happycare.jpg"
+                                "PriceHeadOffice": 679000
+                                "PriceUnderHeadOffice": 679000
+                                "PriceOnline": 679000
+                                "PriceUnderOnline": 679000
+                                "PriceExpected": 0
+                                "StatusExist": "I"
+                                "StatusStock": "Còn hàng"
+                            }
+                     }
+            
+            ** Các tham số (Result, StatucCode, Message, SysMessage) thông báo kết nói api
+            ** Data là danh sách sản phẩm
+            </code>
+        </pre>
+    </p>
+
+</div>

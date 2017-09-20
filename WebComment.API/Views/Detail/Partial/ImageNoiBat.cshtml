@@ -1,0 +1,32 @@
+﻿@using WebComment.Commons
+@{
+    Layout = null;
+}
+@model List<WebComment.API.Models.ImageModel>
+
+@if (Model.Any(c => c.Type == "N"))
+{
+    <div id="dacdiemnoibat" class="onepageNav">
+        <div class="dac-diem-noibat">
+
+            <h2 class="detail-title">Đặc điểm nổi bật</h2>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="dac-diem-carousel" class="owl-carousel">
+                        @foreach (var item in Model.Where(c => c.Type == "N"))
+                        {
+                            <div class="item">
+                                <div class="img">
+                                    <img class="lazyOwl img-responsive" src="@Globals.GetGeneratedImage(item.ImagePart, 654)" alt="@item.ImageName">
+                                </div>
+                                <div class="content">
+                                    @Html.Raw(HttpUtility.HtmlDecode(item.ImageDesicription))
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

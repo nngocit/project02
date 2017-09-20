@@ -1,0 +1,80 @@
+﻿@using (Html.BeginForm("Index", "Category", FormMethod.Post, new {@id = "frmFilter"}))
+{
+    <div class="container xs-mb-20">
+        <div id="products_filter" class="">
+            <ul id="filter-152817" class="list-inline">
+                <li class="cat-152817 dropdown fs-chl">
+                    <div class="dropdown-toggle" data-toggle="dropdown">Thương hiệu <span id="thuonghieu">(Samsung)</span></div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li id="cat-152708" data-slug="apple-iphone" onclick="thFilter(this);">Apple </li>
+                        <li id="cat-152817" data-slug="samsung" onclick="thFilter(this);" class="active">Samsung</li>
+                        <li id="cat-180298" data-slug="microsoft" onclick="thFilter(this);">Microsoft</li>
+                        <li id="cat-152820" data-slug="nokia" onclick="thFilter(this);">Nokia</li>
+                        <li id="cat-171751" data-slug="sony-vn" onclick="thFilter(this);">Sony</li>
+                        <li id="cat-180265" data-slug="oppo" onclick="thFilter(this);">OPPO</li>
+                        <li id="cat-180281" data-slug="asus-vn" onclick="thFilter(this);">Asus</li>
+                        <li id="cat-152775" data-slug="htc" onclick="thFilter(this);">HTC</li>
+                        <li id="cat-152671" data-slug="lenovo" onclick="thFilter(this);">Lenovo</li>
+                        <li id="cat-152704" data-slug="lg" onclick="thFilter(this);">LG</li>
+                        <li id="cat-152807" data-slug="q-mobile" onclick="thFilter(this);">Q-mobile , Q-Smart </li>
+                        <li id="cat-152825" data-slug="mobiistar" onclick="thFilter(this);">Mobistar- Mobiistar</li>
+                        <li id="cat-152691" data-slug="gionee" onclick="thFilter(this);">Gionee</li>
+                        <li id="cat-152682" data-slug="philips" onclick="thFilter(this);">PHILIPS</li>
+                        <li id="cat-180311" data-slug="obi" onclick="thFilter(this);">OBI</li>
+                        <li id="cat-180305" data-slug="wiko" onclick="thFilter(this);">WIKO</li>
+                        <li id="cat-152630" data-slug="huawei" onclick="thFilter(this);">Huawei</li>
+                        <li id="cat-180300" data-slug="wing" onclick="thFilter(this);">WING</li>
+                        <li id="cat-152576" data-slug="blackberry" onclick="thFilter(this);">BlackBerry</li>
+                    </ul>
+                </li>
+
+                <li class="cat-152817 dropdown">
+                    <div class="dropdown-toggle" data-toggle="dropdown">Giá điện thoại <span>(3 triệu - 5 triệu )</span></div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li id="feature_hash_P3.P5" data-slug="3000000/5000000" onclick="giaFilter(this);" class="active">3 triệu - 5 triệu</li>
+                        <li id="feature_hash_P1" data-slug="1000000" onclick="giaFilter(this);">Dưới 1 triệu (1 )</li>
+                        <li id="feature_hash_P3.P3" data-slug="1000000/3000000" onclick="giaFilter(this);">1 triệu - 3 triệu</li>
+                        <li id="feature_hash_P5.P7" data-slug="5000000/7000000" onclick="giaFilter(this);">5 triệu - 7 triệu</li>
+                        <li id="feature_hash_P7.P10" data-slug="7000000/10000000" onclick="giaFilter(this);">7 triệu - 10 triệu</li>
+                        <li id="feature_hash_P10.P20" data-slug="10000000/20000000" onclick="giaFilter(this);">10 triệu - 20 triệu</li>
+                    </ul>
+                </li>
+                <li class="cat-152817 dropdown">
+                    <div class="dropdown-toggle" data-toggle="dropdown">Kích thước màn hình</div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li id="feature_hash_P5.V20240" data-slug="10000000/20000000" onclick="namhinhFilter(this);">Từ 3.5 inches đến 4.0 inches</li>
+                        <li id="feature_hash_P5.V20241" data-slug="10000000/20000000" onclick="namhinhFilter(this);">Từ 4.2 inches đến 5.0 inches</li>
+                        <li id="feature_hash_P5.V20242" data-slug="10000000/20000000" onclick="namhinhFilter(this);">Trên 5.0 inches</li>
+                    </ul>
+                </li>
+                <li class="cat-152817 dropdown">
+                    <div class="dropdown-toggle" data-toggle="dropdown">Camera</div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li id="feature_hash_P5.V20018" data-slug="May anh" onclick="cameraFilter(this);">Máy ảnh</li>
+                        <li id="feature_hash_P5.V20019" data-slug="May anh phu" onclick="cameraFilter(this);">Máy ảnh phụ</li>
+                        <li id="feature_hash_P5.V20020" data-slug="Quay phim" onclick="cameraFilter(this);">Quay phim</li>
+                    </ul>
+                </li>
+                <li class="cat-152817 dropdown">
+                    <div class="dropdown-toggle" data-toggle="dropdown">Hệ Điều Hành</div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li id="feature_hash_P5.V20065" data-slug="Android" onclick="hdhFilter(this);">Android</li>
+                    </ul>
+                </li>
+                <li class="cat-152817 dropdown">
+                    <div class="dropdown-toggle" data-toggle="dropdown">Tính năng khác</div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li id="feature_hash_P5.V20073" data-slug="Cam ung" onclick="orderFilter(this);">Cảm ứng</li>
+                        <li id="feature_hash_P5.V20075" data-slug="Bao rung" onclick="orderFilter(this);">Báo rung</li>
+                        <li id="feature_hash_P5.V20076" data-slug="the nho ngoai" onclick="orderFilter(this);">Thẻ Nhớ Ngoài</li>
+                        <li id="feature_hash_P5.V20077" data-slug="loa ngoai" onclick="orderFilter(this);">Hỗ trợ loa ngoài</li>
+                        <li id="feature_hash_P5.V20078" data-slug="ghi am" onclick="orderFilter(this);">Ghi âm cuộc họp</li>
+                        <li id="feature_hash_P5.V20079" data-slug="ghi am cuoc goi" onclick="orderFilter(this);">Ghi âm cuộc gọi</li>
+                        <li id="feature_hash_P5.V20080" data-slug="bao thuc" onclick="orderFilter(this);">Đồng hồ báo thức</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+<script src="~/Scripts/js-filterPc.js"></script>

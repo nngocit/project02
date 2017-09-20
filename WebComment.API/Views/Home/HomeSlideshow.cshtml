@@ -1,0 +1,44 @@
+﻿
+@model List<WebComment.API.Models.BannerModel>
+
+<section class="main-slider">
+    <div class="container">
+        <div class="row no-gutter">
+            <div class="col-md-8" style="overflow: hidden">
+                <div class="banner-f-carousel owl-carousel owl-theme banner-main">
+                    @foreach (var slide in Model.Where(c => c.BannerInCategory == "home-top-1"))
+                    {
+                        <div class="item">
+                            <a href="@slide.BannerUrl"><img src="@slide.ImageUrl" class="img-responsive" alt="@slide.BannerName"></a>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="sp-show">
+
+                    <div class="banner-f-carousel owl-carousel owl-theme banner-main">
+                        
+                        @foreach (var top2 in Model.Where(c => c.BannerInCategory == "home-top-2"))
+                        {
+                            <div class="item">
+                                <a href="@top2.BannerUrl"><img src="@top2.ImageUrl" class="img-responsive" alt="@top2.BannerName"></a>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+                <div class="sp-show">
+                    <div class="banner-f-carousel owl-carousel owl-theme banner-main">
+                        @foreach (var top3 in Model.Where(c => c.BannerInCategory == "home-top-3"))
+                        {
+                            <div class="item">
+                                <a href="@top3.BannerUrl"><img src="@top3.ImageUrl" class="img-responsive" alt="@top3.BannerName"></a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,5 @@
+﻿@model List<WebComment.API.Models.ProductHomeModel>
+@foreach (var item in Model)
+{
+    @Html.Partial("Partial/PartialProductItem", item)
+}

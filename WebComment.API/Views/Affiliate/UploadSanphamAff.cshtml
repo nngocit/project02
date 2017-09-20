@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "UploadSanpham";
+    Layout = "~/Views/Shared/_LayoutAffiliate.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/css/bootstrap-datepicker3.css" rel="stylesheet" />
+@using (Html.BeginForm("UploadSanphamAff", "Affiliate", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div id="main-content">
+        <section class="products md-mb-30 sm-mb-20">
+            <div class="container">
+                <div class="clearfix">
+                    <h2>Upload Sản phẩm</h2>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="row">
+
+                                <div class="col-xs-6">
+                                    <h5 style="color: blue" class="pull-left">&nbsp;&nbsp; Chọn Business : &nbsp;&nbsp; </h5>
+
+                                    <div class=''>
+
+                                        <select class="form-control" id="businessId" name="businessId">
+                                            @foreach (var item in ViewBag.Business)
+                                            {
+                                                <option value="@item.BusinessId">@item.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-6">
+                                    <h5 style="color: blue" class="pull-left">&nbsp;&nbsp; Chọn Campaign : &nbsp;&nbsp; </h5>
+
+                                    <div class=''>
+                                        <select class="form-control" id="campaignId" name="campaignId"></select>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="col-sm-3">
+                            <h5 style="color: blue" class="pull-left">Áp dụng Từ ngày: &nbsp;&nbsp; </h5>
+                            <div class='input-group date pull-left datetime-cus' id='datetimepicker1'>
+                                <input type='text' class="form-control" id="startDate" name="startDate" value="@ViewBag.FromDate.ToString("yyyy-MM-dd HH:mm:ss")" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-3">
+                            <h5 style="color: blue" class="pull-left">&nbsp;&nbsp; Đến ngày: &nbsp;&nbsp; </h5>
+
+                            <div class='input-group date pull-left datetime-cus' id='datetimepicker2'>
+
+                                <input type='text' class="form-control" id="endDate" name="endDate" value="@ViewBag.ToDate.ToString("yyyy-MM-dd HH:mm:ss")" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="input-form xs-mt-20">
+                        <input class="btn btn-default" name="uploadFile" type="file" id="uploadFile" />
+                        <input type="submit" class="button button-gray xs-mt-10" value="Upload" title="Upload file" onclick=" return CheckFileName(); " />
+
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+
+}
+
+<script src="~/Scripts/jquery-1.11.3.min.js"></script>
+
+<script src="~/Scripts/moment.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#datetimepicker1").datetimepicker({
+
+            format: 'YYYY-MM-DD HH:mm:ss'
+        });
+        $("#datetimepicker2").datetimepicker({
+
+            format: 'YYYY-MM-DD HH:mm:ss'
+        });
+
+
+    });
+
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#businessId").change(function () {
+            var businessId = $(this).val();
+            $.getJSON('@Url.Action("GetCampaignbyBusinessId", "Affiliate")', { businessId: businessId },
+                function (myData) {
+
+                    var select = $("#campaignId");
+                    select.empty();
+                    select.append($('<option/>', {
+                        value: '0',
+                        text: "Chọn Campaign"
+                    }));
+                    $.each(myData, function (index, itemData) {
+                        select.append($('<option/>', {
+                            value: itemData.Value,
+                            text: itemData.Text
+                        }));
+                    });
+                });
+        });
+    });
+</script>

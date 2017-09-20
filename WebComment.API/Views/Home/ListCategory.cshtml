@@ -1,0 +1,45 @@
+﻿
+@using WebComment.Commons
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Api HomeProductMobis Page";
+}
+
+<div class="row">
+    <h2>***Api lấy danh sách category</h2>
+    <p>
+        <b>HTTP Request: </b> GET - @(Globals.UrlApi)product-api/GetListCategory
+    </p>
+    <p>
+        <b>Intput: </b> <br/>
+        <pre><code>
+Thuột tính         Giá trị                Mô tả   
+----------------------------------------------------------------------    
+</code></pre>
+    </p>
+    <p>
+        <b>Output: </b><br />
+        <pre>
+        <code>
+                {
+                    "Result": true
+                    "StatusCode": "Success"
+                    "Message": null
+                    "SysMessage": null
+                    "Data": {
+                                "CategoryId": 124
+                                "RootCategoryId": 152536
+                                "CategoryName": "USB"
+                                "SeoDescription": "Mua USB với nhiều dung lượng: USB 4gb, USB 8gb, USB 16gb, USB 32gb » Giá rẻ, bảo hành 24 tháng tại VienthongA.vn ✓ Chính hãng ✓ Giao hàng toàn quốc ✓ Có trả góp"
+                                "SeoTitle": "USB Chính Hãng, Chất Lượng Giá Tốt | VienthongA"
+                                "SeoKeyword": ""
+                             }  
+               }
+            
+            ** Các tham số (Result, StatucCode, Message, SysMessage) thông báo kết nói api
+            ** Data là danh sách category 
+            </code>
+        </pre>
+    </p>
+
+</div>

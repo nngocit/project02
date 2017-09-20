@@ -1,0 +1,54 @@
+﻿@using WebComment.Commons
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Api HomeProductMobis Page";
+}
+
+<div class="row">
+    <h2>***Api lấy sản phẩm nổi bật</h2>
+    <p>
+        <b>HTTP Request: </b> GET - @(Globals.UrlApi)product-api/HomeProductMobis
+    </p>
+    <p>
+        <b>Intput: </b> <br/>
+        <pre><code>
+Thuột tính         Giá trị                Mô tả    
+----------------------------------------------------------------------                             
+skip                int                 không chuyền vào defaul 0 
+take                int                 không chuyền vào defaul 10
+</code></pre>
+    </p>
+    <p>
+        <b>Output: </b><br />
+        <pre>
+        <code>
+                {
+                    "Result": true
+                    "StatusCode": "Success"
+                    "Message": null
+                    "SysMessage": null
+                    "Data": 
+                       {
+                        "ProductId": 181097
+                        "CategoryId": 152708
+                        "RootCategoryId": 152535
+                        "ProductCode": "12772"
+                        "ProductName": "iPhone 5s 16GB (Gray/ silver)"
+                        "ImageDetail": "~/Upload/2016/2/3/iphone-5s-silver-4.jpg"
+                        "PriceHeadOffice": 7990000
+                        "PriceUnderHeadOffice": 7990000
+                        "PriceOnline": 7990000
+                        "PriceUnderOnline": 7990000
+                        "PriceExpected": 0
+                        "StatusExist": "A"
+                        "StatusStock": "[Liên hệ]"
+                        }
+                }
+            
+            ** Các tham số (Result, StatucCode, Message, SysMessage) thông báo kết nói api
+            ** Data là danh sách sản phẩn 
+            </code>
+        </pre>
+    </p>
+
+</div>

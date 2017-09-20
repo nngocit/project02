@@ -1,0 +1,16 @@
+﻿@{
+    Layout = null;
+}
+@model string
+
+<div class="detail-topic collapse paragraph" id="chitietbaiviet">
+   
+    @Html.Raw(HttpUtility.HtmlDecode(Model))
+    
+    <div class="xem-chi-tiet text-center animate">
+        
+        <button title="Xem chi tiết cấu hình" class="btn-cart" role="button" data-toggle="collapse" href="#chitietbaiviet" aria-expanded="false" aria-controls="collapseExample">
+            <i class="vta-minus"></i><span>Thu gọn bài viết</span>
+        </button>
+    </div>
+</div>

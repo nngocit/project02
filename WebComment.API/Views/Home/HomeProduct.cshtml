@@ -1,0 +1,9 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutVnpost.cshtml";
+    ViewBag.Title = "Home";
+}
+@Html.Action("HomeSlideshow", "Home")
+<div id="main-content">
+    @Html.Action("HomeSponsor", "Home")
+    @Html.Action("HomeProductPage", "Home")
+</div>

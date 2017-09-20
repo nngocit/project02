@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cfce0cbfab874f6487167ae204d4388f" Name="Diagram1" ZoomLevel="79">
+        <EntityTypeShape EntityType="vta.VnPostModel.DM_CommonData" Width="1.5" PointX="5.75" PointY="8.75" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Log" Width="1.5" PointX="7.75" PointY="8.75" />
+        <EntityTypeShape EntityType="vta.VnPostModel.M_VnPostVta" Width="1.5" PointX="9.75" PointY="8.75" />
+        <EntityTypeShape EntityType="vta.VnPostModel.O_Order" Width="1.5" PointX="5.75" PointY="1.875" />
+        <EntityTypeShape EntityType="vta.VnPostModel.O_OrderHistory" Width="1.5" PointX="8" PointY="5" />
+        <EntityTypeShape EntityType="vta.VnPostModel.O_OrderType" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="vta.VnPostModel.P_Category" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="vta.VnPostModel.P_Happycare" Width="1.5" PointX="5.75" PointY="11.75" />
+        <EntityTypeShape EntityType="vta.VnPostModel.P_Product" Width="1.5" PointX="11.75" PointY="7.75" />
+        <EntityTypeShape EntityType="vta.VnPostModel.P_ProductImage" Width="1.5" PointX="7.75" PointY="11.75" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Qtht_ActionActionGroupRefs" Width="1.5" PointX="3" PointY="19" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Qtht_ActionGroups" Width="1.5" PointX="0.75" PointY="29.75" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Qtht_ActionRoleRefs" Width="1.5" PointX="3" PointY="22.5" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Qtht_Actions" Width="1.5" PointX="0.75" PointY="18.625" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Qtht_ActionUserRefs" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Qtht_AspNetRoles" Width="2.375" PointX="0.75" PointY="24" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Qtht_AspNetUserLogins" Width="1.5" PointX="3.625" PointY="9.375" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Qtht_AspNetUserRoles" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Qtht_AspNetUsers" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Qtht_Company" Width="1.5" PointX="1.5" PointY="13.625" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Qtht_UserLoginTokens" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="vta.VnPostModel.sysdiagram" Width="1.5" PointX="12.75" PointY="3.75" />
+        <EntityTypeShape EntityType="vta.VnPostModel.O_OrderCondition" Width="1.5" PointX="13.75" PointY="6.75" />
+        <EntityTypeShape EntityType="vta.VnPostModel.P_ProductColor" Width="1.5" PointX="13.75" PointY="9.75" />
+        <AssociationConnector Association="vta.VnPostModel.FK_O_Order_O_OrderHis" />
+        <AssociationConnector Association="vta.VnPostModel.FK_O_OrderHistory_O_Order" />
+        <AssociationConnector Association="vta.VnPostModel.FK_dbo_ActionActionGroupRefs_dbo_ActionGroups_ActionGroupId" />
+        <AssociationConnector Association="vta.VnPostModel.FK_dbo_ActionActionGroupRefs_dbo_Actions_ActionId" />
+        <AssociationConnector Association="vta.VnPostModel.FK_dbo_ActionRoleRefs_dbo_Actions_ActionId" />
+        <AssociationConnector Association="vta.VnPostModel.FK_dbo_ActionRoleRefs_dbo_AspNetRoles_Role_Id" />
+        <AssociationConnector Association="vta.VnPostModel.FK_dbo_ActionUserRefs_dbo_Actions_ActionId" />
+        <AssociationConnector Association="vta.VnPostModel.FK_dbo_ActionUserRefs_dbo_AspNetUsers_User_Id" />
+        <AssociationConnector Association="vta.VnPostModel.FK_dbo_AspNetRoles_dbo_AspNetRoles_Parent_Id" />
+        <AssociationConnector Association="vta.VnPostModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
+        <AssociationConnector Association="vta.VnPostModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="vta.VnPostModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="vta.VnPostModel.FK_Qtht_AspNetUsers_Qtht_Company" />
+        <AssociationConnector Association="vta.VnPostModel.FK_Qtht_Company_Qtht_Company" />
+        <EntityTypeShape EntityType="vta.VnPostModel.Qtht_AspNetUserClaims" Width="1.5" PointX="3" PointY="29.375" />
+        <AssociationConnector Association="vta.VnPostModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <EntityTypeShape EntityType="vta.VnPostModel.O_OrderDetail" Width="1.5" PointX="8" PointY="0.75" />
+        <AssociationConnector Association="vta.VnPostModel.FK_O_OrderDetail_O_Order" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

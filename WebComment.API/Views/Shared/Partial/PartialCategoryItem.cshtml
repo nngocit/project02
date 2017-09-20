@@ -1,0 +1,52 @@
+﻿
+@using WebComment.Commons
+@model WebComment.API.Models.ProductHomeModel
+<div class="masonry-item">
+    <div class="product">
+        <div class="product-overlay animate">
+            <a href="@Model.Url" class="product-link"></a>
+            <h3 class="name" property="name">@Model.ProductName</h3>
+            <div class="overlay-price">@Globals.FormatMoney(Model.PriceHeadOffice)</div>
+            <div class="overlay-desc">
+
+            </div>
+            @Html.Raw(HttpUtility.HtmlDecode(Model.PromotionDescription))   
+            <div class="product-config">
+                <button title="Mua ngay" class="btn-cart">
+                    <a href="@Model.Url"><i class="vta-cart"></i><span>Mua ngay</span></a>
+                </button>
+                <ul class="btn-group-compare list-inline">
+                    <li><a href=""><i class="vta-heart"></i></a></li>
+                    <li><a href=""><i class="vta-compare"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="product-image">
+            <a href="">
+                <img class="lazy" src="@Globals.GetGeneratedImage(Model.ImageUrl, 160)" alt="@Model.ProductName">
+            </a>
+        </div>
+        <div class="product-name">
+            <h3 class="name" property="name">@Model.ProductName</h3>
+            <div class="price">
+                <div class="price-1">@Globals.FormatMoney(Model.PriceOnline)</div>
+                @if (Model.PriceHeadOffice > 0 && Model.PriceHeadOffice > Model.PriceOnline)
+                {
+                    <div class="price-2">@Globals.FormatMoney(Model.PriceHeadOffice)</div>
+                }
+            </div>
+        </div>
+
+        @*<div class="product-sale">
+            <div class="clearfix">
+                <div class="pull-left"><i class="vta-gift"></i></div>
+                <div class="product-sale-text">
+                    <span>Khuyến mãi </span>
+                    <br>
+                    <span>trị giá đến 1.000.000 đ</span>
+                </div>
+            </div>
+        </div>*@
+    </div>
+</div>
+                  

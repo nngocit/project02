@@ -1,0 +1,179 @@
+@font-face {
+	font-family: 'vta-icon';
+	src:url('fonts/vta-icon.eot?lfd7j3');
+	src:url('fonts/vta-icon.eot?lfd7j3#iefix') format('embedded-opentype'),
+		url('fonts/vta-icon.ttf?lfd7j3') format('truetype'),
+		url('fonts/vta-icon.woff?lfd7j3') format('woff'),
+		url('fonts/vta-icon.svg?lfd7j3#vta-icon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="vta-"], [class*=" vta-"] {
+	font-family: 'vta-icon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.vta-vtaplus:before {
+	content: "\e900";
+}
+.vta-alert:before {
+	content: "\e62c";
+}
+.vta-app-game:before {
+	content: "\e62d";
+}
+.vta-back-left:before {
+	content: "\e62e";
+}
+.vta-back-right:before {
+	content: "\e62f";
+}
+.vta-thumb-down:before {
+	content: "\e630";
+}
+.vta-thumb-up:before {
+	content: "\e631";
+}
+.vta-check:before {
+	content: "\e62a";
+}
+.vta-close:before {
+	content: "\e62b";
+}
+.vta-maydoitra:before {
+	content: "\e619";
+}
+.vta-new:before {
+	content: "\e61b";
+}
+.vta-phone:before {
+	content: "\e61e";
+}
+.vta-tablet:before {
+	content: "\e627";
+}
+.vta-star:before {
+	content: "\e600";
+}
+.vta-360:before {
+	content: "\e601";
+}
+.vta-arrow-down:before {
+	content: "\e602";
+}
+.vta-arrow-left:before {
+	content: "\e603";
+}
+.vta-arrow-right:before {
+	content: "\e604";
+}
+.vta-arrow-up:before {
+	content: "\e605";
+}
+.vta-award:before {
+	content: "\e606";
+}
+.vta-camera:before {
+	content: "\e607";
+}
+.vta-cart:before {
+	content: "\e608";
+}
+.vta-cart-fast:before {
+	content: "\e609";
+}
+.vta-change:before {
+	content: "\e60a";
+}
+.vta-comment:before {
+	content: "\e60b";
+}
+.vta-compare:before {
+	content: "\e60c";
+}
+.vta-date:before {
+	content: "\e60d";
+}
+.vta-email:before {
+	content: "\e60e";
+}
+.vta-eye:before {
+	content: "\e60f";
+}
+.vta-gift:before {
+	content: "\e610";
+}
+.vta-hamburge:before {
+	content: "\e611";
+}
+.vta-headphone:before {
+	content: "\e612";
+}
+.vta-heart:before {
+	content: "\e613";
+}
+.vta-house:before {
+	content: "\e614";
+}
+.vta-info:before {
+	content: "\e615";
+}
+.vta-info-picture:before {
+	content: "\e616";
+}
+.vta-laptop:before {
+	content: "\e617";
+}
+.vta-location:before {
+	content: "\e618";
+}
+.vta-minus:before {
+	content: "\e61a";
+}
+.vta-news-widget:before {
+	content: "\e61c";
+}
+.vta-pay:before {
+	content: "\e61d";
+}
+.vta-pigmoney:before {
+	content: "\e61f";
+}
+.vta-playvideo:before {
+	content: "\e620";
+}
+.vta-plus:before {
+	content: "\e621";
+}
+.vta-product-new:before {
+	content: "\e622";
+}
+.vta-sale:before {
+	content: "\e623";
+}
+.vta-search:before {
+	content: "\e624";
+}
+.vta-sim:before {
+	content: "\e625";
+}
+.vta-student:before {
+	content: "\e626";
+}
+.vta-telephone:before {
+	content: "\e628";
+}
+.vta-truck:before {
+	content: "\e629";
+}
+

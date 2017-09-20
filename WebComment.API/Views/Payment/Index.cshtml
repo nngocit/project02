@@ -1,0 +1,216 @@
+﻿@using WebComment.Commons
+@model WebComment.API.Models.PaymentPage
+@using (Html.BeginForm("Create", "Payment", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.ProductId)
+    @Html.HiddenFor(m => m.ProductCode)
+    @Html.HiddenFor(m => m.OrderType)
+    <div id="product-pop-up" style="max-width: 760px;">
+        <div class="product-pop-up">
+            <div class="row">
+                <div class="col-md-5 col-sm-5 col-xs-12">
+                    <div class="product-pop-up-img">
+                        <img src="@Globals.GetGeneratedImage(Model.DetailProduct.Product.ImageUrl,240)" alt="@Model.DetailProduct.Product.ProductName" class="img-responsive center-block">
+                    </div>
+                    <div class="price-total">
+                        <p>Tổng số tiền phải thanh toán</p>
+                        <span id="pnTotalOrder">
+                        @(Model.DetailProduct.Product.PriceHeadOffice <= (int)Globals.MinPricePayment.MinPricePayment ? "[Liên hệ]" : Globals.FormatMoney(Model.DetailProduct.Product.PriceOnline))
+                        </span>
+                    </div>
+                    <p>Chọn màu</p>
+                    <ul class="choose-color list-inline">
+                        @{
+                            foreach (var color in Model.DetailProduct.ListColor)
+                            {
+                                <li>
+                                    <div class="radio">
+                                        <label>
+                                            @Html.RadioButtonFor(m => m.Color, color.ProductColorCode, new { Checked = "checked" })
+                                            <div class="color" style="background-color: #@color.ColorCode" data-colorcode="@color.ProductColorCode"></div>
+                                        </label>
+                                    </div>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <div class="color-error error" style="display: none;">Vui lòng chọn màu </div>
+                </div>
+                <div class="col-md-7 col-sm-7 col-xs-12">
+                    <p class="title">
+                        Thông tin người mua
+                    </p>
+                    <div class="popup-radio">
+                        <div class="radio">
+                            <label>
+                                @Html.RadioButtonFor(m => m.Gender, "M", new { @checked = "check" })
+                                Anh
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                @Html.RadioButtonFor(m => m.Gender, "F")
+                                Chị
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @Html.TextBoxFor(m => m.Fullname, new {@placeholder = "Họ tên của bạn (bắt buộc)", @class = "input", @maxlength = "50"})
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.Phone, string.IsNullOrEmpty(Model.Phone) ? (object)new { @placeholder = "Số di động (Bắt buộc)", @class = "input" } : (object)new { @placeholder = "Số di động (Bắt buộc)", @class = "input", @readonly = "readonly" })
+                        </div>
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.Email, string.IsNullOrEmpty(Model.Email) ? (object) new {@placeholder = "Email", @class = "input"} : (object) new {@placeholder = "Email", @class = "input", @readonly = "readonly"})
+                        </div>
+                    </div>
+
+                    <p class="title">
+                        Số lượng muốn mua
+                    </p>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            @Html.TextBoxFor(m => m.TotalProduct, new {@class = "input", type = "number"})
+                        </div>
+
+                    </div>
+                    <p class="title">
+                        Chọn hình thức nhận hàng
+                    </p>
+                    <div class="popup-radio">
+
+                        <div class="radio">
+                            <label>
+                                @Html.RadioButton("RecieveType", Globals.RecievedType.TRANSFER, new { @class = "giao-hang"})
+                                Giao hàng tận nơi
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                @Html.RadioButton("RecieveType", Globals.RecievedType.VTA, new { @class = "nhan-hang" })
+                                Nhận hàng tại siêu thị
+                            </label>
+                        </div>
+                    </div>
+                    <div class="recieved-error error" style="display: none;">Vui lòng chọn hình thức nhận hàng</div>
+                    <div id="form-recievedtype" style="display: none;">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                @Html.DropDownListFor(m => m.CityId, new SelectList(new Dictionary<string, string>() { { "0", "===Chọn bưu điện thành phố===" } }, "Key", "Value"), new { @class = "input", @onchange = "VtaJsPC.service.ListDistrict('DistrictId',this)", @havestore = "true" })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.DropDownListFor(m => m.DistrictId, new SelectList(new Dictionary<string, string>() { { "0", "===Chọn bưu điện quận huyện===" } }, "Key", "Value"), new { @class = "input" })
+                            </div>
+                            <div class="col-sm-12">
+                                @Html.TextBoxFor(m => m.Address, new { @placeholder = "Nhập số nhà, tên đường để nhận hàng (bắt buộc)", @class = "input", @maxlength = "256", @style = "display:none;" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="title">
+                        Hình thức thanh toán
+                    </p>
+                    <div class="payment-error error" style="display: none;">Vui lòng chọn hình thức thanh toán</div>
+                    <div class="popup-radio">
+                        <div class="radio">
+                            <label>
+                                @Html.RadioButtonFor(m => m.PaymentType, (int)Globals.PaymentType.ThanhToanKhiNhanHang, new { @checked = "check" })
+                                Thanh toán khi nhận hàng
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="popup-buttons text-center">
+                        <button type="submit" onclick="return CheckValidInput();" class="button button-blue">Đặt mua</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    function CheckValidInput() {
+        $('.input').removeClass("error");
+        $('.loading-pop-up').show();
+
+        var Fullname = $("#Fullname").val();
+        var Phone = $("#Phone").val();
+        var Email = $("#Email").val();
+        var CityId = $("#CityId").val();
+        var DistrictId = $("#DistrictId").val();
+        var Address = $("#Address").val();
+        var TotalProduct = $("#TotalProduct").val();
+        var RecieveType = $("input[name=RecieveType]:checked").val();
+        var PaymentType = $("input[name=PaymentType]:checked").val();
+        var Color = $("input[name=Color]:checked").val();
+        if (Fullname == "") {
+            return InvalidInput('Fullname');
+        }
+        if (Phone == "0") {
+            return InvalidInput('Phone');
+        }
+        var phoneReg = /^[0-9]{6,13}$/;
+        if (!phoneReg.test(Phone)) {
+            return InvalidInput('Phone');
+        }
+
+        if (Email == "") {
+            return InvalidInput('Email');
+        }
+        var emailReg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+        if (!emailReg.test(Email)) {
+            return InvalidInput('Email');
+        }
+
+        if (TotalProduct <= 0) {
+            return InvalidInput('TotalProduct');
+        }
+        if (RecieveType == undefined) {
+            $(".recieved-error").show();
+            return InvalidInput('RecieveType');
+        } else {
+            if (CityId === "0") {
+                return InvalidInput('CityId');
+            }
+            if (DistrictId === "0") {
+                return InvalidInput('DistrictId');
+            }
+            if (RecieveType == "Tại nhà") {
+                if (Address === "") {
+                    return InvalidInput('Address');
+                }
+            }
+        }
+
+        if (PaymentType == undefined) {
+            $(".payment-error").show();
+            return InvalidInput('PaymentType');
+        } 
+
+        if (Color == undefined) {
+            $(".color-error").show();
+            return InvalidInput('Color');
+        }
+        return true;
+    };
+
+    $("input[name=RecieveType]").change(function () {
+        $(".recieved-error").hide();
+        $("#form-recievedtype").show();
+        if (this.value === "Tại chi nhánh Vnpost") {
+            $("#Address").hide();
+            VtaJsPC.service.ListCity("CityId");
+            $('#DistrictId').html("");
+            $('#DistrictId').append($('<option />').attr('value', '0').text('===Chọn quận huyện==='));
+            $("#CityId").attr("haveStore", "true");
+        } else {
+            $("#Address").show();
+            VtaJsPC.service.ListCity("CityId");
+            $('#DistrictId').html("");
+            $('#DistrictId').append($('<option />').attr('value', '0').text('===Chọn quận huyện==='));
+            $("#CityId").attr("haveStore", "false");
+        }
+    });
+</script>

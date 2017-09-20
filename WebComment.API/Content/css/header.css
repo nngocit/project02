@@ -1,0 +1,1131 @@
+@charset "UTF-8";
+/*Import folder utils*/
+.body-font {
+  font-family: Arial, Helvetica,"DejaVu Sans","Liberation Sans",Freesans,sans-serif;
+}
+
+.heading-font {
+  font-family: Arial, Helvetica,"DejaVu Sans","Liberation Sans",Freesans,sans-serif;
+}
+
+.condensed-font {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#main-header {
+  margin-top: 56px;
+  margin-bottom: 20px;
+}
+
+.no-fix-menu {
+  margin-top: 0 !important;
+}
+
+.icon-vta {
+  display: block;
+  float: left;
+  line-height: 1;
+  width: 13px;
+  height: 12px;
+  background-image: url("../images/logo/vta-icon.png");
+  background-repeat: no-repeat;
+  margin-right: 3px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  .icon-vta {
+    background-image: url("../images/logo/vta-icon_2x.png");
+    background-size: 13px 12px;
+  }
+}
+
+.icon-vbox {
+  display: block;
+  float: left;
+  line-height: 1;
+  width: 36px;
+  height: 12px;
+  background-image: url("../images/logo/vbox.png");
+  background-repeat: no-repeat;
+  margin-right: 3px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  .icon-vbox {
+    background-image: url("../images/logo/vbox_2x.png");
+    background-size: 36px 12px;
+  }
+}
+
+.icon-remove {
+  float: left;
+  margin-right: 3px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  font-size: 15px;
+  border: 1px solid #E81C24;
+  text-align: center;
+  width: 17px;
+  height: 17px;
+  display: block;
+  line-height: 15px;
+  color: #E81C24;
+}
+
+.stick-fixed {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+}
+
+.main-nav {
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  text-align: left;
+  /*Do sinh nhat*/
+  background: #FFFF00;
+  z-index: 250;
+}
+
+.main-nav .search-global {
+  display: none;
+}
+
+.main-nav-logo {
+  float: left;
+  margin: 0 10px 0 0;
+  height: 56px;
+  position: relative;
+}
+
+.main-nav-logo .logo {
+  display: block;
+  width: 186px;
+  height: 35px;
+  margin-top: 10px;
+  background-image: url("../images/logo/logo-vienthongA.png");
+  background-repeat: no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  .main-nav-logo .logo {
+    background-image: url("../images/logo/logo-vienthongA_2x.png");
+    background-size: 186px 35px;
+  }
+}
+
+.mobile-nav {
+  display: none;
+  float: left;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.27s cubic-bezier(0, 0, 0.58, 1);
+  -moz-transition: all 0.27s cubic-bezier(0, 0, 0.58, 1);
+  transition: all 0.27s cubic-bezier(0, 0, 0.58, 1);
+  -webkit-transition-property: background, color;
+  -moz-transition-property: background, color;
+  -o-transition-property: background, color;
+  transition-property: background, color;
+}
+
+.mobile-nav:hover, .mobile-nav:active {
+  color: #2E318D;
+}
+
+.mobile-nav [class^="vta"] {
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 21px;
+}
+
+.stick-fixed.menu-scroll {
+  -webkit-box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
+  /*Do sinh nhat*/
+  background: rgba(255, 255, 0, 0.8);
+}
+
+.stick-fixed.menu-scroll.no-shadow {
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.stick-fixed.menu-scroll .tooltip {
+  display: inherit !important;
+}
+
+.stick-fixed.menu-scroll:not(.mobile-on) {
+  -webkit-box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
+}
+
+.stick-fixed.menu-scroll:not(.mobile-on) .search-global {
+  float: left;
+  display: block;
+  margin-top: 13px;
+  margin-left: 10px;
+  min-width: 300px;
+}
+
+.stick-fixed.menu-scroll:not(.mobile-on) .main-nav-logo {
+  margin-right: 0;
+}
+
+.stick-fixed.menu-scroll:not(.mobile-on) .main-nav-logo .logo {
+  background-size: 159px 30px;
+  margin-top: 14px;
+}
+
+.stick-fixed.menu-scroll:not(.mobile-on) .inner-nav a {
+  display: block;
+  padding: 16px 13px;
+}
+
+.stick-fixed.menu-scroll:not(.mobile-on) .inner-nav a span {
+  display: none;
+}
+
+.stick-fixed.menu-scroll:not(.mobile-on) .inner-nav a .vta-arrow-down {
+  display: none;
+}
+
+.stick-fixed.menu-scroll:not(.mobile-on) .inner-nav a i.menu-icon {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 0;
+}
+
+.stick-fixed.menu-scroll:not(.mobile-on) .inner-nav a .mn-sub {
+  display: none !important;
+}
+
+@media (max-width: 1199px) {
+  .stick-fixed.menu-scroll:not(.mobile-on) .inner-nav a {
+    padding: 16px 7px;
+  }
+}
+
+.stick-fixed.menu-scroll:not(.mobile-on) .mn-sub {
+  display: none !important;
+}
+
+.inner-nav {
+  position: relative;
+  float: right;
+  display: inline-block;
+  /*
+  > ul >li > ul> li:hover{
+    > a{
+      //color: $brand-primary;
+      color: white;
+
+
+    }
+
+  }
+  */
+  /*Make menu sub left align*/
+}
+
+.inner-nav .tooltip {
+  display: none !important;
+}
+
+.inner-nav > ul > li > a {
+  font-size: 11px;
+}
+
+.inner-nav > ul > li:hover > a, .inner-nav > ul > li.active > a {
+  background: #2E318D;
+  color: white;
+}
+
+.inner-nav > ul > li:hover > a span, .inner-nav > ul > li.active > a span {
+  color: white;
+}
+
+.inner-nav > ul > li:hover .vta-sale, .inner-nav > ul > li.active .vta-sale {
+  color: white;
+}
+
+.inner-nav > ul > li:hover .vta-vtaplus, .inner-nav > ul > li.active .vta-vtaplus {
+  color: white;
+}
+
+.inner-nav ul {
+  float: right;
+  margin: auto;
+  text-align: center;
+}
+
+.inner-nav ul li {
+  float: left;
+}
+
+.inner-nav ul li:first-child {
+  position: static !important;
+}
+
+.inner-nav a {
+  display: block;
+  padding: 8px 13px 5px;
+  text-transform: uppercase;
+  color: #404041;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.inner-nav a span {
+  color: #404041;
+  font-weight: bold;
+}
+
+.inner-nav a i.menu-icon {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.inner-nav a i.vta-sale {
+  color: #E81C24;
+}
+
+.inner-nav a i.vta-vtaplus {
+  color: #E81C24;
+}
+
+.inner-nav a i:nth-child(2) {
+  vertical-align: -15%;
+}
+
+@media (max-width: 649px) {
+  .inner-nav a {
+    padding: 12px 9px;
+  }
+}
+
+.inner-nav a:hover {
+  color: #2E318D;
+}
+
+@media (max-width: 1199px) {
+  .inner-nav a {
+    padding: 8px 9px 5px;
+  }
+  .inner-nav a i.menu-icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 4px;
+  }
+}
+
+.inner-nav > ul > li:last-child .mn-sub {
+  left: auto;
+  right: 0;
+}
+
+.inner-nav li .mn-sub.to-left {
+  left: auto;
+  right: 0;
+}
+
+.inner-nav li:last-child .mn-sub li ul, .inner-nav li .mn-sub li ul.to-left {
+  left: auto;
+  right: 100%;
+  top: -1px;
+}
+
+.multi-sub {
+  background: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 700px;
+  height: 300px;
+  padding: 10px 12px;
+}
+
+.multi-sub hr {
+  margin: 5px 15px 5px 0px;
+}
+
+.multi-sub ul {
+  margin-right: 10px;
+  width: 190px;
+  float: left;
+}
+
+.multi-sub ul li {
+  float: none;
+}
+
+.multi-sub ul li a {
+  font-size: 12px;
+  text-align: left;
+  text-transform: uppercase;
+  padding: 5px 3px;
+  color: #404041;
+}
+
+.multi-sub ul li a:hover {
+  color: #2E318D;
+  font-weight: 700;
+}
+
+.multi-sub ul li.sub {
+  padding-left: 10px;
+}
+
+.multi-sub ul li.sub a {
+  font-size: 11px;
+  padding: 2px 3px;
+  text-transform: inherit;
+}
+
+.multi-sub ul > li a {
+  padding: 4px 3px;
+}
+
+.multi-sub ul.menu-phukien {
+  width: 140px;
+}
+
+.multi-sub ul.menu-phukien li a {
+  padding: 2px 3px;
+  text-transform: inherit;
+}
+
+.multi-sub ul.menu-dt {
+  width: 150px;
+}
+
+.multi-sub .hang-cao-cap {
+  border-top: 1px solid #c8c9cb;
+  margin-right: 10px;
+  margin-top: 6px;
+  padding-top: 6px;
+  float: left;
+  position: relative;
+  /*&:before{
+      position: absolute;
+      width: 1px;
+      height: 500%;
+      top: 0;
+      content: "";
+      left: 0;
+      background: $gray;
+    }*/
+}
+
+.multi-sub .hang-cao-cap ul {
+  margin-right: 0px;
+}
+
+/*Menu sub*/
+.mn-sub {
+  background: transparent;
+  display: none;
+  width: 700px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 0;
+  -webkit-backface-visibility: hidden;
+  border: none;
+}
+
+.mn-sub li {
+  display: block;
+  width: 100%;
+  margin: 0 !important;
+}
+
+.mn-sub li ul {
+  left: 100%;
+  right: auto;
+  top: -1px;
+}
+
+.mn-sub li a {
+  display: block;
+  width: 100%;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 9px 15px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mn-sub li a i {
+  position: absolute;
+  right: 10px;
+  top: 13px;
+}
+
+/*Menu sub multi*/
+.mn-has-multi {
+  width: auto !important;
+  padding: 0;
+  text-align: left;
+  white-space: nowrap;
+  border: 1px solid #E2E3E4;
+  border-top: none;
+}
+
+.mn-sub-multi {
+  width: 200px !important;
+  overflow: hidden;
+  float: none !important;
+  display: inline-block !important;
+  vertical-align: top;
+}
+
+.mn-sub-multi > ul {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  float: none;
+}
+
+.mn-sub-feature {
+  border-top: 1px solid red;
+}
+
+.mn-sub-feature ul {
+  float: none;
+}
+
+.mn-sub-feature ul li {
+  float: left;
+  width: 50%;
+}
+
+/*When on small device*/
+@media screen and (max-width: 991px) {
+  .inner-nav {
+    display: none;
+  }
+}
+
+.mobile-on {
+  /*.mn-sub{
+    position: relative;
+    top: 0;
+    left: auto;
+    height: auto;
+    background-color: $header-bg ;
+    li{
+      padding-left: 10px;
+    }
+  }*/
+  /*.mobile-nav{
+    height: 56px;
+    line-height: 56px;
+    padding-left: 10px;
+  }*/
+  text-align: center;
+  /*.mn-sub-multi{
+    display: block;
+    width: 100% !important;
+    >ul{
+      left: auto;
+      right: auto;
+      border: none;
+    }
+  }*/
+}
+
+.mobile-on.menu-scroll .main-nav-logo {
+  padding-top: 0;
+}
+
+.mobile-on.menu-scroll .mobile-nav {
+  height: 56px;
+  line-height: 56px;
+  padding-left: 10px;
+}
+
+.mobile-on .main-nav-logo .logo {
+  display: block;
+  width: 186px;
+  height: 35px;
+  margin-top: 10px;
+  background-image: url("../images/logo/logo-vienthongA.png");
+  background-repeat: no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  .mobile-on .main-nav-logo .logo {
+    background-image: url("../images/logo/logo-vienthongA_2x.png");
+    background-size: 186px 35px;
+  }
+}
+
+.mobile-on .mobile-nav {
+  height: 56px;
+  line-height: 56px;
+  padding-left: 10px;
+}
+
+.mobile-on .mn-sub {
+  display: none !important;
+}
+
+.mobile-on .inner-nav {
+  display: none;
+  border-top: 1px solid #e4e6e6;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 0, 0.95);
+}
+
+.mobile-on .inner-nav a {
+  padding: 12px 16px;
+  color: #404041;
+}
+
+.mobile-on .inner-nav li {
+  display: inline-block;
+  float: none;
+}
+
+@media (max-width: 649px) {
+  .mobile-on .inner-nav li {
+    display: block;
+    float: left;
+    width: 16.66666%;
+  }
+}
+
+@media (max-width: 991px) {
+  .mobile-on .inner-nav li {
+    display: block;
+    float: left;
+    width: 25%;
+  }
+}
+
+@media (max-width: 649px) {
+  .mobile-on .inner-nav li {
+    display: block;
+    float: left;
+    width: 33.333%;
+  }
+}
+
+.mobile-on .inner-nav li:last-child .mb-sub li ul {
+  left: auto;
+  right: auto;
+  top: 0;
+}
+
+.mobile-on .inner-nav ul {
+  float: none;
+  text-align: center;
+}
+
+.mobile-on .inner-nav ul li a i:nth-child(2) {
+  display: none;
+}
+
+.mobile-on .desktop-nav {
+  display: none;
+  width: 100%;
+}
+
+.mobile-on .mobile-nav {
+  display: table;
+  padding-right: 20px;
+}
+
+/*VTAPLUS MENU*/
+.vtaplus-menu {
+  padding: 12px 22px !important;
+}
+
+.vtaplus-menu li a {
+  padding: 12px 0px 12px 20px !important;
+  position: relative;
+}
+
+.vtaplus-menu li a:before {
+  position: absolute;
+  content: "";
+  width: 14px;
+  height: 13px;
+  left: 0;
+  background-image: url("../images/logo/vta-icon-gray.png");
+  background-size: 14px 13px;
+}
+
+.vtaplus-menu li a:hover:before {
+  background-image: url("../images/logo/vta-icon_2x.png");
+}
+
+.vtaplus-menu li.active a:before {
+  background-image: url("../images/logo/vta-icon_2x.png");
+}
+
+.hethang:after {
+  content: "Không có chi nhánh";
+  padding: 2px 5px 10px 5px;
+  display: block;
+}
+
+#sinhnhat-vta {
+  /*Sinh nhat VTA*/
+}
+
+#sinhnhat-vta .main-nav-logo {
+  position: relative;
+  /*Sinh nhat VTA*/
+}
+
+#sinhnhat-vta .main-nav-logo:before {
+  position: absolute;
+  content: "";
+  width: 123px;
+  height: 46px;
+  background-image: url("../images/sinhnhat/18nam.png");
+  right: -129px;
+  top: 9px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  #sinhnhat-vta .main-nav-logo:before {
+    background-image: url("../images/sinhnhat/18nam_2x.png");
+    background-size: 123px 46px;
+  }
+}
+
+@media (max-width: 1199px) {
+  #sinhnhat-vta .main-nav-logo:before {
+    display: none;
+  }
+}
+
+#sinhnhat-vta.mobile-on .bg-color {
+  position: inherit;
+}
+
+#sinhnhat-vta .bg-color {
+  position: relative;
+}
+
+#sinhnhat-vta .bg-color:before {
+  content: '';
+  position: absolute;
+  width: 54px;
+  height: 35px;
+  background-image: url("../images/sinhnhat/thang-trian.png");
+  background-repeat: no-repeat;
+  background-size: 54px 35px;
+  left: -80px;
+  top: 9px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  #sinhnhat-vta .bg-color:before {
+    background-image: url("../images/sinhnhat/thang-trian_2x.png");
+    background-size: 54px 35px;
+  }
+}
+
+#sinhnhat-vta .bg-color:after {
+  content: '';
+  position: absolute;
+  width: 54px;
+  height: 35px;
+  background-image: url("../images/sinhnhat/thang-trian.png");
+  background-repeat: no-repeat;
+  background-size: 54px 35px;
+  right: -80px;
+  top: 9px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  #sinhnhat-vta .bg-color:after {
+    background-image: url("../images/sinhnhat/thang-trian_2x.png");
+    background-size: 54px 35px;
+  }
+}
+
+@media (max-width: 1199px) {
+  #sinhnhat-vta .bg-color:before, #sinhnhat-vta .bg-color:after {
+    display: none;
+  }
+}
+
+#sinhnhat-vta .main-nav-logo {
+  /*Sinh nhat VTA*/
+}
+
+#sinhnhat-vta .main-nav-logo:before {
+  position: absolute;
+  content: "";
+  width: 123px;
+  height: 46px;
+}
+
+#sinhnhat-vta.menu-scroll .main-nav-logo:before {
+  display: none;
+}
+
+#sinhnhat-vta.stick-fixed.menu-scroll {
+  /*Do sinh nhat*/
+  background: rgba(255, 255, 0, 0.95) url("../images/sinhnhat/pattern.png") center center;
+}
+
+#sinhnhat-vta.main-nav {
+  background: #FFFF00 url("../images/sinhnhat/pattern.png") center center;
+  /*Do sinh nhat*/
+}
+
+#sinhnhat-vta.main-nav > div {
+  background: rgba(255, 255, 0, 0.7);
+}
+
+#mua-muasam-vta.mobile-on .bg-color {
+  position: inherit;
+}
+
+#mua-muasam-vta .bg-color {
+  position: relative;
+}
+
+#mua-muasam-vta .bg-color:before {
+  content: '';
+  position: absolute;
+  width: 92px;
+  height: 53px;
+  background-image: url("../images/mua-muasam/mua-muasam.png");
+  background-repeat: no-repeat;
+  background-size: 92px 53px;
+  left: -100px;
+  top: 1px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  #mua-muasam-vta .bg-color:before {
+    background-image: url("../images/mua-muasam/mua-muasam_2x.png");
+    background-size: 92px 53px;
+  }
+}
+
+#mua-muasam-vta .bg-color:after {
+  content: '';
+  position: absolute;
+  width: 93px;
+  height: 53px;
+  background-image: url("../images/mua-muasam/mua-muasam2.png");
+  background-repeat: no-repeat;
+  background-size: 92px 53px;
+  right: -100px;
+  top: 1px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  #mua-muasam-vta .bg-color:after {
+    background-image: url("../images/mua-muasam/mua-muasam2_2x.png");
+    background-size: 92px 53px;
+  }
+}
+
+@media (max-width: 1199px) {
+  #mua-muasam-vta .bg-color:before, #mua-muasam-vta .bg-color:after {
+    display: none;
+  }
+}
+
+#mua-muasam-vta.stick-fixed.menu-scroll {
+  /*Do sinh nhat*/
+  background: rgba(255, 255, 0, 0.95) url("../images/mua-muasam/pattern.png") center center;
+}
+
+#mua-muasam-vta.main-nav {
+  background: #FFFF00 url("../images/mua-muasam/pattern.png") center center;
+  /*Do sinh nhat*/
+}
+
+#noen-vta .main-nav-logo .logo {
+  width: 173px;
+  height: 38px;
+  margin-top: 7px;
+  background-image: url("../images/noen/logo.png");
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  #noen-vta .main-nav-logo .logo {
+    background-image: url("../images/noen/logo_2x.png");
+    background-size: 173px 38px;
+  }
+}
+
+#noen-vta.stick-fixed.menu-scroll:not(.mobile-on) .main-nav-logo .logo {
+  background-size: 158px 35px;
+  margin-top: 8px;
+}
+
+#noen-vta .main-nav-logo {
+  position: relative;
+  /*Sinh nhat VTA*/
+}
+
+#noen-vta .main-nav-logo:before {
+  position: absolute;
+  content: "";
+  width: 61px;
+  height: 44px;
+  background-image: url("../images/noen/noen.png");
+  right: -70px;
+  top: 9px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  #noen-vta .main-nav-logo:before {
+    background-image: url("../images/noen/noen_2x.png");
+    background-size: 61px 44px;
+  }
+}
+
+@media (max-width: 1199px) {
+  #noen-vta .main-nav-logo {
+    /*&:before{
+        display: none;
+      }*/
+  }
+}
+
+#noen-vta.mobile-on .bg-color {
+  position: inherit;
+}
+
+#noen-vta .bg-color {
+  position: relative;
+  /*&:before{
+      content: '';
+      position: absolute;
+      width: 93px;
+      height: 52px;
+      @include retina-image("../images/noen/mua-noen1", 93px 52px);
+      background-repeat: no-repeat;
+      background-size: 93px 52px;
+      left: -100px;
+      top: 3px;
+    }
+
+
+    &:after{
+      content: '';
+      position: absolute;
+      width: 93px;
+      height: 52px;
+      @include retina-image("../images/noen/mua-noen2", 93px 52px);
+      background-repeat: no-repeat;
+      background-size: 93px 52px;
+      right: -100px;
+      top: 3px;
+    }
+    @include respond-to(medium){
+      &:before, &:after{
+        display: none;
+      }
+    }*/
+}
+
+#noen-vta.menu-scroll .main-nav-logo:before {
+  display: none;
+}
+
+#noen-vta.stick-fixed.menu-scroll {
+  /*Do sinh nhat*/
+  background: rgba(31, 96, 10, 0.95) url("../images/noen/bg-noen.png") center bottom;
+}
+
+#noen-vta.main-nav {
+  background: #1F600A url("../images/noen/bg-noen.png") center bottom;
+  background-repeat: repeat-x;
+  /*Do sinh nhat*/
+}
+
+#noen-vta.main-nav > div {
+  background: none;
+}
+
+#noen-vta .inner-nav > ul > li:hover > a, #noen-vta .inner-nav > ul > li.active > a {
+  background: #FFFF00;
+  color: #404041;
+}
+
+#noen-vta .inner-nav > ul > li:hover > a span, #noen-vta .inner-nav > ul > li.active > a span {
+  color: #404041;
+}
+
+#noen-vta .inner-nav > ul > li:hover .vta-sale, #noen-vta .inner-nav > ul > li.active .vta-sale {
+  color: #404041;
+}
+
+#noen-vta .inner-nav > ul > li:hover .vta-vtaplus, #noen-vta .inner-nav > ul > li.active .vta-vtaplus {
+  color: #404041;
+}
+
+#noen-vta .inner-nav .mn-sub a {
+  color: #404041;
+}
+
+#noen-vta .inner-nav .mn-sub a span {
+  color: #404041;
+}
+
+#noen-vta .inner-nav a {
+  color: white;
+}
+
+#noen-vta .inner-nav a span {
+  color: white;
+  font-weight: bold;
+}
+
+#noen-vta .inner-nav a i.vta-sale {
+  color: white;
+}
+
+#noen-vta .inner-nav a i.vta-vtaplus {
+  color: white;
+}
+
+#noen-vta .inner-nav a:hover {
+  color: #2E318D;
+}
+
+#noen-vta.mobile-on .main-nav-logo .logo {
+  display: block;
+  width: 173px;
+  height: 38px;
+  margin-top: 5px;
+  background-image: url("../images/noen/logo.png");
+  background-repeat: no-repeat;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  #noen-vta.mobile-on .main-nav-logo .logo {
+    background-image: url("../images/noen/logo_2x.png");
+    background-size: 173px 38px;
+  }
+}
+
+#noen-vta.mobile-on .inner-nav {
+  background-color: rgba(46, 49, 141, 0.95);
+}
+
+#noen-vta.mobile-on .inner-nav a {
+  color: white;
+}
+
+#noen-vta .mobile-nav {
+  color: white;
+}
+
+#noen-vta .mobile-nav:hover, #noen-vta .mobile-nav:active {
+  color: white;
+}
+
+#newyear-vta .main-nav-logo {
+  position: relative;
+  /*Sinh nhat VTA*/
+}
+
+#newyear-vta .main-nav-logo:before {
+  position: absolute;
+  content: "";
+  width: 64px;
+  height: 52px;
+  background-image: url("../images/newyear/new-year-firework.png");
+  right: -57px;
+  top: 2px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  #newyear-vta .main-nav-logo:before {
+    background-image: url("../images/newyear/new-year-firework_2x.png");
+    background-size: 64px 52px;
+  }
+}
+
+#newyear-vta.mobile-on .bg-color {
+  position: inherit;
+}
+
+#newyear-vta .bg-color {
+  position: relative;
+}
+
+#newyear-vta .bg-color:before {
+  content: '';
+  position: absolute;
+  width: 104px;
+  height: 55px;
+  background-image: url("../images/newyear/new-year-1.png");
+  background-repeat: no-repeat;
+  background-size: 104px 55px;
+  left: -101px;
+  top: 1px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  #newyear-vta .bg-color:before {
+    background-image: url("../images/newyear/new-year-1_2x.png");
+    background-size: 104px 55px;
+  }
+}
+
+#newyear-vta .bg-color:after {
+  content: '';
+  position: absolute;
+  width: 92px;
+  height: 55px;
+  background-image: url("../images/newyear/new-year-2.png");
+  background-repeat: no-repeat;
+  background-size: 92px 55px;
+  right: -85px;
+  top: 1px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+  #newyear-vta .bg-color:after {
+    background-image: url("../images/newyear/new-year-2_2x.png");
+    background-size: 92px 55px;
+  }
+}
+
+@media (max-width: 1199px) {
+  #newyear-vta .bg-color:before, #newyear-vta .bg-color:after {
+    display: none;
+  }
+}
+
+#newyear-vta.menu-scroll .main-nav-logo:before {
+  display: none;
+}

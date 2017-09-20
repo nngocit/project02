@@ -1,0 +1,1788 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="vta.VnPostModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DM_CommonData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ErrorMessage" Type="nvarchar" MaxLength="500" />
+          <Property Name="Result" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="M_VnPostVta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ListStoreCode" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="O_Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Sex" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="StoreCode" Type="nvarchar" MaxLength="200" />
+          <Property Name="OrderTypeId" Type="int" Nullable="false" />
+          <Property Name="OrderSoId" Type="bigint" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DiscountDetail" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ConfirmCode" Type="varchar" MaxLength="20" />
+          <Property Name="ShippingUserId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'vta.VnPost.dbo.O_OrderCondition' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="O_OrderCondition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="GroupUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusCurrent" Type="int" />
+          <Property Name="StatusNext" Type="int" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="O_OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="bigint" />
+          <Property Name="ProductId" Type="bigint" Nullable="false" />
+          <Property Name="ProductColorCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="IsMain" Type="bit" />
+          <Property Name="Combo" Type="varchar" MaxLength="50" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="O_OrderHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="bigint" Nullable="false" />
+          <Property Name="Userid" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Action" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="StatusOrder" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="O_OrderType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderType" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="P_Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="bigint" Nullable="false" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="IdPath" Type="varchar" MaxLength="128" />
+          <Property Name="CategoryName" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="SeoTitle" Type="nvarchar(max)" />
+          <Property Name="SeoDescription" Type="nvarchar(max)" />
+          <Property Name="SeoKeyword" Type="nvarchar(max)" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="P_Happycare">
+          <Key>
+            <PropertyRef Name="HappyCareId" />
+          </Key>
+          <Property Name="HappyCareId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="MinPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="MaxPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="GHBHCode" Type="varchar" MaxLength="255" />
+          <Property Name="GHBHPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="BVTDCode" Type="varchar" MaxLength="255" />
+          <Property Name="BVTDPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Note" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="P_Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="bigint" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProductImage" Type="varchar" MaxLength="512" />
+          <Property Name="StatusExsit" Type="nchar" MaxLength="1" />
+          <Property Name="ButtonPrice" Type="nchar" MaxLength="1" />
+          <Property Name="ButtonBuy" Type="nchar" MaxLength="1" />
+          <Property Name="ShowPriceOffline" Type="nchar" MaxLength="1" />
+          <Property Name="ShowPriceOnline" Type="nchar" MaxLength="1" />
+          <Property Name="Sellonline" Type="varchar" MaxLength="1" />
+          <Property Name="CategoryId" Type="bigint" />
+          <Property Name="IdPath" Type="varchar" MaxLength="255" />
+          <Property Name="Slug" Type="varchar" MaxLength="250" />
+          <Property Name="PriceExpected" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="VideoId" Type="varchar" MaxLength="250" />
+          <Property Name="ProductFeatures" Type="ntext" />
+          <Property Name="ProductShortDesc" Type="nvarchar(max)" />
+          <Property Name="ProductDesc" Type="ntext" />
+          <Property Name="ProductStandardImage" Type="nvarchar" MaxLength="512" />
+          <Property Name="ProductStandardDesc" Type="nvarchar" MaxLength="512" />
+          <Property Name="SeoTitle" Type="nvarchar(max)" />
+          <Property Name="SeoDescription" Type="nvarchar(max)" />
+          <Property Name="SeoKeyword" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nchar" MaxLength="1" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'vta.VnPost.dbo.P_ProductColor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="P_ProductColor">
+          <Key>
+            <PropertyRef Name="ColorId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ColorId" Type="bigint" Nullable="false" />
+          <Property Name="ProductId" Type="bigint" Nullable="false" />
+          <Property Name="ProductColorCode" Type="varchar" MaxLength="50" />
+          <Property Name="ColorName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ColorCode" Type="nvarchar" MaxLength="7" />
+          <Property Name="ColorImage" Type="varchar" MaxLength="512" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="P_ProductImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="bigint" Nullable="false" />
+          <Property Name="ProductColorCode" Type="varchar" MaxLength="50" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="512" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="512" />
+          <Property Name="ImageDescription" Type="ntext" />
+          <Property Name="Type" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Qtht_ActionActionGroupRefs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActionId" Type="int" Nullable="false" />
+          <Property Name="ActionGroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Qtht_ActionGroups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsPrivate" Type="bit" Nullable="false" />
+          <Property Name="CodeName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Qtht_ActionRoleRefs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActionId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Qtht_Actions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PublicDomainName" Type="nvarchar(max)" />
+          <Property Name="ControllerName" Type="nvarchar(max)" />
+          <Property Name="ActionName" Type="nvarchar(max)" />
+          <Property Name="ActionDisplayName" Type="nvarchar(max)" />
+          <Property Name="AreaName" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="bigint" Nullable="false" />
+          <Property Name="CodeName" Type="nvarchar(max)" />
+          <Property Name="ListRole" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Qtht_ActionUserRefs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CanDo" Type="bit" Nullable="false" />
+          <Property Name="ActionId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Qtht_AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="LastUpdateBy" Type="nvarchar(max)" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ParentId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Code" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Qtht_AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Qtht_AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RefKey" Type="nvarchar(max)" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Qtht_AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Qtht_AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="Sex" Type="nvarchar(max)" />
+          <Property Name="PersonalId" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" />
+          <Property Name="LastLockoutDate" Type="datetime" />
+          <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="AllowRecievedNews" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LastUpdateStatusDate" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailConfirmToken" Type="nvarchar(max)" />
+          <Property Name="EmailConfirmTokenExpire" Type="datetime" />
+          <Property Name="PasswordResetToken" Type="nvarchar(max)" />
+          <Property Name="PasswordResetTokenExpire" Type="datetime" />
+          <Property Name="EmployeeId" Type="nvarchar(max)" />
+          <Property Name="CompanyId" Type="bigint" />
+          <Property Name="Avatar" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Qtht_Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="ParentCompanyId" Type="bigint" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="CompanyLevel" Type="int" />
+        </EntityType>
+        <EntityType Name="Qtht_UserLoginTokens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="ExpireDate" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Domain" Type="nvarchar(max)" />
+          <Property Name="Token" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_ActionActionGroupRefs_dbo_ActionGroups_ActionGroupId">
+          <End Role="Qtht_ActionGroups" Type="Self.Qtht_ActionGroups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Qtht_ActionActionGroupRefs" Type="Self.Qtht_ActionActionGroupRefs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_ActionGroups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_ActionActionGroupRefs">
+              <PropertyRef Name="ActionGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActionActionGroupRefs_dbo_Actions_ActionId">
+          <End Role="Qtht_Actions" Type="Self.Qtht_Actions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Qtht_ActionActionGroupRefs" Type="Self.Qtht_ActionActionGroupRefs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_Actions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_ActionActionGroupRefs">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActionRoleRefs_dbo_Actions_ActionId">
+          <End Role="Qtht_Actions" Type="Self.Qtht_Actions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Qtht_ActionRoleRefs" Type="Self.Qtht_ActionRoleRefs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_Actions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_ActionRoleRefs">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActionRoleRefs_dbo_AspNetRoles_Role_Id">
+          <End Role="Qtht_AspNetRoles" Type="Self.Qtht_AspNetRoles" Multiplicity="0..1" />
+          <End Role="Qtht_ActionRoleRefs" Type="Self.Qtht_ActionRoleRefs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_ActionRoleRefs">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActionUserRefs_dbo_Actions_ActionId">
+          <End Role="Qtht_Actions" Type="Self.Qtht_Actions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Qtht_ActionUserRefs" Type="Self.Qtht_ActionUserRefs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_Actions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_ActionUserRefs">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActionUserRefs_dbo_AspNetUsers_User_Id">
+          <End Role="Qtht_AspNetUsers" Type="Self.Qtht_AspNetUsers" Multiplicity="0..1" />
+          <End Role="Qtht_ActionUserRefs" Type="Self.Qtht_ActionUserRefs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_ActionUserRefs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetRoles_dbo_AspNetRoles_Parent_Id">
+          <End Role="Qtht_AspNetRoles" Type="Self.Qtht_AspNetRoles" Multiplicity="0..1" />
+          <End Role="Qtht_AspNetRoles1" Type="Self.Qtht_AspNetRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_AspNetRoles1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="Qtht_AspNetUsers" Type="Self.Qtht_AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Qtht_AspNetUserClaims" Type="Self.Qtht_AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="Qtht_AspNetUsers" Type="Self.Qtht_AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Qtht_AspNetUserLogins" Type="Self.Qtht_AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="Qtht_AspNetRoles" Type="Self.Qtht_AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Qtht_AspNetUserRoles" Type="Self.Qtht_AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="Qtht_AspNetUsers" Type="Self.Qtht_AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Qtht_AspNetUserRoles" Type="Self.Qtht_AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_Order_O_OrderHis">
+          <End Role="O_Order" Type="Self.O_Order" Multiplicity="1" />
+          <End Role="O_Order1" Type="Self.O_Order" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="O_Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="O_Order1">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_OrderDetail_O_Order">
+          <End Role="O_Order" Type="Self.O_Order" Multiplicity="0..1" />
+          <End Role="O_OrderDetail" Type="Self.O_OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="O_OrderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_OrderHistory_O_Order">
+          <End Role="O_Order" Type="Self.O_Order" Multiplicity="1" />
+          <End Role="O_OrderHistory" Type="Self.O_OrderHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="O_OrderHistory">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qtht_AspNetUsers_Qtht_Company">
+          <End Role="Qtht_Company" Type="Self.Qtht_Company" Multiplicity="0..1" />
+          <End Role="Qtht_AspNetUsers" Type="Self.Qtht_AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_AspNetUsers">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qtht_Company_Qtht_Company">
+          <End Role="Qtht_Company" Type="Self.Qtht_Company" Multiplicity="0..1" />
+          <End Role="Qtht_Company1" Type="Self.Qtht_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_Company1">
+              <PropertyRef Name="ParentCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="vtaVnPostModelStoreContainer">
+          <EntitySet Name="DM_CommonData" EntityType="Self.DM_CommonData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M_VnPostVta" EntityType="Self.M_VnPostVta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_Order" EntityType="Self.O_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_OrderDetail" EntityType="Self.O_OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_OrderHistory" EntityType="Self.O_OrderHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_OrderType" EntityType="Self.O_OrderType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P_Category" EntityType="Self.P_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P_Happycare" EntityType="Self.P_Happycare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P_Product" EntityType="Self.P_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="P_ProductImage" EntityType="Self.P_ProductImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qtht_ActionActionGroupRefs" EntityType="Self.Qtht_ActionActionGroupRefs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qtht_ActionGroups" EntityType="Self.Qtht_ActionGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qtht_ActionRoleRefs" EntityType="Self.Qtht_ActionRoleRefs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qtht_Actions" EntityType="Self.Qtht_Actions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qtht_ActionUserRefs" EntityType="Self.Qtht_ActionUserRefs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qtht_AspNetRoles" EntityType="Self.Qtht_AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qtht_AspNetUserClaims" EntityType="Self.Qtht_AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qtht_AspNetUserLogins" EntityType="Self.Qtht_AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qtht_AspNetUserRoles" EntityType="Self.Qtht_AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qtht_AspNetUsers" EntityType="Self.Qtht_AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qtht_Company" EntityType="Self.Qtht_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qtht_UserLoginTokens" EntityType="Self.Qtht_UserLoginTokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="O_OrderCondition" EntityType="Self.O_OrderCondition" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [O_OrderCondition].[Id] AS [Id], 
+    [O_OrderCondition].[GroupUser] AS [GroupUser], 
+    [O_OrderCondition].[StatusCurrent] AS [StatusCurrent], 
+    [O_OrderCondition].[StatusNext] AS [StatusNext], 
+    [O_OrderCondition].[Note] AS [Note]
+    FROM [dbo].[O_OrderCondition] AS [O_OrderCondition]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="P_ProductColor" EntityType="Self.P_ProductColor" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [P_ProductColor].[ColorId] AS [ColorId], 
+    [P_ProductColor].[ProductId] AS [ProductId], 
+    [P_ProductColor].[ProductColorCode] AS [ProductColorCode], 
+    [P_ProductColor].[ColorName] AS [ColorName], 
+    [P_ProductColor].[ColorCode] AS [ColorCode], 
+    [P_ProductColor].[ColorImage] AS [ColorImage], 
+    [P_ProductColor].[Status] AS [Status]
+    FROM [dbo].[P_ProductColor] AS [P_ProductColor]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_dbo_ActionActionGroupRefs_dbo_ActionGroups_ActionGroupId" Association="Self.FK_dbo_ActionActionGroupRefs_dbo_ActionGroups_ActionGroupId">
+            <End Role="Qtht_ActionGroups" EntitySet="Qtht_ActionGroups" />
+            <End Role="Qtht_ActionActionGroupRefs" EntitySet="Qtht_ActionActionGroupRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActionActionGroupRefs_dbo_Actions_ActionId" Association="Self.FK_dbo_ActionActionGroupRefs_dbo_Actions_ActionId">
+            <End Role="Qtht_Actions" EntitySet="Qtht_Actions" />
+            <End Role="Qtht_ActionActionGroupRefs" EntitySet="Qtht_ActionActionGroupRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActionRoleRefs_dbo_Actions_ActionId" Association="Self.FK_dbo_ActionRoleRefs_dbo_Actions_ActionId">
+            <End Role="Qtht_Actions" EntitySet="Qtht_Actions" />
+            <End Role="Qtht_ActionRoleRefs" EntitySet="Qtht_ActionRoleRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActionRoleRefs_dbo_AspNetRoles_Role_Id" Association="Self.FK_dbo_ActionRoleRefs_dbo_AspNetRoles_Role_Id">
+            <End Role="Qtht_AspNetRoles" EntitySet="Qtht_AspNetRoles" />
+            <End Role="Qtht_ActionRoleRefs" EntitySet="Qtht_ActionRoleRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActionUserRefs_dbo_Actions_ActionId" Association="Self.FK_dbo_ActionUserRefs_dbo_Actions_ActionId">
+            <End Role="Qtht_Actions" EntitySet="Qtht_Actions" />
+            <End Role="Qtht_ActionUserRefs" EntitySet="Qtht_ActionUserRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActionUserRefs_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_ActionUserRefs_dbo_AspNetUsers_User_Id">
+            <End Role="Qtht_AspNetUsers" EntitySet="Qtht_AspNetUsers" />
+            <End Role="Qtht_ActionUserRefs" EntitySet="Qtht_ActionUserRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetRoles_dbo_AspNetRoles_Parent_Id" Association="Self.FK_dbo_AspNetRoles_dbo_AspNetRoles_Parent_Id">
+            <End Role="Qtht_AspNetRoles" EntitySet="Qtht_AspNetRoles" />
+            <End Role="Qtht_AspNetRoles1" EntitySet="Qtht_AspNetRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="Qtht_AspNetUsers" EntitySet="Qtht_AspNetUsers" />
+            <End Role="Qtht_AspNetUserClaims" EntitySet="Qtht_AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="Qtht_AspNetUsers" EntitySet="Qtht_AspNetUsers" />
+            <End Role="Qtht_AspNetUserLogins" EntitySet="Qtht_AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="Qtht_AspNetRoles" EntitySet="Qtht_AspNetRoles" />
+            <End Role="Qtht_AspNetUserRoles" EntitySet="Qtht_AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="Qtht_AspNetUsers" EntitySet="Qtht_AspNetUsers" />
+            <End Role="Qtht_AspNetUserRoles" EntitySet="Qtht_AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_Order_O_OrderHis" Association="Self.FK_O_Order_O_OrderHis">
+            <End Role="O_Order" EntitySet="O_Order" />
+            <End Role="O_Order1" EntitySet="O_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_OrderDetail_O_Order" Association="Self.FK_O_OrderDetail_O_Order">
+            <End Role="O_Order" EntitySet="O_Order" />
+            <End Role="O_OrderDetail" EntitySet="O_OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_OrderHistory_O_Order" Association="Self.FK_O_OrderHistory_O_Order">
+            <End Role="O_Order" EntitySet="O_Order" />
+            <End Role="O_OrderHistory" EntitySet="O_OrderHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qtht_AspNetUsers_Qtht_Company" Association="Self.FK_Qtht_AspNetUsers_Qtht_Company">
+            <End Role="Qtht_Company" EntitySet="Qtht_Company" />
+            <End Role="Qtht_AspNetUsers" EntitySet="Qtht_AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qtht_Company_Qtht_Company" Association="Self.FK_Qtht_Company_Qtht_Company">
+            <End Role="Qtht_Company" EntitySet="Qtht_Company" />
+            <End Role="Qtht_Company1" EntitySet="Qtht_Company" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="vta.VnPostModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SqlDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DM_CommonData" EntityType="vta.VnPostModel.DM_CommonData" />
+          <EntitySet Name="Logs" EntityType="vta.VnPostModel.Log" />
+          <EntitySet Name="M_VnPostVta" EntityType="vta.VnPostModel.M_VnPostVta" />
+          <EntitySet Name="O_Order" EntityType="vta.VnPostModel.O_Order" />
+          <EntitySet Name="O_OrderHistory" EntityType="vta.VnPostModel.O_OrderHistory" />
+          <EntitySet Name="O_OrderType" EntityType="vta.VnPostModel.O_OrderType" />
+          <EntitySet Name="P_Category" EntityType="vta.VnPostModel.P_Category" />
+          <EntitySet Name="P_Happycare" EntityType="vta.VnPostModel.P_Happycare" />
+          <EntitySet Name="P_Product" EntityType="vta.VnPostModel.P_Product" />
+          <EntitySet Name="P_ProductImage" EntityType="vta.VnPostModel.P_ProductImage" />
+          <EntitySet Name="Qtht_ActionActionGroupRefs" EntityType="vta.VnPostModel.Qtht_ActionActionGroupRefs" />
+          <EntitySet Name="Qtht_ActionGroups" EntityType="vta.VnPostModel.Qtht_ActionGroups" />
+          <EntitySet Name="Qtht_ActionRoleRefs" EntityType="vta.VnPostModel.Qtht_ActionRoleRefs" />
+          <EntitySet Name="Qtht_Actions" EntityType="vta.VnPostModel.Qtht_Actions" />
+          <EntitySet Name="Qtht_ActionUserRefs" EntityType="vta.VnPostModel.Qtht_ActionUserRefs" />
+          <EntitySet Name="Qtht_AspNetRoles" EntityType="vta.VnPostModel.Qtht_AspNetRoles" />
+          <EntitySet Name="Qtht_AspNetUserLogins" EntityType="vta.VnPostModel.Qtht_AspNetUserLogins" />
+          <EntitySet Name="Qtht_AspNetUserRoles" EntityType="vta.VnPostModel.Qtht_AspNetUserRoles" />
+          <EntitySet Name="Qtht_AspNetUsers" EntityType="vta.VnPostModel.Qtht_AspNetUsers" />
+          <EntitySet Name="Qtht_Company" EntityType="vta.VnPostModel.Qtht_Company" />
+          <EntitySet Name="Qtht_UserLoginTokens" EntityType="vta.VnPostModel.Qtht_UserLoginTokens" />
+          <EntitySet Name="sysdiagrams" EntityType="vta.VnPostModel.sysdiagram" />
+          <EntitySet Name="O_OrderCondition" EntityType="vta.VnPostModel.O_OrderCondition" />
+          <EntitySet Name="P_ProductColor" EntityType="vta.VnPostModel.P_ProductColor" />
+          <AssociationSet Name="FK_O_Order_O_OrderHis" Association="vta.VnPostModel.FK_O_Order_O_OrderHis">
+            <End Role="O_Order" EntitySet="O_Order" />
+            <End Role="O_Order1" EntitySet="O_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_O_OrderHistory_O_Order" Association="vta.VnPostModel.FK_O_OrderHistory_O_Order">
+            <End Role="O_Order" EntitySet="O_Order" />
+            <End Role="O_OrderHistory" EntitySet="O_OrderHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActionActionGroupRefs_dbo_ActionGroups_ActionGroupId" Association="vta.VnPostModel.FK_dbo_ActionActionGroupRefs_dbo_ActionGroups_ActionGroupId">
+            <End Role="Qtht_ActionGroups" EntitySet="Qtht_ActionGroups" />
+            <End Role="Qtht_ActionActionGroupRefs" EntitySet="Qtht_ActionActionGroupRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActionActionGroupRefs_dbo_Actions_ActionId" Association="vta.VnPostModel.FK_dbo_ActionActionGroupRefs_dbo_Actions_ActionId">
+            <End Role="Qtht_Actions" EntitySet="Qtht_Actions" />
+            <End Role="Qtht_ActionActionGroupRefs" EntitySet="Qtht_ActionActionGroupRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActionRoleRefs_dbo_Actions_ActionId" Association="vta.VnPostModel.FK_dbo_ActionRoleRefs_dbo_Actions_ActionId">
+            <End Role="Qtht_Actions" EntitySet="Qtht_Actions" />
+            <End Role="Qtht_ActionRoleRefs" EntitySet="Qtht_ActionRoleRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActionRoleRefs_dbo_AspNetRoles_Role_Id" Association="vta.VnPostModel.FK_dbo_ActionRoleRefs_dbo_AspNetRoles_Role_Id">
+            <End Role="Qtht_AspNetRoles" EntitySet="Qtht_AspNetRoles" />
+            <End Role="Qtht_ActionRoleRefs" EntitySet="Qtht_ActionRoleRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActionUserRefs_dbo_Actions_ActionId" Association="vta.VnPostModel.FK_dbo_ActionUserRefs_dbo_Actions_ActionId">
+            <End Role="Qtht_Actions" EntitySet="Qtht_Actions" />
+            <End Role="Qtht_ActionUserRefs" EntitySet="Qtht_ActionUserRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ActionUserRefs_dbo_AspNetUsers_User_Id" Association="vta.VnPostModel.FK_dbo_ActionUserRefs_dbo_AspNetUsers_User_Id">
+            <End Role="Qtht_AspNetUsers" EntitySet="Qtht_AspNetUsers" />
+            <End Role="Qtht_ActionUserRefs" EntitySet="Qtht_ActionUserRefs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetRoles_dbo_AspNetRoles_Parent_Id" Association="vta.VnPostModel.FK_dbo_AspNetRoles_dbo_AspNetRoles_Parent_Id">
+            <End Role="Qtht_AspNetRoles" EntitySet="Qtht_AspNetRoles" />
+            <End Role="Qtht_AspNetRoles1" EntitySet="Qtht_AspNetRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="vta.VnPostModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="Qtht_AspNetRoles" EntitySet="Qtht_AspNetRoles" />
+            <End Role="Qtht_AspNetUserRoles" EntitySet="Qtht_AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="vta.VnPostModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="Qtht_AspNetUsers" EntitySet="Qtht_AspNetUsers" />
+            <End Role="Qtht_AspNetUserLogins" EntitySet="Qtht_AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="vta.VnPostModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="Qtht_AspNetUsers" EntitySet="Qtht_AspNetUsers" />
+            <End Role="Qtht_AspNetUserRoles" EntitySet="Qtht_AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qtht_AspNetUsers_Qtht_Company" Association="vta.VnPostModel.FK_Qtht_AspNetUsers_Qtht_Company">
+            <End Role="Qtht_Company" EntitySet="Qtht_Company" />
+            <End Role="Qtht_AspNetUsers" EntitySet="Qtht_AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qtht_Company_Qtht_Company" Association="vta.VnPostModel.FK_Qtht_Company_Qtht_Company">
+            <End Role="Qtht_Company" EntitySet="Qtht_Company" />
+            <End Role="Qtht_Company1" EntitySet="Qtht_Company" />
+          </AssociationSet>
+          <EntitySet Name="Qtht_AspNetUserClaims" EntityType="vta.VnPostModel.Qtht_AspNetUserClaims" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="vta.VnPostModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="Qtht_AspNetUsers" EntitySet="Qtht_AspNetUsers" />
+            <End Role="Qtht_AspNetUserClaims" EntitySet="Qtht_AspNetUserClaims" />
+          </AssociationSet>
+          <EntitySet Name="O_OrderDetail" EntityType="vta.VnPostModel.O_OrderDetail" />
+          <AssociationSet Name="FK_O_OrderDetail_O_Order" Association="vta.VnPostModel.FK_O_OrderDetail_O_Order">
+            <End Role="O_Order" EntitySet="O_Order" />
+            <End Role="O_OrderDetail" EntitySet="O_OrderDetail" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DM_CommonData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Result" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="M_VnPostVta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ListStoreCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="O_Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StoreCode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="OrderTypeId" Type="Int32" Nullable="false" />
+          <Property Name="OrderSoId" Type="Int64" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DiscountDetail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ConfirmCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="O_Order1" Relationship="vta.VnPostModel.FK_O_Order_O_OrderHis" FromRole="O_Order" ToRole="O_Order1" />
+          <NavigationProperty Name="O_Order2" Relationship="vta.VnPostModel.FK_O_Order_O_OrderHis" FromRole="O_Order1" ToRole="O_Order" />
+          <NavigationProperty Name="O_OrderHistory" Relationship="vta.VnPostModel.FK_O_OrderHistory_O_Order" FromRole="O_Order" ToRole="O_OrderHistory" />
+          <NavigationProperty Name="O_OrderDetail" Relationship="vta.VnPostModel.FK_O_OrderDetail_O_Order" FromRole="O_Order" ToRole="O_OrderDetail" />
+        </EntityType>
+        <EntityType Name="O_OrderHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int64" Nullable="false" />
+          <Property Name="Userid" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StatusOrder" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="O_Order" Relationship="vta.VnPostModel.FK_O_OrderHistory_O_Order" FromRole="O_OrderHistory" ToRole="O_Order" />
+        </EntityType>
+        <EntityType Name="O_OrderType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderType" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="P_Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int64" Nullable="false" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="IdPath" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeoTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeoDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeoKeyword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="P_Happycare">
+          <Key>
+            <PropertyRef Name="HappyCareId" />
+          </Key>
+          <Property Name="HappyCareId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="MinPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MaxPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="GHBHCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GHBHPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="BVTDCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BVTDPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="P_Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int64" Nullable="false" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProductImage" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="StatusExsit" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="ButtonPrice" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="ButtonBuy" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="ShowPriceOffline" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="ShowPriceOnline" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Sellonline" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int64" />
+          <Property Name="IdPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Slug" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PriceExpected" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="VideoId" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ProductFeatures" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductShortDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductStandardImage" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="ProductStandardDesc" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="SeoTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeoDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeoKeyword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="P_ProductImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int64" Nullable="false" />
+          <Property Name="ProductColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="ImageName" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="ImageDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Qtht_ActionActionGroupRefs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionId" Type="Int32" Nullable="false" />
+          <Property Name="ActionGroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Qtht_ActionGroups" Relationship="vta.VnPostModel.FK_dbo_ActionActionGroupRefs_dbo_ActionGroups_ActionGroupId" FromRole="Qtht_ActionActionGroupRefs" ToRole="Qtht_ActionGroups" />
+          <NavigationProperty Name="Qtht_Actions" Relationship="vta.VnPostModel.FK_dbo_ActionActionGroupRefs_dbo_Actions_ActionId" FromRole="Qtht_ActionActionGroupRefs" ToRole="Qtht_Actions" />
+        </EntityType>
+        <EntityType Name="Qtht_ActionGroups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsPrivate" Type="Boolean" Nullable="false" />
+          <Property Name="CodeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Qtht_ActionActionGroupRefs" Relationship="vta.VnPostModel.FK_dbo_ActionActionGroupRefs_dbo_ActionGroups_ActionGroupId" FromRole="Qtht_ActionGroups" ToRole="Qtht_ActionActionGroupRefs" />
+        </EntityType>
+        <EntityType Name="Qtht_ActionRoleRefs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Qtht_Actions" Relationship="vta.VnPostModel.FK_dbo_ActionRoleRefs_dbo_Actions_ActionId" FromRole="Qtht_ActionRoleRefs" ToRole="Qtht_Actions" />
+          <NavigationProperty Name="Qtht_AspNetRoles" Relationship="vta.VnPostModel.FK_dbo_ActionRoleRefs_dbo_AspNetRoles_Role_Id" FromRole="Qtht_ActionRoleRefs" ToRole="Qtht_AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Qtht_Actions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PublicDomainName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ControllerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActionDisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AreaName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int64" Nullable="false" />
+          <Property Name="CodeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ListRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Qtht_ActionActionGroupRefs" Relationship="vta.VnPostModel.FK_dbo_ActionActionGroupRefs_dbo_Actions_ActionId" FromRole="Qtht_Actions" ToRole="Qtht_ActionActionGroupRefs" />
+          <NavigationProperty Name="Qtht_ActionRoleRefs" Relationship="vta.VnPostModel.FK_dbo_ActionRoleRefs_dbo_Actions_ActionId" FromRole="Qtht_Actions" ToRole="Qtht_ActionRoleRefs" />
+          <NavigationProperty Name="Qtht_ActionUserRefs" Relationship="vta.VnPostModel.FK_dbo_ActionUserRefs_dbo_Actions_ActionId" FromRole="Qtht_Actions" ToRole="Qtht_ActionUserRefs" />
+        </EntityType>
+        <EntityType Name="Qtht_ActionUserRefs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CanDo" Type="Boolean" Nullable="false" />
+          <Property Name="ActionId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Qtht_Actions" Relationship="vta.VnPostModel.FK_dbo_ActionUserRefs_dbo_Actions_ActionId" FromRole="Qtht_ActionUserRefs" ToRole="Qtht_Actions" />
+          <NavigationProperty Name="Qtht_AspNetUsers" Relationship="vta.VnPostModel.FK_dbo_ActionUserRefs_dbo_AspNetUsers_User_Id" FromRole="Qtht_ActionUserRefs" ToRole="Qtht_AspNetUsers" />
+        </EntityType>
+        <EntityType Name="Qtht_AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdateBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Qtht_ActionRoleRefs" Relationship="vta.VnPostModel.FK_dbo_ActionRoleRefs_dbo_AspNetRoles_Role_Id" FromRole="Qtht_AspNetRoles" ToRole="Qtht_ActionRoleRefs" />
+          <NavigationProperty Name="Qtht_AspNetRoles1" Relationship="vta.VnPostModel.FK_dbo_AspNetRoles_dbo_AspNetRoles_Parent_Id" FromRole="Qtht_AspNetRoles" ToRole="Qtht_AspNetRoles1" />
+          <NavigationProperty Name="Parent" Relationship="vta.VnPostModel.FK_dbo_AspNetRoles_dbo_AspNetRoles_Parent_Id" FromRole="Qtht_AspNetRoles1" ToRole="Qtht_AspNetRoles" />
+          <NavigationProperty Name="Qtht_AspNetUserRoles" Relationship="vta.VnPostModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="Qtht_AspNetRoles" ToRole="Qtht_AspNetUserRoles" />
+        </EntityType>
+        <EntityType Name="Qtht_AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RefKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Qtht_AspNetUsers" Relationship="vta.VnPostModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="Qtht_AspNetUserLogins" ToRole="Qtht_AspNetUsers" />
+        </EntityType>
+        <EntityType Name="Qtht_AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Qtht_AspNetRoles" Relationship="vta.VnPostModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="Qtht_AspNetUserRoles" ToRole="Qtht_AspNetRoles" />
+          <NavigationProperty Name="Qtht_AspNetUsers" Relationship="vta.VnPostModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="Qtht_AspNetUserRoles" ToRole="Qtht_AspNetUsers" />
+        </EntityType>
+        <EntityType Name="Qtht_AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="Sex" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PersonalId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Precision="3" />
+          <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AllowRecievedNews" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdateStatusDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmTokenExpire" Type="DateTime" Precision="3" />
+          <Property Name="PasswordResetToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordResetTokenExpire" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int64" />
+          <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Qtht_ActionUserRefs" Relationship="vta.VnPostModel.FK_dbo_ActionUserRefs_dbo_AspNetUsers_User_Id" FromRole="Qtht_AspNetUsers" ToRole="Qtht_ActionUserRefs" />
+          <NavigationProperty Name="Qtht_AspNetUserLogins" Relationship="vta.VnPostModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="Qtht_AspNetUsers" ToRole="Qtht_AspNetUserLogins" />
+          <NavigationProperty Name="Qtht_AspNetUserRoles" Relationship="vta.VnPostModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="Qtht_AspNetUsers" ToRole="Qtht_AspNetUserRoles" />
+          <NavigationProperty Name="Qtht_Company" Relationship="vta.VnPostModel.FK_Qtht_AspNetUsers_Qtht_Company" FromRole="Qtht_AspNetUsers" ToRole="Qtht_Company" />
+          <NavigationProperty Name="Qtht_AspNetUserClaims" Relationship="vta.VnPostModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="Qtht_AspNetUsers" ToRole="Qtht_AspNetUserClaims" />
+        </EntityType>
+        <EntityType Name="Qtht_Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ParentCompanyId" Type="Int64" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyLevel" Type="Int32" />
+          <NavigationProperty Name="Qtht_AspNetUsers" Relationship="vta.VnPostModel.FK_Qtht_AspNetUsers_Qtht_Company" FromRole="Qtht_Company" ToRole="Qtht_AspNetUsers" />
+          <NavigationProperty Name="Qtht_Company1" Relationship="vta.VnPostModel.FK_Qtht_Company_Qtht_Company" FromRole="Qtht_Company" ToRole="Qtht_Company1" />
+          <NavigationProperty Name="Qtht_Company2" Relationship="vta.VnPostModel.FK_Qtht_Company_Qtht_Company" FromRole="Qtht_Company1" ToRole="Qtht_Company" />
+        </EntityType>
+        <EntityType Name="Qtht_UserLoginTokens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Domain" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="O_OrderCondition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="GroupUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusCurrent" Type="Int32" />
+          <Property Name="StatusNext" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="P_ProductColor">
+          <Key>
+            <PropertyRef Name="ColorId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ColorId" Type="Int64" Nullable="false" />
+          <Property Name="ProductId" Type="Int64" Nullable="false" />
+          <Property Name="ProductColorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ColorName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCode" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="ColorImage" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_O_Order_O_OrderHis">
+          <End Type="vta.VnPostModel.O_Order" Role="O_Order" Multiplicity="1" />
+          <End Type="vta.VnPostModel.O_Order" Role="O_Order1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="O_Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="O_Order1">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_O_OrderHistory_O_Order">
+          <End Type="vta.VnPostModel.O_Order" Role="O_Order" Multiplicity="1" />
+          <End Type="vta.VnPostModel.O_OrderHistory" Role="O_OrderHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="O_OrderHistory">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActionActionGroupRefs_dbo_ActionGroups_ActionGroupId">
+          <End Type="vta.VnPostModel.Qtht_ActionGroups" Role="Qtht_ActionGroups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="vta.VnPostModel.Qtht_ActionActionGroupRefs" Role="Qtht_ActionActionGroupRefs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_ActionGroups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_ActionActionGroupRefs">
+              <PropertyRef Name="ActionGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActionActionGroupRefs_dbo_Actions_ActionId">
+          <End Type="vta.VnPostModel.Qtht_Actions" Role="Qtht_Actions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="vta.VnPostModel.Qtht_ActionActionGroupRefs" Role="Qtht_ActionActionGroupRefs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_Actions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_ActionActionGroupRefs">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActionRoleRefs_dbo_Actions_ActionId">
+          <End Type="vta.VnPostModel.Qtht_Actions" Role="Qtht_Actions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="vta.VnPostModel.Qtht_ActionRoleRefs" Role="Qtht_ActionRoleRefs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_Actions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_ActionRoleRefs">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActionRoleRefs_dbo_AspNetRoles_Role_Id">
+          <End Type="vta.VnPostModel.Qtht_AspNetRoles" Role="Qtht_AspNetRoles" Multiplicity="0..1" />
+          <End Type="vta.VnPostModel.Qtht_ActionRoleRefs" Role="Qtht_ActionRoleRefs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_ActionRoleRefs">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActionUserRefs_dbo_Actions_ActionId">
+          <End Type="vta.VnPostModel.Qtht_Actions" Role="Qtht_Actions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="vta.VnPostModel.Qtht_ActionUserRefs" Role="Qtht_ActionUserRefs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_Actions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_ActionUserRefs">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ActionUserRefs_dbo_AspNetUsers_User_Id">
+          <End Type="vta.VnPostModel.Qtht_AspNetUsers" Role="Qtht_AspNetUsers" Multiplicity="0..1" />
+          <End Type="vta.VnPostModel.Qtht_ActionUserRefs" Role="Qtht_ActionUserRefs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_ActionUserRefs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetRoles_dbo_AspNetRoles_Parent_Id">
+          <End Type="vta.VnPostModel.Qtht_AspNetRoles" Role="Qtht_AspNetRoles" Multiplicity="0..1" />
+          <End Type="vta.VnPostModel.Qtht_AspNetRoles" Role="Qtht_AspNetRoles1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_AspNetRoles1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Type="vta.VnPostModel.Qtht_AspNetRoles" Role="Qtht_AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="vta.VnPostModel.Qtht_AspNetUserRoles" Role="Qtht_AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="vta.VnPostModel.Qtht_AspNetUsers" Role="Qtht_AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="vta.VnPostModel.Qtht_AspNetUserLogins" Role="Qtht_AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Type="vta.VnPostModel.Qtht_AspNetUsers" Role="Qtht_AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="vta.VnPostModel.Qtht_AspNetUserRoles" Role="Qtht_AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qtht_AspNetUsers_Qtht_Company">
+          <End Type="vta.VnPostModel.Qtht_Company" Role="Qtht_Company" Multiplicity="0..1" />
+          <End Type="vta.VnPostModel.Qtht_AspNetUsers" Role="Qtht_AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_AspNetUsers">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qtht_Company_Qtht_Company">
+          <End Type="vta.VnPostModel.Qtht_Company" Role="Qtht_Company" Multiplicity="0..1" />
+          <End Type="vta.VnPostModel.Qtht_Company" Role="Qtht_Company1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_Company1">
+              <PropertyRef Name="ParentCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Qtht_AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Qtht_AspNetUsers" Relationship="vta.VnPostModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="Qtht_AspNetUserClaims" ToRole="Qtht_AspNetUsers" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="vta.VnPostModel.Qtht_AspNetUsers" Role="Qtht_AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="vta.VnPostModel.Qtht_AspNetUserClaims" Role="Qtht_AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qtht_AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Qtht_AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="O_OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int64" />
+          <Property Name="ProductId" Type="Int64" Nullable="false" />
+          <Property Name="ProductColorCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" />
+          <Property Name="Combo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Discount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DiscountCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="O_Order" Relationship="vta.VnPostModel.FK_O_OrderDetail_O_Order" FromRole="O_OrderDetail" ToRole="O_Order" />
+        </EntityType>
+        <Association Name="FK_O_OrderDetail_O_Order">
+          <End Type="vta.VnPostModel.O_Order" Role="O_Order" Multiplicity="0..1" />
+          <End Type="vta.VnPostModel.O_OrderDetail" Role="O_OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="O_Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="O_OrderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="vtaVnPostModelStoreContainer" CdmEntityContainer="SqlDbContext">
+          <EntitySetMapping Name="DM_CommonData">
+            <EntityTypeMapping TypeName="vta.VnPostModel.DM_CommonData">
+              <MappingFragment StoreEntitySet="DM_CommonData">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M_VnPostVta">
+            <EntityTypeMapping TypeName="vta.VnPostModel.M_VnPostVta">
+              <MappingFragment StoreEntitySet="M_VnPostVta">
+                <ScalarProperty Name="ListStoreCode" ColumnName="ListStoreCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_Order">
+            <EntityTypeMapping TypeName="vta.VnPostModel.O_Order">
+              <MappingFragment StoreEntitySet="O_Order">
+                <ScalarProperty Name="ShippingUserId" ColumnName="ShippingUserId" />
+                <ScalarProperty Name="ConfirmCode" ColumnName="ConfirmCode" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DiscountDetail" ColumnName="DiscountDetail" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="OrderSoId" ColumnName="OrderSoId" />
+                <ScalarProperty Name="OrderTypeId" ColumnName="OrderTypeId" />
+                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_OrderHistory">
+            <EntityTypeMapping TypeName="vta.VnPostModel.O_OrderHistory">
+              <MappingFragment StoreEntitySet="O_OrderHistory">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="StatusOrder" ColumnName="StatusOrder" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_OrderType">
+            <EntityTypeMapping TypeName="vta.VnPostModel.O_OrderType">
+              <MappingFragment StoreEntitySet="O_OrderType">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_Category">
+            <EntityTypeMapping TypeName="vta.VnPostModel.P_Category">
+              <MappingFragment StoreEntitySet="P_Category">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SeoKeyword" ColumnName="SeoKeyword" />
+                <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+                <ScalarProperty Name="SeoTitle" ColumnName="SeoTitle" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="IdPath" ColumnName="IdPath" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_Happycare">
+            <EntityTypeMapping TypeName="vta.VnPostModel.P_Happycare">
+              <MappingFragment StoreEntitySet="P_Happycare">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="BVTDPrice" ColumnName="BVTDPrice" />
+                <ScalarProperty Name="BVTDCode" ColumnName="BVTDCode" />
+                <ScalarProperty Name="GHBHPrice" ColumnName="GHBHPrice" />
+                <ScalarProperty Name="GHBHCode" ColumnName="GHBHCode" />
+                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="HappyCareId" ColumnName="HappyCareId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_Product">
+            <EntityTypeMapping TypeName="vta.VnPostModel.P_Product">
+              <MappingFragment StoreEntitySet="P_Product">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SeoKeyword" ColumnName="SeoKeyword" />
+                <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+                <ScalarProperty Name="SeoTitle" ColumnName="SeoTitle" />
+                <ScalarProperty Name="ProductStandardDesc" ColumnName="ProductStandardDesc" />
+                <ScalarProperty Name="ProductStandardImage" ColumnName="ProductStandardImage" />
+                <ScalarProperty Name="ProductDesc" ColumnName="ProductDesc" />
+                <ScalarProperty Name="ProductShortDesc" ColumnName="ProductShortDesc" />
+                <ScalarProperty Name="ProductFeatures" ColumnName="ProductFeatures" />
+                <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+                <ScalarProperty Name="PriceExpected" ColumnName="PriceExpected" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="IdPath" ColumnName="IdPath" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Sellonline" ColumnName="Sellonline" />
+                <ScalarProperty Name="ShowPriceOnline" ColumnName="ShowPriceOnline" />
+                <ScalarProperty Name="ShowPriceOffline" ColumnName="ShowPriceOffline" />
+                <ScalarProperty Name="ButtonBuy" ColumnName="ButtonBuy" />
+                <ScalarProperty Name="ButtonPrice" ColumnName="ButtonPrice" />
+                <ScalarProperty Name="StatusExsit" ColumnName="StatusExsit" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_ProductImage">
+            <EntityTypeMapping TypeName="vta.VnPostModel.P_ProductImage">
+              <MappingFragment StoreEntitySet="P_ProductImage">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ImageDescription" ColumnName="ImageDescription" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="ProductColorCode" ColumnName="ProductColorCode" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qtht_ActionActionGroupRefs">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Qtht_ActionActionGroupRefs">
+              <MappingFragment StoreEntitySet="Qtht_ActionActionGroupRefs">
+                <ScalarProperty Name="ActionGroupId" ColumnName="ActionGroupId" />
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qtht_ActionGroups">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Qtht_ActionGroups">
+              <MappingFragment StoreEntitySet="Qtht_ActionGroups">
+                <ScalarProperty Name="CodeName" ColumnName="CodeName" />
+                <ScalarProperty Name="IsPrivate" ColumnName="IsPrivate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qtht_ActionRoleRefs">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Qtht_ActionRoleRefs">
+              <MappingFragment StoreEntitySet="Qtht_ActionRoleRefs">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qtht_Actions">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Qtht_Actions">
+              <MappingFragment StoreEntitySet="Qtht_Actions">
+                <ScalarProperty Name="ListRole" ColumnName="ListRole" />
+                <ScalarProperty Name="CodeName" ColumnName="CodeName" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="ActionDisplayName" ColumnName="ActionDisplayName" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="PublicDomainName" ColumnName="PublicDomainName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qtht_ActionUserRefs">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Qtht_ActionUserRefs">
+              <MappingFragment StoreEntitySet="Qtht_ActionUserRefs">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+                <ScalarProperty Name="CanDo" ColumnName="CanDo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qtht_AspNetRoles">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Qtht_AspNetRoles">
+              <MappingFragment StoreEntitySet="Qtht_AspNetRoles">
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qtht_AspNetUserLogins">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Qtht_AspNetUserLogins">
+              <MappingFragment StoreEntitySet="Qtht_AspNetUserLogins">
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="RefKey" ColumnName="RefKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qtht_AspNetUserRoles">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Qtht_AspNetUserRoles">
+              <MappingFragment StoreEntitySet="Qtht_AspNetUserRoles">
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qtht_AspNetUsers">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Qtht_AspNetUsers">
+              <MappingFragment StoreEntitySet="Qtht_AspNetUsers">
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="PasswordResetTokenExpire" ColumnName="PasswordResetTokenExpire" />
+                <ScalarProperty Name="PasswordResetToken" ColumnName="PasswordResetToken" />
+                <ScalarProperty Name="EmailConfirmTokenExpire" ColumnName="EmailConfirmTokenExpire" />
+                <ScalarProperty Name="EmailConfirmToken" ColumnName="EmailConfirmToken" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LastUpdateStatusDate" ColumnName="LastUpdateStatusDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="AllowRecievedNews" ColumnName="AllowRecievedNews" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="PersonalId" ColumnName="PersonalId" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qtht_Company">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Qtht_Company">
+              <MappingFragment StoreEntitySet="Qtht_Company">
+                <ScalarProperty Name="CompanyLevel" ColumnName="CompanyLevel" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ParentCompanyId" ColumnName="ParentCompanyId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qtht_UserLoginTokens">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Qtht_UserLoginTokens">
+              <MappingFragment StoreEntitySet="Qtht_UserLoginTokens">
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="vta.VnPostModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_OrderCondition">
+            <EntityTypeMapping TypeName="vta.VnPostModel.O_OrderCondition">
+              <MappingFragment StoreEntitySet="O_OrderCondition">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="StatusNext" ColumnName="StatusNext" />
+                <ScalarProperty Name="StatusCurrent" ColumnName="StatusCurrent" />
+                <ScalarProperty Name="GroupUser" ColumnName="GroupUser" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_ProductColor">
+            <EntityTypeMapping TypeName="vta.VnPostModel.P_ProductColor">
+              <MappingFragment StoreEntitySet="P_ProductColor">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ColorImage" ColumnName="ColorImage" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+                <ScalarProperty Name="ProductColorCode" ColumnName="ProductColorCode" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qtht_AspNetUserClaims">
+            <EntityTypeMapping TypeName="vta.VnPostModel.Qtht_AspNetUserClaims">
+              <MappingFragment StoreEntitySet="Qtht_AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="O_OrderDetail">
+            <EntityTypeMapping TypeName="vta.VnPostModel.O_OrderDetail">
+              <MappingFragment StoreEntitySet="O_OrderDetail">
+                <ScalarProperty Name="DiscountCode" ColumnName="DiscountCode" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Combo" ColumnName="Combo" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductColorCode" ColumnName="ProductColorCode" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

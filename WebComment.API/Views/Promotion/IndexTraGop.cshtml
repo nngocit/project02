@@ -1,0 +1,173 @@
+﻿@using WebComment.Commons
+@{
+    Layout = "~/Views/Shared/_LayoutVnpost.cshtml";
+}
+<div id="main-content">
+
+    <div class="container">
+        <ol class="breadcrumb breadcrumb-sanpham">
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Điện thoại, smartphones</a></li>
+            <li><a href="#">Sony</a></li>
+            <li class="active">Sony Xperia Z3 Plus</li>
+        </ol>
+    </div>
+
+
+    <div class="container tragop">
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="banner-tragop-large vtap-slideshow" id="dn-slide">
+                    <div>
+                        <img src="/Content/images/tragop/banner-muatragop.png" class="img-responsive center-block" alt="Tra gop">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <!-- Nav tabs -->
+                <ul class="clearlist list-inline tg-button-group" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#qttragop" aria-controls="qttragop" role="tab" data-toggle="tab">
+                            <div class="tg-quytrinh-btn tg-sprite">
+                                Thủ tục - quy trình
+                            </div>
+                        </a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a onclick="javascript:VtaJsPC.service.AddPaymentPC('0', '@Globals.OrderType.TraGop');" href="/thanh-toan.html">
+                            <div class="tg-dangky-btn tg-sprite">Đăng ký mua trả góp</div>
+                        </a>
+                    </li>
+                    @*<li role="presentation"><a href="#kmtragop" aria-controls="kmtragop" role="tab" data-toggle="tab"><div class="tg-khuyenmai-btn tg-sprite">Khuyến mãi trả góp</div></a></li>*@
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="qttragop">
+                        <h3 class="text-uppercase">1. Thủ tục trả góp</h3>
+                        <div class="table-responsive">
+                            <table class="table table-bordered tg-table">
+                                <tr>
+                                    <td class="text-center">
+                                        <img src="/Content/images/tragop/home-credit-logo.jpg" class="img-responsive center-block" alt="" width="120">
+                                    </td>
+                                    <td style="line-height: 1.8; font-size: 16px">
+                                        <b>Thời gian duyệt hồ sơ:</b> 15-30 phút <br>
+                                        <b>Tuổi:</b> 20 - 60 tuổi <br>
+                                        <b>Thủ tục:</b> CMND + Hộ khẩu (có thể thay bằng lái xe nếu khoản vay dưới 10 triệu) <br>
+                                        <b>Giá trị sản phẩm:</b> >= 1.25 triệu <br>
+                                        <b>Trả trước:</b> 20% <br>
+                                        <b>Khác:</b> Có thể mua kèm sản phẩm linh phụ kiện khác <br>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <h3 class="text-uppercase">2. Quy trình mua trả góp</h3>
+                        <div class="indent">
+                            <h4>Cách 1: Đến trực tiếp bất kì chi nhánh của Viễn Thông A</h4>
+                            <ul class="clearlist">
+                                <li>- Sẽ có nhân viên hỗ trợ tư vấn trong việc lựa chọn sản phẩm phù hợp và hướng dẫn cách làm thủ tục mua góp</li>
+                                <li>- Bạn đợt xét duyệt hồ sơ trong khoản 15 phút trở lên tùy tình trạng hồ sơ và tùy từng nhà tài chính</li>
+                                <li>- Nếu hồ sơ được DUYỆT, bạn sẽ thanh toán khoản trả trước như đã chọn ban đầu và nhận ngay sản phẩm.</li>
+                                <li>- Hàng tháng bạn đến ngân hàng hoặc đến Viễn Thông A gần nhất để thanh toán khoản vay theo thỏa thuận trong hợp đồng ( nhân viên sẽ hướng dẫn địa chỉ cụ thể cho bạn).</li>
+                            </ul>
+
+                            <h4>Cách 2: Làm hồ sơ bằng cách đăng ký thông tin trên website</h4>
+                            <ul class="clearlist">
+                                <li>- Lựa chọn sản phẩm trên website, sau đó click vào phần mua trả góp để đăng ký.</li>
+                                <li>- Trong vòng 24h sẽ có nhân viên liên hệ bạn để làm hồ sơ.</li>
+                                <li>- Khi có kết quả DUYỆT, bạn vui lòng đem hồ sơ như đã yêu cầu đến bất kỳ chi nhánh nào của Viễn Thông A để nhận sản phẩm.</li>
+                                <li>=> Cách này sẽ giúp cho bạn đỡ mất thời gian di chuyển và chờ đợi.</li>
+                                <li>Hãy đến ngay trung tâm Viễn Thông A trên toàn quốc, hoặc liên hệ hotline <b>1900 545446 (nhấn phím 2)</b> để biết thêm chi tiết.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="kmtragop">
+                        <div class="kmtragop-list">
+                            <div class="row">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+<div id="tragop-pop-up" style="max-width: 980px; display: none">
+
+
+    <div class="product-pop-up">
+
+        <h3 class="text-uppercase">1. Thủ tục trả góp</h3>
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered tg-table">
+
+
+                <tr>
+                    <td class="text-center">
+
+                        <img src="/Content/images/tragop/home-credit-logo.jpg" class="img-responsive center-block" alt="" width="150">
+
+                    </td>
+
+                    <td style="line-height: 1.8; font-size: 16px">
+                        <b>Thời gian duyệt hồ sơ:</b> 15-30 phút <br>
+                        <b>Tuổi:</b> 20 - 60 tuổi <br>
+                        <b>Thủ tục:</b> CMND + Hộ khẩu (có thể thay bằng lái xe nếu khoản vay dưới 10 triệu) <br>
+                        <b>Giá trị sản phẩm:</b> >= 1.25 triệu <br>
+                        <b>Trả trước:</b> 20% <br>
+                        <b>Khác:</b> Có thể mua kèm sản phẩm linh phụ kiện khác <br>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+
+
+        <h3 class="text-uppercase">2. Quy trình mua trả góp</h3>
+
+        <div class="indent">
+            <h4>Cách 1: Đến trực tiếp bất kì chi nhánh của Viễn Thông A</h4>
+            <ul class="clearlist">
+                <li>- Sẽ có nhân viên hỗ trợ tư vấn trong việc lựa chọn sản phẩm phù hợp và hướng dẫn cách làm thủ tục mua góp</li>
+                <li>- Bạn đợt xét duyệt hồ sơ trong khoản 15 phút trở lên tùy tình trạng hồ sơ và tùy từng nhà tài chính</li>
+                <li>- Nếu hồ sơ được DUYỆT, bạn sẽ thanh toán khoản trả trước như đã chọn ban đầu và nhận ngay sản phẩm.</li>
+                <li>- Hàng tháng bạn đến ngân hàng hoặc đến Viễn Thông A gần nhất để thanh toán khoản vay theo thỏa thuận trong hợp đồng ( nhân viên sẽ hướng dẫn địa chỉ cụ thể cho bạn).</li>
+            </ul>
+
+            <h4>Cách 2: Làm hồ sơ bằng cách đăng ký thông tin trên website</h4>
+            <ul class="clearlist">
+                <li>- Lựa chọn sản phẩm trên website, sau đó click vào phần mua trả góp để đăng ký.</li>
+                <li>- Trong vòng 24h sẽ có nhân viên liên hệ bạn để làm hồ sơ.</li>
+                <li>- Khi có kết quả DUYỆT, bạn vui lòng đem hồ sơ như đã yêu cầu đến bất kỳ chi nhánh nào của Viễn Thông A để nhận sản phẩm.</li>
+                <li>=> Cách này sẽ giúp cho bạn đỡ mất thời gian di chuyển và chờ đợi.</li>
+                <li>Hãy đến ngay trung tâm Viễn Thông A trên toàn quốc, hoặc liên hệ hotline <b>1900 545446 (nhấn phím 2)</b> để biết thêm chi tiết.</li>
+            </ul>
+        </div>
+
+
+    </div>
+
+</div>

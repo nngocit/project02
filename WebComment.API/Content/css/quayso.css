@@ -1,0 +1,367 @@
+/*Import folder utils*/
+.body-font {
+  font-family: Arial, Helvetica,"DejaVu Sans","Liberation Sans",Freesans,sans-serif;
+}
+
+.heading-font {
+  font-family: Arial, Helvetica,"DejaVu Sans","Liberation Sans",Freesans,sans-serif;
+}
+
+.condensed-font {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+/*Using bourbon*/
+/*Using compass */
+/*@import "compass";*/
+/*$breakpoints: (
+        'mobile'  : ( min-width:  480px ),
+        'small'  : ( min-width:  768px ),
+        'medium' : ( min-width:  992px ),
+        'large'  : ( min-width: 1200px )
+);*/
+/*
+$breakpoints: (
+        'x-mobile' : ( max-width:  479px ),
+        'mobile'  : ( max-width:  767px ),
+        'small' : ( max-width:  991px ),
+        'medium'  : ( max-width: 1199px ),
+        'desktop'  : ( max-width: 1400px )
+);
+*/
+.spinner {
+  margin: 20px auto 20px;
+  width: 70px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #96989B;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+#quayso-container {
+  background: url(../images/quayso/background.jpg) no-repeat;
+  background-size: cover;
+  color: black;
+  padding: 80px 50px 90px;
+  position: relative;
+}
+
+@media (max-width: 991px) {
+  #quayso-container {
+    padding: 80px 20px 90px;
+  }
+}
+
+.thele {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px 15px;
+  color: white;
+  float: right;
+  font-size: 16px;
+}
+
+.thele .countdown2 {
+  display: inline-block;
+}
+
+.thele .countdown2 span:not(.label) {
+  color: #F15A29;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.thele--orange {
+  font-size: 18px;
+  color: #FBB040;
+  font-weight: bold;
+}
+
+.thele--orange:hover {
+  color: #d17f04;
+}
+
+.people {
+  margin-bottom: 20px;
+}
+
+.people__title {
+  margin-bottom: 0;
+  font-weight: normal;
+  font-size: 15px;
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.people__title:after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 1px;
+  background-color: black;
+  left: 107%;
+  top: 14px;
+}
+
+@media (max-width: 991px) {
+  .people__title:after {
+    width: 15%;
+  }
+}
+
+.people__title:before {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 1px;
+  background-color: black;
+  right: 107%;
+  top: 14px;
+}
+
+@media (max-width: 991px) {
+  .people__title:before {
+    width: 15%;
+  }
+}
+
+.people__number {
+  font-weight: bold;
+  font-size: 30px;
+  color: #2E318D;
+}
+
+.qs {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.qs__dvt {
+  float: right;
+  position: absolute;
+  top: -25px;
+  right: 6px;
+}
+
+.qs__action {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+}
+
+.qs__number-contain {
+  overflow: hidden;
+  height: 105px;
+}
+
+.qs__number {
+  height: 141px;
+  overflow: hidden;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  float: left;
+  width: 25%;
+  text-align: center;
+  background: url(../images/quayso/number-bg-1.png) left top no-repeat, url(../images/quayso/number-bg-3.png) right top no-repeat, url(../images/quayso/number-bg-2.png) center top repeat-x;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+.qs__button {
+  display: block;
+  margin: 0 auto;
+  width: 156px;
+  height: 46px;
+  background: url(../images/quayso/button.png) no-repeat top left;
+  -webkit-transition: none !important;
+          transition: none !important;
+  text-indent: -9999px;
+}
+
+.qs__button:hover {
+  background-position: bottom left;
+}
+
+.qs__button2 {
+  margin: 30px 0 10px;
+}
+
+.qs__button2 a {
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-transform: uppercase;
+  padding: 8px 17px;
+  margin-bottom: 10px;
+}
+
+.warning__solanquay {
+  padding: 5px 0;
+  color: #AF0915;
+}
+
+.warning__form {
+  color: #AF0915;
+}
+
+.success-border {
+  border: 1px dashed #0A116D;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.success {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 5px 15px 3px;
+  font-size: 18px;
+  display: inline-block;
+  background: #F2F2F2;
+  border-radius: 5px;
+  line-height: 1.2;
+}
+
+.success span {
+  font-size: 30px;
+  font-weight: bold;
+  color: #ED1C24;
+  display: block;
+}
+
+.sp__title {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+
+.sp__meta {
+  color: #6D6E71;
+}
+
+.sp__price {
+  font-size: 25px;
+  font-weight: bold;
+  color: #D60F1E;
+  margin-bottom: 15px;
+}
+
+.sp__meta2 {
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.sp__meta3 {
+  margin-top: 15px;
+  margin-bottom: -5px;
+  font-size: 13px;
+  color: #0B27B2;
+}
+
+.qs-line-form {
+  margin-bottom: 10px;
+}
+
+.qs-line-form .input {
+  border: 1px solid #A7A9AC;
+}
+
+.qs-line-form .input:hover {
+  border-color: #0A116D;
+}
+
+#pop-thele {
+  background: url("../images/quayso/bg-thele.jpg") repeat-y;
+  border-radius: 20px;
+}
+
+#pop-award {
+  background: url("../images/quayso/bg-award.jpg") repeat-y;
+  border-radius: 20px;
+}
+
+.pop__container {
+  padding: 15px 15px;
+}
+
+.pop__container2 {
+  padding: 15px 70px;
+}
+
+.pop__container2 .qs__button2 {
+  margin: 10px 0;
+}
+
+@media (max-width: 991px) {
+  .pop__container2 {
+    padding: 15px 15px;
+  }
+}
+
+.pop__title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #EF4136;
+  text-transform: uppercase;
+  font-weight: normal;
+  border-bottom: 1px solid #EF4136;
+}
+
+.pop__winner {
+  font-size: 23px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.pop__info {
+  font-size: 18px;
+}
+
+.pop__info span {
+  color: #ED1C24;
+  font-weight: bold;
+}

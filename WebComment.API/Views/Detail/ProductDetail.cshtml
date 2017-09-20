@@ -1,0 +1,183 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutVnpost.cshtml";
+}
+@model WebComment.API.Models.DetailModel
+
+<input type="hidden" id="productId" value="@Model.Product.ProductId" />
+<input type="hidden" id="product_code" value="@Model.Product.ProductCode" />
+<input type="hidden" id="rootCategory" value="@Model.Product.RootCategoryId" />
+<div id="main-content">
+@Html.Partial("Partial/ProductTop", Model)
+<!--end product-detail-->
+<br>
+<div id="detail-menu">
+    <div class="container">
+        <ul class="list-inline pull-left">
+            <li class="">
+            @if(Model.ListImage.Any(c => c.Type == "N"))
+            {
+                <a href="#dacdiemnoibat"> <i class="vta-star"></i> Điểm nổi bật</a>
+            }
+            <li>
+            @if (!String.IsNullOrEmpty(Model.Product.ProductFeaturesRl))
+            {
+                <a href="#thongsokythuat"> <i class="vta-info"></i> Thông số</a>
+            }
+            <li>
+            @if (Model.ListImage.Any(c => c.Type == "D"))
+            {
+                <a href="#hinhanh"> <i class="vta-info-picture"></i> Hình ảnh</a>
+            }
+            <li>
+            @if (!string.IsNullOrEmpty(Model.Product.ProductShortDesc) || !string.IsNullOrEmpty(Model.Product.ProductDesc))
+            {
+                <a href="#baiviet"> <i class="vta-news-widget"></i> Bài viết</a>
+            }
+            @*<li>
+                    <a href="#sosanh"> <i class="vta-compare"></i> So sánh</a>
+                <li>
+                    <a href="#binhluan"> <i class="vta-comment"></i> Bình luận</a>*@
+        </ul>
+
+    </div>
+</div>
+<br>
+<br>
+<div class="container">
+
+    @Html.Partial("Partial/ImageNoiBat", Model.ListImage)
+
+
+
+    <div class="row no-gutter">
+
+        <div class="col-sm-7">
+
+            @Html.Partial("Partial/ThongSokyThuat", Model)
+
+            @Html.Partial("Partial/ImageProduct", Model)
+
+
+            <div id="baiviet" class="onepageNav">
+                <div class="">
+                        @Html.Partial("Partial/ProductShortDesc", Model.Product.ProductShortDesc)
+
+                 
+                </div>
+                <!--end row-->
+                @if (!string.IsNullOrEmpty(Model.Product.ProductShortDesc))
+                {
+                    @Html.Partial("Partial/ProductDesc", Model.Product.ProductDesc)
+                }
+                else
+                {
+                    @Html.Partial("Partial/ProductDescCollapse", Model.Product.ProductDesc)
+                }
+
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-4 col-sm-push-1">
+
+            @Html.Partial("Partial/BoSanPhamChuan", Model)
+
+            <br/>
+            <br />
+
+            @Html.Partial("Partial/ProductMuonMua", Model)
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+<!--end id hinhanh-->
+
+<!--end id baiviet-->
+@Html.Partial("Partial/SoSanh")
+<!--end id sosanh-->
+@*
+<div class="tu-khoa-lien-quan">
+    $1$<ul class="list-inline">
+        <li>Từ khóa liên quan : </li>
+        <li><a href="">Lumia 730</a></li>
+        <li><a href="">LG G3</a></li>
+        <li><a href="">Galaxy J1</a></li>
+        <li><a href="">Lumia 1520</a></li>
+        <li><a href="">Iphone 5s</a></li>
+        <li><a href="">Xperia Z2</a></li>
+        <li><a href="">Zenfone 5</a></li>
+        <li><a href="">Lumia 630</a></li>
+    </ul>#1#
+</div>*@
+<div id="binhluan" class="onepageNav">
+</div>
+
+
+
+</div>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".various").fancybox({
+            prevEffect: 'none',
+            nextEffect: 'none',
+            title: '',
+            helpers: {
+
+            },
+            tpl: {
+                error: '<p class="fancybox-error">Nội dung không hiển thị<br/>Vui lòng xem lại.</p>',
+                closeBtn: '<a title="Đóng cửa sổ" class="pop-up-close" href="javascript:;"><i class="vta-close"></i></a>'
+            }
+        });
+    });
+
+    function init_choose_color() {
+        "use strict";
+        var iconcolor = $(".detail-product .product-color:not(.disable)");
+        var imageChange = $(".detail-product").find(".detail-img img");
+        iconcolor.on("click", function () {
+
+            if ($(this).hasClass("selected")) iconcolor.each(function () {
+                $(this).sibling.removeClass("selected");
+            });
+            else {
+                iconcolor.each(function () {
+                    $(this).removeClass("selected");
+                });
+                $(this).addClass("selected");
+            }
+
+            var url;
+            var color = $(this).data("href");
+            var colorid = $(this).data("idcolor");
+            var productid = $('#productId').val();
+            debugger;
+            $.ajax({
+                type: 'get',
+                data: { "id": productid, "color": color },
+                url: '/Detail/GetImageByColor',
+                success: function (data) {
+                    try {
+                        url = data;
+                        $('#ColorProduct').val(colorid);
+                    } catch (e) {
+                    }
+                    imageChange.prop("src", url);
+                }
+
+            });
+            return false;
+        });
+
+    }
+</script>
+}

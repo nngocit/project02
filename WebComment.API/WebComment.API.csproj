@@ -1,0 +1,1037 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3DF0F418-5B1C-4CC0-A592-511344E47D68}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebComment.API</RootNamespace>
+    <AssemblyName>WebComment.API</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\WebComment.Swagger.API.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.2.6.3.862\lib\NET40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Configuration">
+      <HintPath>..\packages\Autofac.2.6.3.862\lib\NET40\Autofac.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Web-Comment-renew\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Web-Comment-renew\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Web-Comment-renew\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Web-Comment-renew\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>C:\Users\NNIT\AppData\Local\Packages\Microsoft.SkypeApp_kzf8qxf38zg5c\LocalState\Downloads\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReportViewer.WebForms.12.0.2402.20\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi">
+      <HintPath>..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.WebApi.DependencyResolver, Version=0.1.4758.24814, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.WebApi.DependencyResolver.0.1.4758.24814\lib\net45\Ninject.WebApi.DependencyResolver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PhoneNumbers, Version=8.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\libphonenumber-csharp.8.3.1.1\lib\PhoneNumbers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\Web-Comment-renew\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.5.3\lib\net40\Swashbuckle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Cors">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebApi.OutputCache.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\WebApi.OutputCache.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WebApi.OutputCache.V2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\WebApi.OutputCache.V2.dll</HintPath>
+    </Reference>
+    <Reference Include="WebApiContrib.IoC.Autofac">
+      <HintPath>..\packages\WebApiContrib.IoC.Autofac.0.9.3.0\lib\net40\WebApiContrib.IoC.Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="WebApiContrib.IoC.Ninject">
+      <HintPath>..\packages\WebApiContrib.IoC.Ninject.0.9.3.0\lib\net40\WebApiContrib.IoC.Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\SwaggerConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="CustomAttributes\PermissionActionFilter.cs" />
+    <Compile Include="DAL\GenericRepository.cs" />
+    <Compile Include="DAL\IUnitOfWork.cs" />
+    <Compile Include="DAL\UnitOfWork.cs" />
+    <Compile Include="Enums\WebCommentApiHeaders.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\DataCache.cs" />
+    <Compile Include="Helper\StaticDataHelper.cs" />
+    <Compile Include="IServices\IBannerServices.cs" />
+    <Compile Include="IServices\ICommentService.cs" />
+    <Compile Include="IServices\IHomeService.cs" />
+    <Compile Include="Models\BannerModel.cs" />
+    <Compile Include="Models\BranchModel.cs" />
+    <Compile Include="Models\BusinessOrderModel.cs" />
+    <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\DetailModel.cs" />
+    <Compile Include="Models\HttpContentResult.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MenuModel.cs" />
+    <Compile Include="Models\RoleModels.cs" />
+    <Compile Include="Models\SinhVienPage.cs" />
+    <Compile Include="Views\StoreModels.cs" />
+    <Compile Include="Models\ProductModels.cs" />
+    <Compile Include="Models\UserModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BannerServices.cs" />
+    <Compile Include="Services\CommentService.cs" />
+    <Compile Include="Services\HomeService.cs" />
+    <Compile Include="Services\PriceService.cs.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AffiliateViewModel.cs" />
+    <Compile Include="ViewModels\BusinessProductViewModel.cs" />
+    <Compile Include="ViewModels\BusinessViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\readme.txt" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\css\bootstrap-datepicker.css" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\css\bootstrap-datepicker.standalone.min.css" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\css\bootstrap-datepicker3.css" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\css\bootstrap-datepicker3.min.css" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.css" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\css\bootstrap-datepicker3.standalone.min.css" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\js\bootstrap-datepicker.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\js\bootstrap-datepicker.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ar.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.az.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.bg.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.bs.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ca.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.cs.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.cy.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.da.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.de.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.el.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.en-GB.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.es.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.et.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.eu.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fa.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fi.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fo.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fr-CH.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.fr.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.gl.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.he.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hr.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hu.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.hy.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.id.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.is.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.it-CH.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.it.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ja.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ka.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.kh.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.kk.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.kr.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.lt.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.lv.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.me.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.mk.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ms.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.nb.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.nl-BE.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.nl.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.no.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.pl.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.pt.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ro.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.rs-latin.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.rs.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.ru.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sk.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sl.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sq.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sr-latin.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sr.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sv.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.sw.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.th.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.tr.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.uk.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.vi.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.zh-CN.min.js" />
+    <Content Include="Content\bower_min\bootstrap-datepicker\dist\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap-sprockets.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap.min.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap\affix.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap\alert.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap\button.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap\carousel.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap\collapse.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap\dropdown.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap\modal.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap\popover.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap\scrollspy.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap\tab.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap\tooltip.js" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\javascripts\bootstrap\transition.js" />
+    <Content Include="Content\bower_min\chosen\chosen-sprite%402x.png" />
+    <Content Include="Content\bower_min\chosen\chosen-sprite.png" />
+    <Content Include="Content\bower_min\chosen\chosen.jquery.min.js" />
+    <Content Include="Content\bower_min\chosen\chosen.min.css" />
+    <Content Include="Content\bower_min\fancybox\.gitattributes" />
+    <Content Include="Content\bower_min\fancybox\demo\1_b.jpg" />
+    <Content Include="Content\bower_min\fancybox\demo\1_s.jpg" />
+    <Content Include="Content\bower_min\fancybox\demo\2_b.jpg" />
+    <Content Include="Content\bower_min\fancybox\demo\2_s.jpg" />
+    <Content Include="Content\bower_min\fancybox\demo\3_b.jpg" />
+    <Content Include="Content\bower_min\fancybox\demo\3_s.jpg" />
+    <Content Include="Content\bower_min\fancybox\demo\4_b.jpg" />
+    <Content Include="Content\bower_min\fancybox\demo\4_s.jpg" />
+    <Content Include="Content\bower_min\fancybox\demo\5_b.jpg" />
+    <Content Include="Content\bower_min\fancybox\demo\5_s.jpg" />
+    <Content Include="Content\bower_min\fancybox\demo\ajax.txt" />
+    <Content Include="Content\bower_min\fancybox\demo\iframe.html" />
+    <Content Include="Content\bower_min\fancybox\demo\index.html" />
+    <Content Include="Content\bower_min\fancybox\lib\jquery-1.10.1.min.js" />
+    <Content Include="Content\bower_min\fancybox\lib\jquery-1.9.0.min.js" />
+    <Content Include="Content\bower_min\fancybox\lib\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="Content\bower_min\fancybox\source\blank.gif" />
+    <Content Include="Content\bower_min\fancybox\source\fancybox_loading%402x.gif" />
+    <Content Include="Content\bower_min\fancybox\source\fancybox_loading.gif" />
+    <Content Include="Content\bower_min\fancybox\source\fancybox_overlay.png" />
+    <Content Include="Content\bower_min\fancybox\source\fancybox_sprite%402x.png" />
+    <Content Include="Content\bower_min\fancybox\source\fancybox_sprite.png" />
+    <Content Include="Content\bower_min\fancybox\source\helpers\fancybox_buttons.png" />
+    <Content Include="Content\bower_min\fancybox\source\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="Content\bower_min\fancybox\source\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="Content\bower_min\fancybox\source\helpers\jquery.fancybox-media.js" />
+    <Content Include="Content\bower_min\fancybox\source\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="Content\bower_min\fancybox\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="Content\bower_min\fancybox\source\jquery.fancybox.css" />
+    <Content Include="Content\bower_min\fancybox\source\jquery.fancybox.js" />
+    <Content Include="Content\bower_min\fancybox\source\jquery.fancybox.pack.js" />
+    <Content Include="Content\bower_min\jQuery-One-Page-Nav\jquery.nav.js" />
+    <Content Include="Content\bower_min\jquery-sticky\jquery.sticky.js" />
+    <Content Include="Content\bower_min\jquery.lazyload\jquery.lazyload.js" />
+    <Content Include="Content\bower_min\jquery.localScroll\jquery.localScroll.min.js" />
+    <Content Include="Content\bower_min\jquery.scrollTo\jquery.scrollTo.min.js" />
+    <Content Include="Content\bower_min\jquery\dist\jquery.js" />
+    <Content Include="Content\bower_min\jquery\dist\jquery.min.js" />
+    <Content Include="Content\bower_min\masonry\dist\masonry.pkgd.js" />
+    <Content Include="Content\bower_min\masonry\dist\masonry.pkgd.min.js" />
+    <Content Include="Content\bower_min\masonry\masonry.js" />
+    <Content Include="Content\bower_min\modernizr\modernizr.js" />
+    <Content Include="Content\bower_min\perfect-scrollbar\css\perfect-scrollbar.min.css" />
+    <Content Include="Content\bower_min\perfect-scrollbar\js\min\perfect-scrollbar.jquery.min.js" />
+    <Content Include="Content\bower_min\perfect-scrollbar\js\min\perfect-scrollbar.min.js" />
+    <Content Include="Content\bower_min\perfect-scrollbar\js\perfect-scrollbar.jquery.js" />
+    <Content Include="Content\bower_min\perfect-scrollbar\js\perfect-scrollbar.js" />
+    <Content Include="Content\bower_min\raty\lib\fonts\raty.svg" />
+    <Content Include="Content\bower_min\raty\lib\images\cancel-off.png" />
+    <Content Include="Content\bower_min\raty\lib\images\cancel-on.png" />
+    <Content Include="Content\bower_min\raty\lib\images\star-half.png" />
+    <Content Include="Content\bower_min\raty\lib\images\star-off.png" />
+    <Content Include="Content\bower_min\raty\lib\images\star-on.png" />
+    <Content Include="Content\bower_min\raty\lib\jquery.raty.css" />
+    <Content Include="Content\bower_min\raty\lib\jquery.raty.js" />
+    <Content Include="Content\bower_min\sweetalert\dist\sweetalert-dev.js" />
+    <Content Include="Content\bower_min\sweetalert\dist\sweetalert.css" />
+    <Content Include="Content\bower_min\sweetalert\dist\sweetalert.min.js" />
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\blank.gif" />
+    <Content Include="Content\css\bootstrap-custom.css" />
+    <Content Include="Content\css\bootstrap-datepicker3.css" />
+    <Content Include="Content\css\chiaseyeuthuong.css" />
+    <Content Include="Content\css\daterangepicker.css" />
+    <Content Include="Content\css\doanhnghiep.css" />
+    <Content Include="Content\css\fancybox_loading%402x.gif" />
+    <Content Include="Content\css\fancybox_loading.gif" />
+    <Content Include="Content\css\fancybox_overlay.png" />
+    <Content Include="Content\css\fancybox_sprite%402x.png" />
+    <Content Include="Content\css\fancybox_sprite.png" />
+    <Content Include="Content\css\header.css" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\min.css" />
+    <Content Include="Content\css\owlcarousel\AjaxLoader.gif" />
+    <Content Include="Content\css\owlcarousel\grabbing.png" />
+    <Content Include="Content\css\owlcarousel\owl.carousel.css" />
+    <Content Include="Content\css\owlcarousel\owl.theme.css" />
+    <Content Include="Content\css\owlcarousel\owl.transitions.css" />
+    <Content Include="Content\css\perfect-scrollbar.min.css" />
+    <Content Include="Content\css\quayso.css" />
+    <Content Include="Content\css\quayso2.css" />
+    <Content Include="Content\css\shopcuoinam.css" />
+    <Content Include="Content\css\slick-theme.css" />
+    <Content Include="Content\css\slick.css" />
+    <Content Include="Content\css\vtaplus.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\vta-icon\fonts\vta-icon.svg" />
+    <Content Include="Content\fonts\vta-icon\ie7\ie7.css" />
+    <Content Include="Content\fonts\vta-icon\ie7\ie7.js" />
+    <Content Include="Content\fonts\vta-icon\style.css" />
+    <Content Include="Content\images\banner-detail.png" />
+    <Content Include="Content\images\banner-km.jpg" />
+    <Content Include="Content\images\bg\banner-01-wt.jpg" />
+    <Content Include="Content\images\bg\banner-02-t.jpg" />
+    <Content Include="Content\images\bg\banner-03-t.jpg" />
+    <Content Include="Content\images\bg\banner-04-w.jpg" />
+    <Content Include="Content\images\bg\banner-h-1.jpg" />
+    <Content Include="Content\images\bg\banner-h-2.jpg" />
+    <Content Include="Content\images\bg\banner-h-3.jpg" />
+    <Content Include="Content\images\bg\banner-l-1.jpg" />
+    <Content Include="Content\images\bg\bg-menu-laptop.jpg" />
+    <Content Include="Content\images\bg\bg-menu-phone.jpg" />
+    <Content Include="Content\images\bg\bg-menu-phukien.jpg" />
+    <Content Include="Content\images\bg\bg-menu-tablet.jpg" />
+    <Content Include="Content\images\bg\bg-menu-vtaplus.jpg" />
+    <Content Include="Content\images\bg\bg-product-1.png" />
+    <Content Include="Content\images\bg\bg-special.jpg" />
+    <Content Include="Content\images\bg\bg-tin-codong.jpg" />
+    <Content Include="Content\images\bg\dang-ky-online-duyet-online-250x60.png" />
+    <Content Include="Content\images\bg\main-banner-1.jpg" />
+    <Content Include="Content\images\bg\main-banner-2.jpg" />
+    <Content Include="Content\images\bg\main-banner-3.jpg" />
+    <Content Include="Content\images\bg\menu-bg.jpg" />
+    <Content Include="Content\images\bg\product-image-2.png" />
+    <Content Include="Content\images\bg\quayve.png" />
+    <Content Include="Content\images\bg\trainghiem.png" />
+    <Content Include="Content\images\cup.png" />
+    <Content Include="Content\images\dangky-bct.png" />
+    <Content Include="Content\images\detail\300_lenovo-a1000-600.jpg" />
+    <Content Include="Content\images\detail\300_lenovo-vibe-p1m-1.jpg" />
+    <Content Include="Content\images\detail\300_ss-galaxy-s6-gold-300.jpg" />
+    <Content Include="Content\images\detail\detail-img-1.png" />
+    <Content Include="Content\images\detail\fail-icon.jpg" />
+    <Content Include="Content\images\detail\icon_vongquay.png" />
+    <Content Include="Content\images\detail\phukien.png" />
+    <Content Include="Content\images\detail\quayso\quayso1.png" />
+    <Content Include="Content\images\detail\quayso\quayso1_2x.png" />
+    <Content Include="Content\images\detail\quayso\quayso2.png" />
+    <Content Include="Content\images\detail\quayso\quayso2_2x.png" />
+    <Content Include="Content\images\detail\samsung-galaxy-grand-prime-g530-3.jpg" />
+    <Content Include="Content\images\detail\samsung-galaxy-grand-prime-g530-4.jpg" />
+    <Content Include="Content\images\detail\samsung-galaxy-grand-prime-g530-trang-11.jpg" />
+    <Content Include="Content\images\detail\tks-icon.jpg" />
+    <Content Include="Content\images\dichvu\dv-1.png" />
+    <Content Include="Content\images\dichvu\dv-2.png" />
+    <Content Include="Content\images\dichvu\dv-3.png" />
+    <Content Include="Content\images\dichvu\dv-4.png" />
+    <Content Include="Content\images\dichvu\dv-5.png" />
+    <Content Include="Content\images\dichvu\happy-care.png" />
+    <Content Include="Content\images\dichvu\happycare-logo.png" />
+    <Content Include="Content\images\dichvu\v-care.png" />
+    <Content Include="Content\images\fancybox\blank.gif" />
+    <Content Include="Content\images\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Content\images\fancybox\fancybox_loading.gif" />
+    <Content Include="Content\images\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\images\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Content\images\fancybox\fancybox_sprite.png" />
+    <Content Include="Content\images\fancybox\helpers\fancybox_buttons.png" />
+    <Content Include="Content\images\fancybox\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="Content\images\fancybox\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="Content\images\fancybox\helpers\jquery.fancybox-media.js" />
+    <Content Include="Content\images\fancybox\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="Content\images\fancybox\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="Content\images\fancybox\jquery.fancybox.css" />
+    <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\gioithieu\baovetoandien.png" />
+    <Content Include="Content\images\gioithieu\camket.png" />
+    <Content Include="Content\images\gioithieu\congdong\vta-tu-thien-1.jpg" />
+    <Content Include="Content\images\gioithieu\congdong\vta-tu-thien-2.jpg" />
+    <Content Include="Content\images\gioithieu\congdong\vta-tu-thien-3.jpg" />
+    <Content Include="Content\images\gioithieu\cuahang.jpg" />
+    <Content Include="Content\images\gioithieu\dacdiem.png" />
+    <Content Include="Content\images\gioithieu\giahanbaohanh.png" />
+    <Content Include="Content\images\gioithieu\tamnhin-sumenh.png" />
+    <Content Include="Content\images\happy-care.png" />
+    <Content Include="Content\images\icon-phone.png" />
+    <Content Include="Content\images\icon\goilai-chotoi.png" />
+    <Content Include="Content\images\icon\hotro-tructuyen.png" />
+    <Content Include="Content\images\icon\icon-maymoi.png" />
+    <Content Include="Content\images\icon\location-form-close.png" />
+    <Content Include="Content\images\icon\percent-icon.png" />
+    <Content Include="Content\images\location-form-close.png" />
+    <Content Include="Content\images\logo\logo-vienthongA.png" />
+    <Content Include="Content\images\logo\logo-vienthongA_2x.png" />
+    <Content Include="Content\images\logo\vbox.png" />
+    <Content Include="Content\images\logo\vbox_2x.png" />
+    <Content Include="Content\images\logo\vta-icon-gray.png" />
+    <Content Include="Content\images\logo\vta-icon.png" />
+    <Content Include="Content\images\logo\vta-icon_2x.png" />
+    <Content Include="Content\images\news\news-1.jpg" />
+    <Content Include="Content\images\news\news-main.jpg" />
+    <Content Include="Content\images\news\optimized-xperiaconcept1.jpg" />
+    <Content Include="Content\images\news\Uber-dua-don-mien-phi.jpg" />
+    <Content Include="Content\images\news\windows phone 10.jpg" />
+    <Content Include="Content\images\new\bo-ban-hang-chuan.jpg" />
+    <Content Include="Content\images\new\bvm.jpg" />
+    <Content Include="Content\images\new\galaxy-note-5-1.jpg" />
+    <Content Include="Content\images\new\galaxy-note-5-2.jpg" />
+    <Content Include="Content\images\new\galaxy-note-5-3.jpg" />
+    <Content Include="Content\images\new\galaxy-note-5-4.jpg" />
+    <Content Include="Content\images\new\galaxy-note-5-5.jpg" />
+    <Content Include="Content\images\popup\atm.png" />
+    <Content Include="Content\images\popup\mastercard.png" />
+    <Content Include="Content\images\popup\prefer-visa.jpg" />
+    <Content Include="Content\images\popup\visa.png" />
+    <Content Include="Content\images\products\h1.jpg" />
+    <Content Include="Content\images\products\h2.jpg" />
+    <Content Include="Content\images\products\hinh sp thu.jpg" />
+    <Content Include="Content\images\products\hinh-sp-thu-2.jpg" />
+    <Content Include="Content\images\products\hinh-sp-thu-special.png" />
+    <Content Include="Content\images\products\iphone_5s_gold.jpg" />
+    <Content Include="Content\images\products\product-1.jpg" />
+    <Content Include="Content\images\products\testhinh.jpg" />
+    <Content Include="Content\images\raty\cancel-off.png" />
+    <Content Include="Content\images\raty\cancel-on.png" />
+    <Content Include="Content\images\raty\star-half.png" />
+    <Content Include="Content\images\raty\star-off.png" />
+    <Content Include="Content\images\raty\star-on.png" />
+    <Content Include="Content\images\raty\star_empty.gif" />
+    <Content Include="Content\images\raty\star_full.gif" />
+    <Content Include="Content\images\sales\psale1.jpg" />
+    <Content Include="Content\images\sales\psale2.jpg" />
+    <Content Include="Content\images\sales\psale3.jpg" />
+    <Content Include="Content\images\sales\psale4.jpg" />
+    <Content Include="Content\images\sales\psale5.jpg" />
+    <Content Include="Content\images\sales\sale1.jpg" />
+    <Content Include="Content\images\sales\sale2.jpg" />
+    <Content Include="Content\images\sales\sale3.jpg" />
+    <Content Include="Content\images\sales\sale4.jpg" />
+    <Content Include="Content\images\sales\sale5.jpg" />
+    <Content Include="Content\images\sales\sale6.jpg" />
+    <Content Include="Content\images\simcard\dambao-123pay.jpg" />
+    <Content Include="Content\images\simcard\k-product.jpg" />
+    <Content Include="Content\images\simcard\sim-product.jpg" />
+    <Content Include="Content\images\sinhnhat\18nam.png" />
+    <Content Include="Content\images\sinhnhat\18nam_2x.png" />
+    <Content Include="Content\images\sinhnhat\pattern.png" />
+    <Content Include="Content\images\sinhnhat\thang-trian.png" />
+    <Content Include="Content\images\sinhnhat\thang-trian_2x.png" />
+    <Content Include="Content\images\status-old\giasinhvien.png" />
+    <Content Include="Content\images\status-old\icon-10-10-10.png" />
+    <Content Include="Content\images\status-old\icon-sinhvien.png" />
+    <Content Include="Content\images\status-old\icon-vip6sao.png" />
+    <Content Include="Content\images\status-old\icon_48.png" />
+    <Content Include="Content\images\status-old\status-banchay.png" />
+    <Content Include="Content\images\status-old\status-giam-gia.png" />
+    <Content Include="Content\images\status-old\status-giam-soc.png" />
+    <Content Include="Content\images\status-old\status-hot.png" />
+    <Content Include="Content\images\status-old\status-km.png" />
+    <Content Include="Content\images\status-old\status-new.png" />
+    <Content Include="Content\images\status-old\status-preorder.png" />
+    <Content Include="Content\images\status-old\status-qs100.png" />
+    <Content Include="Content\images\status-old\status-sameprice.png" />
+    <Content Include="Content\images\status-old\status-sellonline.png" />
+    <Content Include="Content\images\status-old\status-shock.png" />
+    <Content Include="Content\images\status-old\status-upcoming.png" />
+    <Content Include="Content\images\status-old\status-vta-music.png" />
+    <Content Include="Content\images\status-old\tra-gop-0.png" />
+    <Content Include="Content\images\status\chibanonline.png" />
+    <Content Include="Content\images\status\dattruoc.png" />
+    <Content Include="Content\images\status\docquyen.png" />
+    <Content Include="Content\images\status\giamgia.png" />
+    <Content Include="Content\images\status\giamsoc.png" />
+    <Content Include="Content\images\status\giasoc.png" />
+    <Content Include="Content\images\status\giasoconline.png" />
+    <Content Include="Content\images\status\giasv.png" />
+    <Content Include="Content\images\status\hot-8t3.png" />
+    <Content Include="Content\images\status\hot.png" />
+    <Content Include="Content\images\status\icon-lixi-20tr.png" />
+    <Content Include="Content\images\status\new.png" />
+    <Content Include="Content\images\status\quayso100.png" />
+    <Content Include="Content\images\status\sale.png" />
+    <Content Include="Content\images\status\same-price.png" />
+    <Content Include="Content\images\status\sap-ra-mat.png" />
+    <Content Include="Content\images\status\sapcohang.png" />
+    <Content Include="Content\images\status\selling.png" />
+    <Content Include="Content\images\status\status-banchay.png" />
+    <Content Include="Content\images\status\status-sameprice.png" />
+    <Content Include="Content\images\status\tragop-0.png" />
+    <Content Include="Content\images\status\tragop-10.png" />
+    <Content Include="Content\images\status\uudaisv.png" />
+    <Content Include="Content\images\status\vip.png" />
+    <Content Include="Content\images\status\vip6sao-new.png" />
+    <Content Include="Content\images\status\vip6sao-plus.png" />
+    <Content Include="Content\images\status\vip6sao.png" />
+    <Content Include="Content\images\status\vta-music.png" />
+    <Content Include="Content\images\store\vta-store.jpg" />
+    <Content Include="Content\images\tet\header-bg.png" />
+    <Content Include="Content\images\tet\lan.png" />
+    <Content Include="Content\images\tet\lan_2x.png" />
+    <Content Include="Content\images\tet\left-img.png" />
+    <Content Include="Content\images\tet\left-img_2x.png" />
+    <Content Include="Content\images\tet\logo-vienthongA.png" />
+    <Content Include="Content\images\tet\logo-vienthongA_2x.png" />
+    <Content Include="Content\images\tet\mai-left.png" />
+    <Content Include="Content\images\tet\mai-right.png" />
+    <Content Include="Content\images\tet\right-img.png" />
+    <Content Include="Content\images\tet\right-img_2x.png" />
+    <Content Include="Content\images\thanhtoan-img.png" />
+    <Content Include="Content\images\tragop\acs-logo.jpg" />
+    <Content Include="Content\images\tragop\acs.png" />
+    <Content Include="Content\images\tragop\arrow-km.png" />
+    <Content Include="Content\images\tragop\banner-muatragop.png" />
+    <Content Include="Content\images\tragop\banner-tragop-1140x423.jpg" />
+    <Content Include="Content\images\tragop\banner\banner-tg1.jpg" />
+    <Content Include="Content\images\tragop\banner\banner-tg2.jpg" />
+    <Content Include="Content\images\tragop\banner\banner-tg3.jpg" />
+    <Content Include="Content\images\tragop\banner\banner-tg4.jpg" />
+    <Content Include="Content\images\tragop\banner\banner-tg5.jpg" />
+    <Content Include="Content\images\tragop\banner\banner-tg6.jpg" />
+    <Content Include="Content\images\tragop\btn-detail-km.png" />
+    <Content Include="Content\images\tragop\hdf-logo.png" />
+    <Content Include="Content\images\tragop\hdf.png" />
+    <Content Include="Content\images\tragop\home-credit-logo.jpg" />
+    <Content Include="Content\images\tragop\hoso.png" />
+    <Content Include="Content\images\tragop\ppf.png" />
+    <Content Include="Content\images\tragop\tg-product.jpg" />
+    <Content Include="Content\images\tragop\tg-sprite.png" />
+    <Content Include="Content\images\user.png" />
+    <Content Include="Content\images\vnpost\adv1.png" />
+    <Content Include="Content\images\vnpost\adv2.png" />
+    <Content Include="Content\images\vnpost\adv3.png" />
+    <Content Include="Content\images\vnpost\banner1.png" />
+    <Content Include="Content\images\vnpost\banner2.png" />
+    <Content Include="Content\images\vnpost\banner3.png" />
+    <Content Include="Content\images\vnpost\icon-hoptac.png" />
+    <Content Include="Content\images\vnpost\logo-vnpost.png" />
+    <Content Include="Content\images\vnpost\logo-vta.png" />
+    <Content Include="Content\images\vnpost\show1.png" />
+    <Content Include="Content\images\vnpost\show2.png" />
+    <Content Include="Content\images\vnpost\show3.png" />
+    <Content Include="Content\images\v_logo.jpg" />
+    <Content Include="Content\js\all.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\handlebar.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\vendor\bootstrap.js" />
+    <Content Include="Content\js\vendor\bootstrap.min.js" />
+    <Content Include="Content\js\vendor\daterangepicker.js" />
+    <Content Include="Content\js\vendor\jquery-1.11.2.min.js" />
+    <Content Include="Content\js\vendor\jquery.countdown.min.js" />
+    <Content Include="Content\js\vendor\jquery.easing.1.3.js" />
+    <Content Include="Content\js\vendor\jquery.menu-aim.js" />
+    <Content Include="Content\js\vendor\jQueryRotateCompressed.js" />
+    <Content Include="Content\js\vendor\modernizr-2.8.3-respond-1.4.2.min.js" />
+    <Content Include="Content\js\vendor\moment.min.js" />
+    <Content Include="Content\js\vendor\npm.js" />
+    <Content Include="Content\js\vendor\owl.carousel.min.js" />
+    <Content Include="Content\js\vendor\perfect-scrollbar.jquery.js" />
+    <Content Include="Content\js\vendor\snowfall.jquery.min.js" />
+    <Content Include="Content\js\vendor\turbo.js" />
+    <Content Include="Content\js\vendor\wow.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\AppSettings.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configuration\ConnectionStrings.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\bower_min\bootstrap-sass\assets\fonts\bootstrap\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_alerts.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_center-block.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_forms.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_grid.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_hide-text.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_image.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_labels.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_nav-vertical-align.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_opacity.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_panels.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_progress-bar.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_reset-filter.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_resize.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_responsive-visibility.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_size.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_tab-focus.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_table-row.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_text-overflow.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\mixins\_vendor-prefixes.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_alerts.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_badges.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_breadcrumbs.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_button-groups.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_buttons.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_carousel.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_close.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_code.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_component-animations.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_dropdowns.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_forms.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_glyphicons.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_grid.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_input-groups.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_jumbotron.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_labels.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_list-group.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_media.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_mixins.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_modals.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_navbar.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_navs.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_normalize.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_pager.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_pagination.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_panels.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_popovers.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_print.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_progress-bars.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_responsive-embed.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_responsive-utilities.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_scaffolding.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_tables.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_theme.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_thumbnails.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_tooltip.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_type.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_utilities.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_variables.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\bootstrap\_wells.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\_bootstrap-compass.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\_bootstrap-mincer.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\_bootstrap-sprockets.scss" />
+    <Content Include="Content\bower_min\bootstrap-sass\assets\stylesheets\_bootstrap.scss" />
+    <Content Include="Content\bower_min\fancybox\.bower.json" />
+    <Content Include="Content\bower_min\fancybox\CHANGELOG.md" />
+    <Content Include="Content\bower_min\fancybox\README.md" />
+    <Content Include="Content\bower_min\fancybox\sprite.psd" />
+    <Content Include="Content\bower_min\raty\lib\fonts\raty.eot" />
+    <Content Include="Content\bower_min\raty\lib\fonts\raty.ttf" />
+    <Content Include="Content\bower_min\raty\lib\fonts\raty.woff" />
+    <Content Include="Content\css\bootstrap-custom.css.map" />
+    <Content Include="Content\css\main.css.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\vta-icon\fonts\vta-icon.eot" />
+    <Content Include="Content\fonts\vta-icon\fonts\vta-icon.ttf" />
+    <Content Include="Content\fonts\vta-icon\fonts\vta-icon.woff" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <None Include="Properties\PublishProfiles\Vnpost.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\ga.js" />
+    <Content Include="Scripts\generalPc.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js-filterPc.js" />
+    <Content Include="Scripts\js-payment-amotization-PC.js" />
+    <Content Include="Scripts\js.cookie.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <None Include="Service References\ServiceReference\Service.disco" />
+    <None Include="Service References\ServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Templete\Email_Infomation_OrderTraGop.htm" />
+    <Content Include="Templete\Email_ThongtinNhanhang.htm" />
+    <Content Include="Templete\Email_Order.htm" />
+    <Content Include="Templete\Mailcomment.htm" />
+    <Content Include="Templete\Templete_OrderNew.htm" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\HomeProductMobis.cshtml" />
+    <Content Include="Views\Home\ListProductMobis.cshtml" />
+    <Content Include="Views\Home\ProductDetail.cshtml" />
+    <Content Include="Views\Home\ListCategory.cshtml" />
+    <Content Include="Views\Home\SearchProduct.cshtml" />
+    <Content Include="Views\Home\StoreVta.cshtml" />
+    <Content Include="Views\Home\HomeProduct.cshtml" />
+    <Content Include="Views\Shared\_LayoutVnpost.cshtml" />
+    <Content Include="Views\Affiliate\UploadSanpham.cshtml" />
+    <Content Include="Views\Shared\_LayoutAffiliate.cshtml" />
+    <Content Include="Views\Shared\Partial\PartialProductItem.cshtml" />
+    <Content Include="Views\Home\HomeSponsor.cshtml" />
+    <Content Include="Views\Home\HomeSlideshow.cshtml" />
+    <Content Include="Views\Shared\Partial\PartialHomeSponsor.cshtml" />
+    <Content Include="Views\Home\HomeProductPage.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Detail\ProductDetail.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Shared\Partial\PartialSearch.cshtml" />
+    <Content Include="Views\Shared\Partial\PartialCategoryItem.cshtml" />
+    <Content Include="Views\Category\LoadMoreCategory.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\PaymentConfirm\Index.cshtml" />
+    <Content Include="Views\Shared\Partial\PartialFilter.cshtml" />
+    <Content Include="Views\Detail\Partial\ProductTop.cshtml" />
+    <Content Include="Views\Detail\Partial\ImageNoiBat.cshtml" />
+    <Content Include="Views\Detail\Partial\ThongSoKyThuat.cshtml" />
+    <Content Include="Views\Detail\Partial\ImageProduct.cshtml" />
+    <Content Include="Views\Detail\Partial\ProductMuonMua.cshtml" />
+    <Content Include="Views\Detail\Partial\SoSanh.cshtml" />
+    <Content Include="Views\Detail\Partial\TinTuc.cshtml" />
+    <Content Include="Views\Detail\Partial\ProductShortDesc.cshtml" />
+    <Content Include="Views\Detail\Partial\ProductDesc.cshtml" />
+    <Content Include="Views\Payment\Index_Amortization.cshtml" />
+    <Content Include="Views\Promotion\IndexTraGop.cshtml" />
+    <Content Include="Views\Payment\PartialProductTraGop.cshtml" />
+    <Content Include="Views\Affiliate\KetquaUpload.cshtml" />
+    <Content Include="Views\Home\ClearCache.cshtml" />
+    <Content Include="Views\ClearCache\Index.cshtml" />
+    <Content Include="Views\Affiliate\UploadSanphamTestApi.cshtml" />
+    <Content Include="Views\Affiliate\UploadSanphamAff.cshtml" />
+    <Content Include="Views\Detail\Partial\ProductDescCollapse.cshtml" />
+    <Content Include="Views\Detail\Partial\BoSanPhamChuan.cshtml" />
+    <None Include="Service References\ServiceReference\Service.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\bower_min\bootstrap-sass\assets\images\" />
+    <Folder Include="Content\images\gioithieu\giaithuong\" />
+    <Folder Include="Content\images\tragop\btn\" />
+    <Folder Include="Content\Uploads\" />
+    <Folder Include="Views\Branch\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebComment.Commons\WebComment.Commons.csproj">
+      <Project>{b4418403-5fc4-4e2d-9f35-242ea7a20840}</Project>
+      <Name>WebComment.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebComment.Data\WebComment.Data.csproj">
+      <Project>{065A036A-9A44-4E9D-B6C6-F50E29B3B4D7}</Project>
+      <Name>WebComment.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>10494</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:10495/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

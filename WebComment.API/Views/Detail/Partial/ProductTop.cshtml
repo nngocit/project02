@@ -1,0 +1,172 @@
+﻿@using WebComment.Commons
+@{
+    Layout = null;
+}
+@model WebComment.API.Models.DetailModel
+<section class="product-detail">
+    <div class="container ">
+        <div class="row detail-product">
+            <div class="col-sm-4 text-center">
+                <div class="detail-img">
+                    <img src="@Globals.GetGeneratedImage(Model.Product.ImageUrl, 300)" class="img-responsive center-block" alt="@Model.Product.ProductName" />
+                </div>
+                <ul class="list-inline detail-icon-desc">
+                    <li><a href=""><i class="vta-heart"></i></a></li>
+                    <li><a href=""><i class="vta-compare"></i></a></li>
+                    <li class="local-scroll2"><a href="#hinhanh"><i class="vta-360"></i></a></li>
+                    <li class="local-scroll2"><a href="#hinhanh"><i class="vta-playvideo"></i></a></li>
+                </ul>
+            </div>
+            <!--end col-sm-4-->
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="detail-header">
+                            <h1 class="name">@Model.Product.ProductName</h1>
+                            @if (Model.Product.RootCategoryId != 152536)
+                            {
+                                <div class="verdes detail-desc-color">
+                                    @foreach (var color in Model.ListColor)
+                                    {
+                                        <div class="verdes-element">
+                                            <span class="product-color" data-href="@color.ColorCode" data-idcolor="@color.ColorId" style="background-color: #@color.ColorCode" data-toggle="tooltip" data-placement="bottom" title="@color.ColorName"></span>
+                                        </div>
+                                    }
+                                    @foreach (var item in Model.ListColor.Skip(0).Take(1))
+                                    {
+                                        <input type="hidden" id="ColorProduct" value="@item.ColorId"/>
+                                    }
+                                    <div class="verdes-element">
+                                        <span class="con-hang">@Model.Product.StatusStock</span>
+                                    </div>
+                                </div>
+                                
+                            }
+                            
+                        </div>
+                    </div>
+                    <!--end col-sm-7-->
+                    <div class="col-md-12 col-lg-6">
+                        <div class="verdes detail-sale-box">
+                            @*<div class="verdes-element">
+                                    <a href="" class="quayso">
+                                    </a>
+                                </div>*@
+                            <div class="verdes-element">
+                                @if (Model.HappyCare.ghbh != null || Model.HappyCare.bvtd != null)
+                                {
+                                    if ((Model.HappyCare.ghbh != null && Model.HappyCare.ghbh.price > 0) || (Model.HappyCare.bvtd != null && Model.HappyCare.bvtd.price > 0))
+                                    {
+                                        <div class="detail-only-vta">
+                                            <h4><i class="vta-award"></i> CHỈ CÓ TẠI VIỄN THÔNG A</h4>
+                                            <div class="checkbox">
+                                                <div class="tg-form-row clearfix">
+                                                    @if (Model.HappyCare.ghbh != null && Model.HappyCare.ghbh.price > 0)
+                                                    {
+                                                        <label for="check_ghbh">
+                                                            <input id="check_ghbh" type="checkbox" class="custom" name="check_ghbh" value="@Model.HappyCare.ghbh.product_id" @ViewBag.IsGHBH>
+                                                            Gia hạn bảo hành: <b>@Globals.FormatMoney(Model.HappyCare.ghbh.price)</b>
+                                                        </label>
+                                                    }
+
+                                                    @if (Model.HappyCare.bvtd != null && Model.HappyCare.bvtd.price > 0)
+                                                    {
+                                                        <label for="check_bvtd">
+                                                            <input id="check_bvtd" type="checkbox" class="custom" name="check_bvtd" value="@Model.HappyCare.bvtd.product_id" @ViewBag.IsBVTD>
+                                                            Bảo vệ toàn diện: <b>@Globals.FormatMoney(Model.HappyCare.bvtd.price)</b>
+                                                        </label>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-sm-5-->
+                </div>
+                <!--end row-->
+                <div class="row">
+                    <div class="col-xs-12 detail-desc">
+
+                        <div class="clearfix">
+                            <div class="left">
+                                @if (Model.Product.PriceHeadOffice > 0 && Model.Product.PriceHeadOffice > Model.Product.PriceOnline)
+                                {
+                                    <div class="detail-old-price">
+                                        @Globals.FormatMoney(Model.Product.PriceHeadOffice)
+                                    </div>
+                                }
+
+                                <div class="clearfix">
+                                    <div class="left">
+                                        @if (Model.Product.PriceOnline < 1)
+                                        {
+                                            <div class="detail-price">[Liên hệ]</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="detail-price">@Globals.FormatMoney(Model.Product.PriceOnline)</div>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(Model.Product.PromotionDescription))
+                        {
+                            <div class="detail-sales">
+                                <div class="title">KHUYẾN MÃI</div>
+                                <div class="content scroll">
+                                    @Html.Raw(HttpUtility.HtmlDecode(Model.Product.PromotionDescription))
+                                </div>
+                            </div>
+                        }
+
+                        <ul class="detail-buttons-uudai clearlist" id="detail-buttons-uudai">
+                            @if (Model.Product.PriceHeadOffice > 0)
+                            {
+                                <li class="toichon">
+                                    <a title="Mua Online" id="btnBusinessBuyNow" class="various fancybox.ajax" onclick="javascript:VtaJsPC.service.AddPaymentPC('@Model.Product.ProductId', '@Globals.OrderType.Online');" href="/thanh-toan.html">
+                                        <span>Mua Online</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (Model.Product.PriceHeadOffice >= (int)Globals.PriceTraGopRange.HomeCredit)
+                            {
+                                <li>
+                                    <a onclick="javascript:VtaJsPC.service.AddPaymentPC('@Model.Product.ProductId', '@Globals.OrderType.TraGop');" href="/thanh-toan.html">
+                                        <span>Đăng ký trả góp</span>
+                                    </a>
+                                </li>
+                            }
+
+                            @*<li><a href=""><span>Trả góp</span> Chỉ từ 1,516,000 <sup>đ</sup></a></li>*@
+                        </ul>
+                    </div>
+                    <!--end col-xs-12-->
+                </div>
+                <!--end row-->
+            </div>
+            <!--end col-sm-8-->
+        </div>
+        <!--end row-->
+        @if (Model.Banner != null)
+        {
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="adv-product-banner">
+                        <a href="">
+                            <img src="@Model.Banner.ImageUrl" class="img-responsive" alt="@Model.Banner.BannerName">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!--end container-->
+</section>

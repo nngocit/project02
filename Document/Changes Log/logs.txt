@@ -1,0 +1,2 @@
+- Add-migration 20161130-AddTable-CM_LoaiComment
+- update-database

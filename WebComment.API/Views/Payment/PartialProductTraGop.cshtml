@@ -1,0 +1,21 @@
+﻿@using WebComment.Commons
+@model WebComment.API.Models.DetailModel
+<div class="row">
+    <div class="col-sm-5">
+        <div class="pro_img">
+            <img id="imgtragop" src="@Model.Product.ImagePart" alt="@Model.Product.ProductName" width="125" class="img-responsive">
+        </div>
+        <div class="pro_title">
+            <p class="pro_name" id="productName">@(Model.Product.ProductName)</p>
+            <p class="pro_price" id="productPrice">
+                @(Model.Product.PriceHeadOffice <= (int)Globals.MinPricePayment.MinPricePayment ? "[Liên hệ]" : Globals.FormatMoney(Model.Product.PriceOnline))
+
+            </p>
+        </div>
+    </div>
+    <div class="col-sm-7">
+        <div style="max-height: 300px; overflow-x: scroll;" id="pnlPromotion">
+            @Html.Raw(HttpUtility.HtmlDecode(Model.Product.PromotionProduct))
+        </div>
+    </div>
+</div>

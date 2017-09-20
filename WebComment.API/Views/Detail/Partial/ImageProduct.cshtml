@@ -1,0 +1,76 @@
+﻿@using WebComment.Commons
+@{
+    Layout = null;
+}
+@model WebComment.API.Models.DetailModel
+
+<div id="hinhanh" class="onepageNav">
+    <div class="detail-media">
+        <ul class="nav nav-tabs" role="tablist">
+            @if (Model.ListImage.Any(c => c.Type == "D"))
+            {
+                <li role="presentation" class="active"><a href="#media-hinhanh" aria-controls="home" role="tab" data-toggle="tab"><i class="vta-camera"></i> Hình ảnh</a></li>
+            }@*<li role="presentation"><a href="#media-video" aria-controls="profile" role="tab" data-toggle="tab"><i class="vta-playvideo"></i> Video</a></li>
+                <li role="presentation"><a href="#media-360" aria-controls="messages" role="tab" data-toggle="tab"><i class="vta-360"></i></a></li>*@
+        </ul>
+        <div class="tab-content">
+            @if (Model.ListImage.Any(c => c.Type == "D"))
+            {
+                <div role="tabpanel" class="tab-pane fade in active" id="media-hinhanh">
+                    <div id="media-img-sync1" class="owl-carousel">
+                        @foreach (var item in Model.ListImage.Where(c => c.Type == "D"))
+                        {
+                            <div class="item">
+                                <img src="@Globals.GetGeneratedImage(item.ImagePart, 655)" class="img-responsive center-block" alt="@Model.Product.ProductName">
+                            </div>
+                        }
+                    </div>
+                    <div id="media-img-sync2" class="owl-carousel">
+                        @foreach (var item in Model.ListImage.Where(c => c.Type == "D"))
+                        {
+                            <div class="item">
+                                <img class="img-responsive center-block" src="@Globals.GetGeneratedImage(item.ImagePart, 84)" alt="@Model.Product.ProductName">
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            }
+            <!--
+            <div role="tabpanel" class="tab-pane fade" id="media-video">
+                <div id="media-video-sync1" class="owl-carousel">
+                    <div class="item">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/xAfZ4DUta4E" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/eb6xmd4Kfzg" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/xAfZ4DUta4E" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div id="media-video-sync2" class="owl-carousel">
+                    <div class="item"><img class="img-responsive center-block" src="/Content/images/detail/samsung-galaxy-grand-prime-g530-3.jpg" alt="Samsung Galaxy V">
+                    </div>
+                    <div class="item"><img class="img-responsive center-block" src="/Content/images/detail/samsung-galaxy-grand-prime-g530-4.jpg" alt="Samsung Galaxy V">
+                    </div>
+                    <div class="item"><img class="img-responsive center-block" src="/Content/images/detail/samsung-galaxy-grand-prime-g530-trang-11.jpg" alt="Samsung Galaxy V">
+                    </div>
+                </div>
+
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="media-360">
+                <div class="product-360">
+                    <iframe width="650" class="" height="500" border="0" frameborder="0" src="http://www.vienthonga.vn/hinh360.php?f=182610"></iframe>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+</div>

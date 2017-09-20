@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+}
+@model string
+
+
+     <div class="detail-review-chitiet">
+    <h2 class="detail-title">Đánh giá chi tiết</h2>
+    <div class="row">
+        @Html.Raw(HttpUtility.HtmlDecode(Model))
+    </div>
+    @if (!string.IsNullOrEmpty(Model))
+    {
+        <div class="xem-chi-tiet text-center animate">
+            <button title="Xem chi tiết cấu hình" class="btn-cart" role="button" data-toggle="collapse" href="#chitietbaiviet" aria-expanded="false" aria-controls="collapseExample">
+                <i class="vta-plus"></i><i class="vta-minus"></i><span>Xem chi tiết</span>
+            </button>
+        </div>
+
+    }
+
+</div>

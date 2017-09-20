@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    @Html.Raw(ViewBag.MetaTag)
+    <!--include Vien Thong A icon-->
+    <link rel="stylesheet" href="/Content/fonts/vta-icon/style.css">
+    <link rel="stylesheet" href="/Content/css/bootstrap-custom.css">
+    <!--Owl carousel css-->
+    <link rel="stylesheet" href="/Content/css/owlcarousel/owl.carousel.css">
+    <link rel="stylesheet" href="/Content/css/owlcarousel/owl.transitions.css">
+    <!--Perfect scroll-->
+    <link rel="stylesheet" href="/Content/bower_min/perfect-scrollbar/css/perfect-scrollbar.min.css">
+    <!--Fancy box-->
+    <link rel="stylesheet" href="/Content/bower_min/fancybox/source/jquery.fancybox.css">
+    <link rel="stylesheet" href="/Content/css/main.css">
+    <script src="/Content/bower_min/modernizr/modernizr.js"></script>
+</head>
+<body>
+    <header id="main-header">
+        <section class="search">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 sm-mb-15 md-mb-0 hidden-xs">
+                        <div class="logo clearfix verdes">
+                            <div class="verdes-element">
+                                <a href="/" class="logo-vta"><img src="/Content/images/vnpost/logo-vta.png" alt="" class="img-responsive" /></a>
+                            </div>
+                            <div class="verdes-element">
+                                <span class="logo-hoptac"><img src="/Content/images/vnpost/icon-hoptac.png" alt="" class="img-responsive" /></span>
+                            </div>
+                            <div class="verdes-element">
+                                <a href="/" class="logo-vnpost"><img src="/Content/images/vnpost/logo-vnpost.png" alt="" class="img-responsive" /></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="search-global-location">
+                            <div class="search-global" id="main-search">
+                                <input type="search" class="input input-search" name="s" value=""
+                                       placeholder="Nhập thông tin cần tìm" id="searchv+" onfocus="this.select();"
+                                       autocomplete="off">
+                                <div class="search-icon"><i class="vta-search"></i></div>
+                                <a href="" class="search-button">Tìm kiếm</a>
+                                <div id="searchDialog" class="hidden">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+    <nav class="main-navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-vnpost" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="logo clearfix verdes visible-xs">
+                    <div class="verdes-element">
+                        <a href="#" class="logo-vta"><img src="/Content/images/vnpost/logo-vta.png" alt="" class="img-responsive" /></a>
+                    </div>
+                    <div class="verdes-element">
+                        <span class="logo-hoptac"><img src="/Content/images/vnpost/icon-hoptac.png" alt="" class="img-responsive" /></span>
+                    </div>
+                    <div class="verdes-element">
+                        <a href="#" class="logo-vnpost"><img src="/Content/images/vnpost/logo-vnpost.png" alt="" class="img-responsive" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="collapse navbar-collapse" id="menu-vnpost">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/dien-thoai-smartphones"><i class="vta-phone"></i> Điện thoại</a></li>
+                        <li><a href="/may-tinh-bang"><i class="vta-tablet"></i> Tablet</a></li>
+                        <li><a href="/laptop"><i class="vta-laptop"></i> Laptop</a></li>
+                        <li><a href="/lin-phu-kien"><i class="vta-headphone"></i> Phụ kiện</a></li>
+                        @* <li><a href="#"><i class="vta-sim"></i> Thẻ, sim</a></li>
+                            <li><a href="#"><i class="vta-sale red"></i> Khuyến mãi</a></li>
+                            <li><a href="#"><i class="vta-pigmoney"></i> Trả góp</a></li>*@
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    @Html.Raw(ViewBag.BreadCrumb)
+    @RenderBody()
+
+    <footer>
+        <div class="footer-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h3>Về Viễn Thông A</h3>
+                                <ul class="clearlist">
+                                    <li><a href="/tong-quan-ve-vien-thong-a" title="Tổng quan">Tổng quan</a></li>
+                                    <li><a href="/nha-dau-tu.html" title="Nhà đầu tư">Nhà đầu tư</a></li>
+                                    <li><a href="/clubcard" title="Thẻ thành viên">Thẻ thành viên</a></li>
+                                    <li><a href="http://tuyendung.vienthonga.vn/" target="_blank" title="Tuyển dụng">Tuyển dụng</a></li>
+                                    <li><a href="/he-thong-trung-tam-smartphone.html" title="Hệ thống cửa hàng">Hệ thống cửa hàng</a></li>
+                                    <li><a href="/he-thong-trung-tam-smartphone.html" title="Trung tâm bảo hành">Trung tâm bảo hành</a></li>
+                                    <li><a href="/doanh-nghiep" title="Khách hàng doanh nghiệp">Khách hàng doanh nghiệp</a></li>
+                                    <li><a href="">Xem bản Mobile</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3>Sản phẩm</h3>
+                                <ul class="clearlist">
+                                    <li><a href="/dien-thoai-smartphones" title="Smartphone - Điện thoại">Smartphone - Điện thoại</a></li>
+                                    <li><a href="/laptop" title="Laptop">Laptop</a></li>
+                                    <li><a href="/may-tinh-bang" title="Máy tính bảng">Máy tính bảng</a></li>
+                                    <li><a href="/linh-phu-kien" title="Phụ kiện">Phụ kiện</a></li>
+                                    <li><a href="/noi-dung-so" title="Apps - Games">Apps - Games</a></li>
+                                    <li><a href="/the-cao-sim-so" title="Sim, thẻ">Sim, thẻ</a></li>
+                                    <li><a href="/may-doi-tra" title="Máy đổi trả">Máy đổi trả</a></li>
+                                    <li><a href="/xa-hang" title="Xả hàng">Xả hàng</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3>Chính sách & hỗ trợ</h3>
+                                <ul class="clearlist">
+                                    <li><a href="/huong-dan-mua-hang#hdmuahang" title="Hướng dẫn mua hàng">Hướng dẫn mua hàng</a></li>
+                                    <li><a href="/huong-dan-mua-hang#hdtragop" title="Hướng dẫn mua trả góp">Hướng dẫn mua trả góp</a></li>
+                                    <li><a href="/huong-dan-mua-hang#hdmuahangSv" title="Hướng dẫn mua hàng SV">Hướng dẫn mua hàng SV</a></li>
+                                    <li><a href="/huong-dan-mua-hang#hdgiaohang" title="Chính sách giao hàng">Chính sách giao hàng</a></li>
+                                    <li><a href="/huong-dan-mua-hang#csdoitra" title="Chính sách đổi trả - bảo hành">Chính sách đổi trả - bảo hành</a></li>
+                                    <li><a href="/huong-dan-mua-hang#qchoatdong" title="Quy chế hoạt động">Quy chế hoạt động</a></li>
+                                    <li><a href="/huong-dan-mua-hang#csbaomat" title="Chính sách bảo mật thông tin">Chính sách bảo mật thông tin</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <a href="/tong-quan-ve-vien-thong-a/#giaithuong" title="Giải thưởng">
+                                    <h3>Giải thưởng</h3>
+                                    <img src="/Content/images/cup.png" alt="" class="img-responsive top-500">
+                                    <p>
+                                        Viễn thông A <br /> đạt Top 500 Doanh nghiệp<br> lớn nhất Việt Nam
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3>Dịch vụ</h3>
+                                <ul class="clearlist">
+                                    <li><a href="/the-cao-sim-so/happy-care-gia-han-bao-hanh/gia-han-bao-hanh" title="Happy Care">Happy Care</a></li>
+                                    <li><a href="/the-cao-sim-so/happy-care-gia-han-bao-hanh/gia-han-bao-hanh" title="Bảo hiểm điện thoại">Bảo hiểm điện thoại</a></li>
+                                    <li><a href="/the-cao-sim-so/happy-care-gia-han-bao-hanh/gia-han-bao-hanh#tthoadon" title="Thanh toán hóa đơn">Thanh toán hóa đơn</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="footer-ico-phone">
+                                    <div class="ico-phone">
+                                        <img src="/Content/images/icon-phone.png" width="38" alt="">
+                                    </div>
+                                    <div class="phone">1900 54 54 46</div>
+                                </div>
+                                <ul class="footer-tuvan clearlist">
+                                    <li>
+                                        <h4>Tư vấn & mua hàng online</h4>
+                                        <span>(nhấn phím 1)</span>
+                                    </li>
+                                    <li>
+                                        <h4>Mua trả góp online</h4>
+                                        <span>(nhấn phím 2)</span>
+                                    </li>
+                                    <li>
+                                        <h4>Khiếu nại & chăm sóc khách hàng</h4>
+                                        <span>(nhấn phím 0)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="newsletter">
+                            <p>Đăng ký nhận tin khuyến mãi hàng tuần từ Viễn Thông A</p>
+                            <form action="">
+                                <div class="input-group">
+                                    <input type="email" class="newsletter-form" placeholder="Địa chỉ email" id="email">
+                                    <span class="newsletter-button">
+                                        <button class="" type="button" onclick="ga('send', 'event', { eventCategory: 'Email', eventAction: 'Signup', eventLabel: 'Footer'});RegisterPromotion()">Gửi</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <h3>Liên hệ</h3>
+                        <ul class="clearlist lienhe">
+                            <li><a href=""><i class="vta-location"></i> 328 - 330 Đường 3/2, Phường 12, Quận 10, TP.HCM</a></li>
+                            <li><i class="vta-telephone"></i> (08) 38 633 333 - Hotline: 1900 54 54 46</li>
+                            <li><a href=""><i class="vta-email"></i> cs@vienthonga.com</a></li>
+                        </ul>
+                        <div style="margin-bottom: 50px;">
+                            <div class="fb-page" data-href="https://www.facebook.com/vienthonga" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/vienthonga"><a href="https://www.facebook.com/vienthonga">VienthongA</a></blockquote></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-intro">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <ul class="clearlist">
+                            <li>© 2015 CÔNG TY CỔ PHẦN SX TM XNK VIỄN THÔNG A</li>
+                            <li>Số ĐKKD: 0301430045 - Ngày cấp lần đầu 11/12/1997</li>
+                            <li>Nơi cấp: Phòng đăng ký kinh doanh - Sở kế hoạch và đầu tư TP.Hồ Chí Minh</li>
+                            <li>Địa chỉ trụ sở: 328 - 330 Đường 3/2, Phường 12, Quận 10, TP.Hồ Chí Minh</li>
+                            <li>Người đại diện theo pháp luật: HUỲNH VIỆT THƯƠNG</li>
+                            <li>Số điện thoại: 08.386.33333</li>
+                            <li> Email: <a href="mailto:cs@vienthonga.com">cs@vienthonga.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>Thanh toán với :</p>
+                        <img src="/Content/images/thanhtoan-img.png" alt="">
+                    </div>
+                    <div class="col-sm-3">
+                        <p>Chứng nhận SGD TMĐT</p>
+                        <a href="http://www.online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=16098">
+                            <img src="/Content/images/dangky-bct.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="backlink ">
+                <ul class="list-inline">
+                    <li><a href="https://vienthonga.vn/iphone-6-plus-64gb-silver.html" title="Iphone 6 Plus"><span>Iphone 6 plus</span></a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=iphone+6" title="IPhone 6"><span>Iphone 6</span></a></li>
+                    <li><a href="https://vienthonga.vn/samsung-galaxy-s6-edge-64gb.html" title="Samsung Galaxy S6 Edge"><span>Samsung Galaxy S6 Edge</span></a></li>
+                    <li><a href="https://vienthonga.vn/samsung-galaxy-e7.html" title="Galaxy E7"><span>Galaxy E7</span></a></li>
+                    <li><a href="https://vienthonga.vn/samsung-galaxy-e5.html" title="Galaxy Ẹ"><span>Galaxy E5</span></a></li>
+                    <li><a href="https://vienthonga.vn/samsung-galaxy-a7.html" title="Galaxy A7"><span>Galaxy A7</span></a></li>
+                    <li><span><a href="https://vienthonga.vn/samsung-galaxy-j1.html" title="Samsung galaxy J1">Samsung&nbsp;Galaxy J1</a><a href="https://vienthonga.vn/samsung-galaxy-j1.html" title="Samsung Galaxy J1"></a></span></li>
+                    <li><a href="https://vienthonga.vn/samsung-galaxy-core-prime.html" title="Samsung Galaxy Core Prime"><span>Samsung Galaxy Core Prime</span></a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=samsung+galaxy+s6" title="Samsung Galaxy S6"><span>Samsung Galaxy S6</span></a></li>
+                    <li><a href="https://vienthonga.vn/microsoft-lumia-540.html" title="Lumia 540"><span>Lumia 540</span></a></li>
+                    <li><a href="https://vienthonga.vn/microsoft-lumia-640-3g-dual-sim.html" title="Lumia 640 3G dual Sim"><span>Lumia 640 3G dual Sim</span></a></li>
+                    <li><a href="https://vienthonga.vn/nokia-x2.html" title="Lumia X2 Dual Sim"><span>Lumia X2 Dual Sim</span></a></li>
+                    <li><a href="https://vienthonga.vn/microsoft-lumia-535.html" title="Lumia 535"><span>Lumia 535 </span></a></li>
+                    <li><a href="https://vienthonga.vn/htc-one-m9.html" title="HTC One M9"><span>HTC One M9 </span></a></li>
+                    <li><a href="https://vienthonga.vn/htc-one-m9-plus.html" title="HTC One M9 Plus"><span>HTC One M9 Plus</span></a></li>
+                    <li><a href="https://vienthonga.vn/htc-desire-826g.html" title="HTC Desire 826G"><span>HTC Desire 826G</span></a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=HTC+one" title="HTC One"><span>HTC One</span></a></li>
+                    <li><a href="https://vienthonga.vn/sony-xperia-z4.html" title="Sony Xperia Z4"><span>Sony Xperia Z4</span></a></li>
+                    <li><a href="https://vienthonga.vn/sony-xperia-m4-aqua-dual.html" title="Sony Xperia M4 Aqua Dual"><span>Sony Xperia M4 Aqua Dual</span></a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=Sony+Xperia+Z3" title="Sony Xperia Z3"><span>Sony Xperia Z3</span></a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=sony+xperia+m2" title="Sony Xperia M2"><span>Sony Xperia M2</span></a></li>
+                    <li><a href="https://vienthonga.vn/lg-g-flex-2.html" title="LG G Flex 2"><span>LG G Flex 2</span></a></li>
+                    <li><a href="https://vienthonga.vn/lg-g4.html" title="LG G4"><span>LG G4</span></a></li>
+                    <li><a href="https://vienthonga.vn/lg-magna.html" title="LG Magna"><span>LG Magna</span></a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=LG+G3" title="LG G3"><span>LG G3</span></a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=Asus+Zenfone+2" title="Asus Zenfone 2"><span>Asus Zenfone 2</span></a></li>
+                    <li><a href="https://vienthonga.vn/asus-zenfone-5-a501cg-16gb.html" title="Asus Zenfone 5"><span>Asus Zenfone 5</span></a></li>
+                    <li><a href="https://vienthonga.vn/asus-zenfone-6-vn.html" title="Asus Zenfone 6"><span>Asus Zenfone 6</span></a></li>
+                    <li><a href="https://vienthonga.vn/lenovo-a680.html" title="Lelovo A680"><span>Lelovo A680</span></a></li>
+                    <li><a href="https://vienthonga.vn/oppo-n1-mini.html" title="Oppo N1 Mini"><span>Oppo N1 Mini</span></a></li>
+                    <li><a href="https://vienthonga.vn/oppo-mirror-3.html" title="Oppo Mirror 3"><span>Oppo Mirror 3</span></a></li>
+                    <li><a href="https://vienthonga.vn/oppo-r5.html" title="Oppo R5"><span>Oppo R5</span></a></li>
+                    <li><a href="https://vienthonga.vn/blackberry-z30.html" title="Backberry Z30"><span>Backberry Z30</span></a></li>
+                    <li><a href="https://vienthonga.vn/philips-w3509.html" title="Philips W3509"><span>Philips W3509</span></a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=Ipad+Air+2" title="Ipad Air 2"><span>Ipad Air 2</span></a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=Ipad+Mini" title="Ipad Mini"><span>Ipad Mini</span></a></li>
+                    <li><a href="https://vienthonga.vn/samsung-galaxy-tab-s10.5.html" title="Samsung Galaxy Tab S"><span>Samsung Galaxy Tab S</span></a></li>
+                    <li><a href="https://vienthonga.vn/samsung-galaxy-tab-4-10.1.html" title="Galaxy Tab 4"><span>Galaxy Tab 4</span></a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=tablet++galaxy+tab+a" title="Tablet Galaxy Tab A"><span>Tablet Galaxy Tab A</span></a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=TAblet+Asus" title="Tablet Asus"><span>Tablet Asus</span></a></li>
+                    <li><a href="https://vienthonga.vn/tablet-lenovo-tab-s8.html" title="Lenovo Tab S8"><span>Lenovo Tab S8</span></a></li>
+                    <li><a href="https://vienthonga.vn/may-tinh-bang/samsung-tablet/" title="Máy tính bảng Samsung"><span>Máy tính bảng Samsung</span></a></li>
+                    <li><a href="https://vienthonga.vn/may-tinh-bang/asus/" title="Máy tính bảng Asus"><span>Máy tính bảng Asus</span></a></li>
+                    <li><a href="https://vienthonga.vn/may-tinh-bang/apple-ipad/" title="Ipad"><span>Ipad</span></a></li>
+                    <li><a href="https://vienthonga.vn/laptop/laptop-apple/" title="Laptop Apple"><span>Laptop Apple</span></a></li>
+                    <li><a href="https://vienthonga.vn/laptop/laptop-dell/" title="Laptop Dell"><span>Laptop Dell</span></a></li>
+                    <li><a href="https://vienthonga.vn/laptop/laptop-asus/" title="Laptop Asus"><span>Laptop Asus</span></a></li>
+                    <li><a href="https://vienthonga.vn/laptop/laptop-acer/" title="Laptop Acer"><span>Laptop Acer</span></a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=Nokia+Lumia+730" title="Nokia Lumia 730">Nokia Lumia 730</a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=Nokia+Lumia+830" title="Nokia Lumia 830">Nokia Lumia 830</a></li>
+                    <li><a href="https://vienthonga.vn/tim-kiem?q=Samsung+Galaxy+note+4" title="Samsung Galaxy note 4">Samsung Galaxy note 4</a></li>
+                    <li><a href="https://vienthonga.vn/microsoft-lumia-535.html" title="Microsoft Lumia 535">Microsoft Lumia 535</a></li>
+                    <li><a href="https://vienthonga.vn/samsung-galaxy-a5.html" title="Samsung Galaxy A5">Samsung Galaxy A5</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div id="gotoTop" class="vta-arrow-up"></div>
+
+
+    <script src="/Content/bower_min/jquery/dist/jquery.min.js"></script>
+    <script src="/Content/js/vendor/jquery.easing.1.3.js"></script>
+    <!--Lazy load plugin-->
+    <script src="/Content/bower_min/jquery.lazyload/jquery.lazyload.js"></script>
+    <!--Owl carousel-->
+    <script src="/Content/js/vendor/owl.carousel.min.js"></script>
+    <!--Perfect scrollbar-->
+    <script src="/Content/bower_min/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <!--Scroll to-->
+    <script src="/Content/bower_min/jquery.localScroll/jquery.localScroll.min.js"></script>
+    <script src="/Content/bower_min/jquery.scrollTo/jquery.scrollTo.min.js"></script>
+    <!--Onepage nav-->
+    <script src="/Content/bower_min/jQuery-One-Page-Nav/jquery.nav.js"></script>
+    <!--Masonry plugin-->
+    <script src="/Content/bower_min/masonry/dist/masonry.pkgd.min.js"></script>
+    <!--Jquery sticky-->
+    <script src="/Content/bower_min/jquery-sticky/jquery.sticky.js"></script>
+    <!--Chosen select-->
+    <script src="/Content/bower_min/chosen/chosen.jquery.min.js"></script>
+    <!--Fancy box-->
+<script src="/Content/bower_min/fancybox/source/jquery.fancybox.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="/Content/bower_min/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="/Content/bower_min/raty/lib/jquery.raty.js"></script>
+
+    <script src="/Content/js/vendor/wow.min.js"></script>
+    <script src="/Content/bower_min/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/js.cookie.js"></script>
+    <script src="~/Scripts/generalPc.js"></script>
+    <script src="~/Scripts/ga.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>

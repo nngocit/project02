@@ -1,0 +1,37 @@
+﻿<section class="intro products md-mb-30 sm-mb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="products-feature">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#sanPhamMoi" aria-controls="home" role="tab"
+                               data-toggle="tab">
+                                Sản phẩm mới
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#sanPhamBanChay" aria-controls="profile" role="tab"
+                               data-toggle="tab">Sản phẩm bán chạy</a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active fade in" id="sanPhamMoi">
+                            <div class="product-carousel shop clearfix owl-carousel">
+                                @Html.Action("Sanphammoi", "Home")
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="sanPhamBanChay">
+                            <div class="product-carousel shop clearfix owl-carousel ">
+                                @Html.Action("Sanphambanchay", "Home")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

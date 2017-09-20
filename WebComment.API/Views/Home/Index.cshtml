@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron" align="center">
+    <h1>API WEB COMMENT</h1>
+
+</div>
+
+<div class="row">
+    <ul>
+        <li>@Html.ActionLink("***   Api lấy sản phẩm nổi bật", "HomeProductMobis", "Home")</li>
+        <li>@Html.ActionLink("***   Api lấy sản phẩm theo doanh mục", "ListProductMobis", "Home")</li>
+        <li>@Html.ActionLink("***   Api lấy chi tiết sản phẩm", "ProductDetail", "Home")</li>
+        <li>@Html.ActionLink("***   Api lấy danh sách doanh mục", "ListCategory", "Home")</li>
+        <li>@Html.ActionLink("***   Api tìm sản phẩm", "SearchProduct", "Home")</li>
+        <li>@Html.ActionLink("***   Api lấy danh sách chi nhánh VTA", "StoreVta", "Home")</li>
+    </ul>
+</div>

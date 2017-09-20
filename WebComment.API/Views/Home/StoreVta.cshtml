@@ -1,0 +1,57 @@
+﻿@using WebComment.Commons
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Api HomeProductMobis Page";
+}
+
+<div class="row">
+    <h2>***Api lấy chi nhánh VTA</h2>
+    <p>
+        <b>HTTP Request: </b> GET - @(Globals.UrlApi)store-api/GetStoreVta
+    </p>
+    <p>
+        <b>Intput: </b> <br/>
+        <pre><code>
+Thuột tính         Giá trị                Mô tả   
+---------------------------------------------------------------------------------                              
+companyCode        string          Là mã lấy từ thông tin nhân viên vnpost
+
+</code></pre>
+    </p>
+    <p>
+        <b>Output: </b><br />
+        <pre>
+        <code>
+                {
+                    "Result": true
+                    "StatusCode": "Success"
+                    "Message": null
+                    "SysMessage": null
+                    "Data": {
+                        "CompanyCode": "VNPOSTHCM"
+                        "ListStoreCode":
+                            {
+                            "MACS": "CS_0000004"
+                            "TenCS": "HCM03- 328-330 ÐƯỜNG 3/2, Q. 10"
+                            "Diachi": "328-330 ÐU?NG 3/2, Q. 10"
+                            }
+                            {
+                            "MACS": "CS_0000001"
+                            "TenCS": "HCM01- 190B HOÀNG VĂN THỤ, Q. TÂN BÌNH"
+                            "Diachi": "190B HOÀNG VAN TH?, Q. TÂN BÌNH"
+                            }
+                            {
+                            "MACS": "CS_0000047"
+                            "TenCS": "HCM16- 74 CÁCH MẠNG THÁNG 8, Q. 3"
+                            "Diachi": "HCM16- 74 CÁCH MẠNG THÁNG 8, Q. 3"
+                            }
+                        }
+                     }
+            
+            ** Các tham số (Result, StatucCode, Message, SysMessage) thông báo kết nói api
+            ** Data là danh sách chi nhánh VTA(ListStoreCode)
+            </code>
+        </pre>
+    </p>
+
+</div>

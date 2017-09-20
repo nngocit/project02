@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+<div class="container">
+    <h2>@ViewBag.Mess</h2>
+
+    @using (Html.BeginForm("ClearCache", "Home", FormMethod.Post))
+    {
+        @Html.TextBox("url")
+
+        <input type="submit" value="Đồng ý" />
+    }
+    <div>
+
+    </div>
+</div>

@@ -1,0 +1,441 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutVnpost.cshtml";
+}
+@using System.Activities.Expressions
+@using WebComment.Commons
+@model WebComment.API.Models.PaymentPage
+
+@section Scripts {
+    <script src="~/Scripts/js-payment-amotization-PC.js"></script>
+}
+
+<div id="main-content">
+    <div class="container tragop">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="banner-tragop-large vtap-slideshow" id="dn-slide">
+
+                    <div>
+                        <img src="/Content/images/tragop/banner-muatragop.png" class="img-responsive center-block" alt="Tra gop">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Nav tabs -->
+                <ul class="clearlist list-inline tg-button-group" role="tablist">
+                    <li role="presentation">
+                        <a href="/tra-gop.html">
+                            <div class="tg-quytrinh-btn tg-sprite">Thủ tục - quy trình</div>
+                        </a>
+                    </li>
+                    <li role="presentation" class="active"><a href="#dktragop" aria-controls="dktragop" role="tab" data-toggle="tab"><div class="tg-dangky-btn tg-sprite">Đăng ký mua trả góp</div></a></li>
+                    @*<li role="presentation"><a href="/tra-gop.html#kmtragop"><div class="tg-khuyenmai-btn tg-sprite">Khuyến mãi trả góp</div></a></li>*@
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade  in active" id="dktragop">
+                        <h4>ĐĂNG KÝ MUA TRẢ GÓP</h4>
+                        <div class="loading-pop-up" style="display: none;">
+                            <div class="sk-fading-circle">
+                                <div class="sk-circle1 sk-circle"></div>
+                                <div class="sk-circle2 sk-circle"></div>
+                                <div class="sk-circle3 sk-circle"></div>
+                                <div class="sk-circle4 sk-circle"></div>
+                                <div class="sk-circle5 sk-circle"></div>
+                                <div class="sk-circle6 sk-circle"></div>
+                                <div class="sk-circle7 sk-circle"></div>
+                                <div class="sk-circle8 sk-circle"></div>
+                                <div class="sk-circle9 sk-circle"></div>
+                                <div class="sk-circle10 sk-circle"></div>
+                                <div class="sk-circle11 sk-circle"></div>
+                                <div class="sk-circle12 sk-circle"></div>
+                            </div>
+                        </div>
+
+                        <div class="tg-chonsanpham" @(Model.ProductId != 0 ? "style=display:none" : "")>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="title">Chọn sản phẩm cần mua trả góp</p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select class="input" id="dllSelectedMainCategory">
+                                        <option value="0">Chọn nhóm sản phẩm</option>
+                                        <option value="@Globals.MainCategory.Smartphone">Điện thoại, smartphones</option>
+                                        <option value="@Globals.MainCategory.Laptop">Laptop</option>
+                                        <option value="@Globals.MainCategory.Tablet">Máy tính bảng</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select class="input" id="dllSelectedSubCategory">
+                                        <option>Chọn loại sản phẩm</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select class="input" id="dllSelectedProduct">
+                                        <option>Chọn sản phẩm</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tg-chonsanpham clearfix" id="pnlProductTragop" @(Model.ProductId == 0 ? "style=display:none" : "")>
+                                @if (Model.DetailProduct != null)
+                                {
+                                    <div class="tg-box-product">
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <div class="pro_img">
+                                                    <img id="imgtragop" src="@Model.DetailProduct.Product.ImagePart" alt="@Model.DetailProduct.Product.ProductName" width="125" class="img-responsive">
+                                                </div>
+                                                <div class="pro_title">
+                                                    <p class="pro_name" id="productName">@(Model.DetailProduct.Product.ProductName)</p>
+                                                    <p class="pro_price" id="productPrice">
+                                                        @(Model.DetailProduct.Product.PriceHeadOffice <= (int)Globals.MinPricePayment.MinPricePayment ? "[Liên hệ]" : Globals.FormatMoney(Model.DetailProduct.Product.PriceOnline))
+
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <div style="max-height: 300px; overflow-x: scroll;" id="pnlPromotion">
+                                                    @Html.Raw(HttpUtility.HtmlDecode(Model.DetailProduct.Product.PromotionProduct))
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                                <p>Chọn màu</p>
+                                                <ul class="choose-color list-inline">
+                                                    @foreach (var color in Model.DetailProduct.ListColor)
+                                                    {
+                                                        <li>
+                                                            <div class="radio">
+                                                                <label>
+                                                                    @Html.RadioButtonFor(m => m.Color, color.ProductColorCode, new {Checked = "checked"})
+                                                                    <div class="color" style="background-color: #@color.ColorCode" data-colorcode="@color.ProductColorCode"></div>
+                                                                </label>
+                                                            </div>
+                                                        </li>
+
+                                                    }
+                                                </ul>
+                                                <div class="color-error error" style="display: none;">Vui lòng chọn màu </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="tg-box-product">
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <div class="pro_img">
+                                                    <img id="imgtragop" src="" alt="" width="125" class="img-responsive">
+                                                </div>
+                                                <div class="pro_title">
+                                                    <p class="pro_name" id="productName"></p>
+                                                    <p class="pro_price" id="productPrice">
+
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <div style="max-height: 300px; overflow-x: scroll;" id="pnlPromotion">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-5 col-sm-5 col-xs-12" id="listColorId">
+
+                                                <div class="color-error error" style="display: none;">Vui lòng chọn màu </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>
+                                    <b>Vui lòng cung cấp thêm thông tin cá nhân (để xét duyệt trả góp)</b>
+                                </p>
+                            </div>
+                            @using (Html.BeginForm("Create", "Payment", FormMethod.Post))
+                            {
+                                @Html.HiddenFor(m => m.ProductId)
+                                @Html.HiddenFor(m => m.OrderType)
+                                @Html.HiddenFor(m => m.ProductColorCode)
+    <input id="totalPrice" type="hidden" value="@(Model.DetailProduct == null ? 0 : Model.DetailProduct.Product.PriceOnline)">
+    <input id="ProductCode" name="ProductCode" type="hidden" value="@(Model.DetailProduct == null ? "" : Model.DetailProduct.Product.ProductCode)">
+    <input type="hidden" id="BranchCode" value="@Model.BranchCode" />
+    <input type="hidden" id="ProductName" name="ProductName" value="@(Model.DetailProduct == null ? "" : Model.DetailProduct.Product.ProductName)" />
+    <input type="hidden" id="TotalOrder" name="TotalOrder" value="@(Model.DetailProduct == null ? 0 : Model.DetailProduct.Product.PriceOnline)" />
+                                @Html.HiddenFor(m => m.PhanTramTraTruoc)
+                                @Html.HiddenFor(m => m.ThoiGianTraGop)
+                                @Html.HiddenFor(m => m.LaiXuatDacBiet)
+                                @Html.HiddenFor(m => m.Old)
+                                @Html.HiddenFor(m => m.Sotientratruoc)
+                                @Html.HiddenFor(m => m.Sotientragop)
+                                <div class="tg-form-row clearfix">
+                                    <div class="col-md-2 col-sm-3">
+                                        <p class="tg-form-text">Giấy tờ bạn phải có</p>
+                                    </div>
+                                    <div class="col-md-10 col-sm-9">
+                                        <div class="radio">
+                                            <label>
+                                                @Html.RadioButtonFor(m => m.GiayToCanCo, Globals.GiayToCanCo.Fast, new { @data_role = "none", @checked = "check" })
+                                                CMND + Hộ khẩu hoặc Bằng lái (Duyệt nhanh, lãi suất cao)
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                @Html.RadioButtonFor(m => m.GiayToCanCo, Globals.GiayToCanCo.Slow, new { @data_role = "none" })
+                                                CMND + Hộ khẩu + Hóa đơn điện nước (Lãi suất thấp)
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-9 col-sm-push-3 col-md-10 col-md-push-2">
+                                    <b>Lưu ý:</b> Số tiền dưới đây chỉ mang tính tham khảo <br>
+                                    Bạn sẽ được tư vấn thêm sau khi đặt hàng thành công.
+                                </div>
+                                <div class="col-sm-12">
+                                    <h4 class="title-donvi">1 - CHỌN ĐƠN VỊ TRẢ GÓP</h4>
+                                </div>
+
+                                <div class="clearfix">
+                                    <div class="col-sm-2">
+                                        <label class="tg-donvi"></label>
+                                        <div class="tg-donvi-subtitle" style="padding-top: 24px;">
+                                            <p style=" margin-bottom: 50px;">Hình thức</p>
+                                            <p>Trả trước</p>
+                                            <p>Thời hạn vay</p>
+                                            <hr>
+                                            <p>Khách hàng trả trước</p>
+                                            <p class="hmm">Số tiền trả góp</p>
+                                            <hr>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <br />
+                                            <br />
+                                            <div class="col-sm-4" id="pnl_tragop_PPF">
+                                                <div class="radio">
+                                                    <label class="tg-donvi">
+                                                        <div class="tg-chondonvi">
+                                                            @Html.RadioButtonFor(m => m.DonViTraGop, Globals.DonViTraGop.HomeCredit, new { @checked = "check", @cktype = "unit" })
+                                                            Chọn
+                                                        </div>
+                                                        <img src="/Content/images/tragop/ppf.png" alt="">
+                                                    </label>
+                                                </div>
+                                                <div name="tragoptype">
+                                                    <p class="clearfix">
+                                                        <select class="input" id="TraGopType_PPF" name="ddlTraGopType" disabled="disabled">
+                                                            <option value="-1">Có lãi suất</option>
+                                                        </select>
+                                                    </p>
+                                                </div>
+                                                <div class="tg-box text-right checked" id="pnlDVTG_PPF" name="pnlDVTG">
+                                                    <p class="clearfix">
+                                                        <select class="input pull-right" id="PhanTramTraTruoc_PPF" name="ddlPhanTramTraTruoc"></select>
+                                                    </p>
+                                                    <p class="clearfix">
+                                                        <select class="input pull-right" id="ThoiGianTraGop_PPF" name="ddlThoiGianTraGop"></select>
+                                                    </p>
+                                                    <hr>
+                                                    <p class="tratruoc" id="currentTtruoc_PPF" name="lblTraTruoc">0 đ</p>
+                                                    <p class="trathang" id="currentGThang_PPF" name="lblTraThang">0 đ</p>
+                                                    <hr>
+                                                    <p class="thutuc">
+                                                        <a href="#tragop-pop-up" class="fancybox-fast-view">
+                                                            <img src="/Content/images/tragop/hoso.png" alt=""> Thủ tục - Hồ sơ xét duyệt khoản vay
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix">
+                                    <div class="col-sm-4">
+                                        <h4 class="title-donvi">2 - THÔNG TIN KHÁCH HÀNG</h4>
+                                        <div class="tg-line-form clearfix">
+                                            <label for="" class=""></label>
+                                            <div class="tg-line-input">
+                                                <label class="radio-inline">
+                                                    @Html.RadioButtonFor(m => m.Gender, "M", new { @checked = "check" }) Anh
+                                                </label>
+                                                <label class="radio-inline">
+                                                    @Html.RadioButtonFor(m => m.Gender, "F") Chị
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="tg-line-form">
+                                            <label for="inputHoten" class="">Họ tên <span>*</span></label>
+                                            <div class="tg-line-input">
+                                                @Html.TextBoxFor(m => m.Fullname, new { @placeholder = "Họ tên của bạn (bắt buộc)", @class = "input", @maxlength = "50" })
+                                            </div>
+                                        </div>
+                                        <div class="tg-line-form">
+                                            <label for="inputNgaysinh" class="">Ngày sinh <span>*</span></label>
+                                            <div class="tg-line-input date-input">
+                                                @Html.TextBoxFor(m => m.Birthday, new { @readonly = "readonly", @data_date_end_date = "1999-12-31", @data_date_start_date = "1950-01-01", @data_date_format = "yyyy-mm-dd", @placeholder = "Ngày tháng năm sinh của bạn (bắt buộc)", @class = "input date date-picker", @style = "padding-left: 27px;" })
+                                                <i class="vta-date"></i>
+                                            </div>
+                                        </div>
+                                        <div class="tg-line-form">
+                                            <label for="inputDienthoai" class="">Điện thoại <span>*</span></label>
+                                            <div class="tg-line-input">
+                                                @Html.TextBoxFor(m => m.Phone, string.IsNullOrEmpty(Model.Phone) ? (object)new { @placeholder = "Số điện thoại di dộng (bắt buộc)", @class = "input" } : (object)new { @placeholder = "Số điện thoại di dộng (bắt buộc)", @class = "input", @readonly = "readonly" })
+                                            </div>
+                                        </div>
+                                        <div class="tg-line-form">
+                                            <label for="inputEmail" class="">Email <span>*</span></label>
+                                            <div class="tg-line-input">
+                                                @Html.TextBoxFor(m => m.Email, string.IsNullOrEmpty(Model.Email) ? (object)new { @placeholder = "Email", @class = "input" } : (object)new { @placeholder = "Email", @class = "input", @readonly = "readonly" })
+                                            </div>
+                                        </div>
+                                        <div class="tg-line-form">
+                                            <label for="inputCMND" class="">Số CMND <span>*</span></label>
+                                            <div class="tg-line-input">
+                                                @Html.TextBoxFor(m => m.Cmnd, new { @placeholder = "Số chứng minh (bắt buộc)", @class = "input" })
+                                            </div>
+                                        </div>
+                                        <div class="tg-line-form">
+                                            <label for="inputJob" class="">Nghề nghiệp <span>*</span></label>
+                                            <div class="tg-line-input">
+                                                @Html.DropDownListFor(m => m.NgheNghiepName, new SelectList(Model.ListNgheNghiep, "Key", "Value"), new { @class = "input", @onchange = "ddlNgheNghiepChange(this);" })
+                                                <div id="nghenghiep_option" style="display: none; margin-top: 5px;">
+                                                    @Html.TextBoxFor(m => m.NgheNghiepNameOption, new { @placeholder = "Nhập nghề nghiệp (bắt buộc)", @class = "input" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tg-line-form">
+                                            <label for="inputAddress" class="">Địa chỉ <span>*</span></label>
+                                            <div class="tg-line-input">
+                                                @Html.TextBoxFor(m => m.Address, new { @placeholder = "Địa chỉ (bắt buộc)", @class = "input", @maxlength = "256" })
+                                            </div>
+                                        </div>
+                                        <div class="tg-line-form">
+                                            <label for="inputNoio" class="">Nơi ở <span>*</span></label>
+                                            <div class="tg-line-input">
+                                                @Html.DropDownListFor(m => m.CityNoiOId, new SelectList(Model.ListCityNoiO, "Key", "Value"), new { @class = "input", @onchange = "VtaJsPC.service.AddName('CityNoiOName',this);" })
+                                                @Html.HiddenFor(m => m.CityNoiOName)
+                                            </div>
+                                        </div>
+                                        <div class="tg-line-form">
+                                            <label for="inputHokhau" class="">Hộ khẩu <span>*</span></label>
+                                            <div class="tg-line-input">
+                                                @Html.DropDownListFor(m => m.CityHoKhauId, new SelectList(Model.ListCityHoKhau, "Key", "Value"), new { @class = "input", @onchange = "VtaJsPC.service.AddName('CityHoKhauName',this); VtaJsPC.service.ListCity('CityId');" })
+                                                @Html.HiddenFor(m => m.CityHoKhauName)
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-sm-8">
+                                        <h4 class="title-donvi">3 - CHỌN PHƯƠNG THỨC NHẬN HÀNG</h4>
+
+                                        <p>
+                                            <b>Vui lòng chọn siêu thị bên dưới để nhận hàng</b>
+                                        </p>
+                                        <hr class="dot">
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <div class="tg-line-form">
+                                                    <label for="inputTinh" class="">Thành phố <span>*</span></label>
+                                                    <div class="tg-line-input">
+                                                        @Html.DropDownListFor(m => m.CityId, new SelectList(new Dictionary<string, string>() { { "0", "===Chọn thành phố===" } }, "Key", "Value"), new { @class = "input", @onchange = "VtaJsPC.service.AddName('CityName',this); VtaJsPC.service.ListDistrict('DistrictId',this)", @havestore = "true" })
+                                                        @Html.HiddenFor(m => m.CityName)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                @Html.DropDownListFor(m => m.DistrictId, new SelectList(new Dictionary<string, string>() { { "0", "===Chọn quận huyện===" } }, "Key", "Value"), new { @class = "chonsieuthi input", @size = "7", @multiple = "multiple", @onchange = "VtaJsPC.service.AddName('DistrictName',this);" })
+                                                @Html.HiddenFor(m => m.DistrictName)
+                                            </div>
+                                        </div>
+
+                                        <hr>
+                                        <button type="submit" onclick="return CheckValidSubmit();" class="button button-blue pull-right">Hoàn tất đăng ký</button>
+                                    </div>
+
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="tragop-pop-up" style="max-width: 980px; display: none">
+
+
+        <div class="product-pop-up">
+
+            <h3 class="text-uppercase">1. Thủ tục trả góp</h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered tg-table">
+
+
+                    <tr>
+                        <td class="text-center">
+
+                            <img src="/Content/images/tragop/home-credit-logo.jpg" class="img-responsive center-block" alt="" width="150">
+
+                        </td>
+
+                        <td style="line-height: 1.8; font-size: 16px">
+                            <b>Thời gian duyệt hồ sơ:</b> 15-30 phút <br>
+                            <b>Tuổi:</b> 20 - 60 tuổi <br>
+                            <b>Thủ tục:</b> CMND + Hộ khẩu (có thể thay bằng lái xe nếu khoản vay dưới 10 triệu) <br>
+                            <b>Giá trị sản phẩm:</b> >= 1.25 triệu <br>
+                            <b>Trả trước:</b> 20% <br>
+                            <b>Khác:</b> Có thể mua kèm sản phẩm linh phụ kiện khác <br>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+
+
+            <h3 class="text-uppercase">2. Quy trình mua trả góp</h3>
+
+            <div class="indent">
+                <h4>Cách 1: Đến trực tiếp bất kì chi nhánh của Viễn Thông A</h4>
+                <ul class="clearlist">
+                    <li>- Sẽ có nhân viên hỗ trợ tư vấn trong việc lựa chọn sản phẩm phù hợp và hướng dẫn cách làm thủ tục mua góp</li>
+                    <li>- Bạn đợt xét duyệt hồ sơ trong khoản 15 phút trở lên tùy tình trạng hồ sơ và tùy từng nhà tài chính</li>
+                    <li>- Nếu hồ sơ được DUYỆT, bạn sẽ thanh toán khoản trả trước như đã chọn ban đầu và nhận ngay sản phẩm.</li>
+                    <li>- Hàng tháng bạn đến ngân hàng hoặc đến Viễn Thông A gần nhất để thanh toán khoản vay theo thỏa thuận trong hợp đồng ( nhân viên sẽ hướng dẫn địa chỉ cụ thể cho bạn).</li>
+                </ul>
+
+                <h4>Cách 2: Làm hồ sơ bằng cách đăng ký thông tin trên website</h4>
+                <ul class="clearlist">
+                    <li>- Lựa chọn sản phẩm trên website, sau đó click vào phần mua trả góp để đăng ký.</li>
+                    <li>- Trong vòng 24h sẽ có nhân viên liên hệ bạn để làm hồ sơ.</li>
+                    <li>- Khi có kết quả DUYỆT, bạn vui lòng đem hồ sơ như đã yêu cầu đến bất kỳ chi nhánh nào của Viễn Thông A để nhận sản phẩm.</li>
+                    <li>=> Cách này sẽ giúp cho bạn đỡ mất thời gian di chuyển và chờ đợi.</li>
+                    <li>Hãy đến ngay trung tâm Viễn Thông A trên toàn quốc, hoặc liên hệ hotline <b>1900 545446 (nhấn phím 2)</b> để biết thêm chi tiết.</li>
+                </ul>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
